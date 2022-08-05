@@ -11,3 +11,14 @@ services:
       - .:/var/www/localhost/htdocs/app
     ports:
       - 18080:8080
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.3.35
+    container_name: crm_topo_db
+    ports:
+      - 13306:3306
+    environment:
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_PASSWORD=root
