@@ -3,6 +3,47 @@
 // 	return request()->routeIs($routename.'.*') ? 'active' : '';
 // }
 // For add'active' class for activated route nav-item
+
+if(!function_exists('get_version'))
+{
+  function get_version()
+  {
+    return config("app.version");
+  }
+}
+
+if(!function_exists('get_host'))
+{
+  function get_host()
+  {
+    return ((@$_SERVER["HTTPS"] == "on") ? "https://" : "http://") . $_SERVER["HTTP_HOST"];
+  }
+}
+
+if(!function_exists('get_asset'))
+{
+  function get_asset($curl="")
+  {
+    $response = "";
+
+    $curl = trim($curl);
+
+    if(!empty($curl))
+    {
+      if(stripos($curl, "http") !== false)
+      {
+        $response = $curl;
+      }
+      else
+      {
+        $response = asset($curl);
+      }
+    }
+
+    return $response . '?' . get_version();
+  }
+}
+
 function active_class($path, $active = 'active') {
 
   return request()->routeIs($path.'.*') ? 'active' : '';

@@ -161,24 +161,45 @@ function columdj(colum, total1, promedio, columrj1, columnr2j1, sumcuadrado){
     $('#sisolev').html( formatNum(sisolev,2 ));
     $('#input_sisolev').val( formatNum(sisolev,2 ) );
 }
-$('#reportMedicion').on('keyup','input',function(){
-    const parent = $(this).parents('tr');
-    const className = $(this).attr('class');
-    
-    if(  className == 'form-control input1' || className == 'form-control input2' ){
-        formula1( parent, '.input1', '.input2', '.dj1');
-        columdj(
-            '.dj1.form-control', '#total1', '#promedio1','.rj1.form-control','.r2j1.form-control',
-            '#sumcuadrado1'
-        );
-    }
-    if( className == 'form-control input3' || className == 'form-control input4' ){
-        formula1( parent, '.input3', '.input4', '.dj2');
-        columdj(
-            '.dj2.form-control', '#total2', '#promedio2', '.rj2.form-control','.r2j2.form-control',
-            '#sumcuadrado2'
-        );
-    }
+
+$('#reportMedicion').on('keyup change','input',function(){
+  let $tr = $(this).parents('tr');
+
+  let className = $(this).attr('class');
+
+  let $input1 = $tr.find(".input1").first();
+
+  let $dist1 = $tr.find(".dist1").first();
+  let $dist2 = $tr.find(".dist2").first();
+  let $dist3 = $tr.find(".dist3").first();
+
+  let dDist1 = get_numeric($dist1.val());
+  let dDist2 = get_numeric($dist2.val());
+  let dDist3 = get_numeric($dist3.val());
+
+  let dPromedio = 0;
+  let iAux = 0;
+
+  if(dDist1 > 0) ++iAux;
+  if(dDist2 > 0) ++iAux;
+  if(dDist3 > 0) ++iAux;
+
+  dPromedio = (dDist1 + dDist2 + dDist3) / iAux;
+
+  $input1.val(number_truncate(dPromedio));
+
+
+  if( className == 'form-control input1' || className == 'form-control input2' )
+  {
+    formula1( $tr, '.input1', '.input2', '.dj1');
+    columdj('.dj1.form-control', '#total1', '#promedio1','.rj1.form-control','.r2j1.form-control','#sumcuadrado1');
+  }
+
+  if( className == 'form-control input3' || className == 'form-control input4' )
+  {
+    formula1( $trº, '.input3', '.input4', '.dj2');
+    columdj('.dj2.form-control', '#total2', '#promedio2', '.rj2.form-control','.r2j2.form-control','#sumcuadrado2');
+  }
 })
 
 $('#auxsigned').click(function(){

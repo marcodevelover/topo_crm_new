@@ -1,31 +1,10 @@
-<input type="hidden" name="_token" value="{{ csrf_token() }}">
-<style>
-    svg{
-        width: 100%;
-    }
-    .table th, 
-    .table td,
-    tbody td{
-        width: 70px!important;
-    }
-    i.input-helper{
-        display: none;
-    }
-    #flexSwitchCheckChecked{
-        width: 50px;
-        height: 26px;
-        margin-top:10px;
-        margin-left: 20px;
-    }
-</style>
+
 @include('components.validate-errors')
 @include('components.messages')
-@include('certificaciones._cliente')
-@include('certificaciones._equipo')
 
 <div class="card my-2">
     <div class="card-header">
-        <h5 class="my-1">Reporte de medición (Pruebas de distanciometro usando prisma)</h5>
+        <h5 class="my-1">Reporte de medición (Angulos Horizontales)</h5>
     </div>
     <div class="card-body pt-2">
         <div class="row">
@@ -79,5 +58,5 @@
         </div>
     </div>
 </div>
-@include('certificaciones._table')
+@include('certificaciones._table_Ahorizontal')
 @include('certificaciones._patron')

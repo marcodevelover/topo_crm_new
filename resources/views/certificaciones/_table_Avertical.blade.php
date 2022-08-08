@@ -5,24 +5,14 @@
 </style>
 <div class="card my-2">
     <div class="card-header">
-        <h5 class="my-1">Reporte de medición (Pruebas de distanciometro usando prisma)</h5>
+        <h5 class="my-1">Reporte de medición (Angulos Verticales)</h5>
     </div>
     <div class="card-body">
         <?php 
-            $index1 = 1; 
-            $index2 = 21; 
-            $cont = 0; 
-            $djsum1 = 0; 
-            $_djsum1 = 0; 
-            $_djsum12 = 0; 
-            $total_xaj2 = 0; 
-            $total_xbj2 = 0; 
-            $djsum2 = 0; 
-            $_djsum2 = 0;
-            $total_xaj = 0; 
-            $total_xbj = 0;
-            $cuadrado1 = 0; 
-            $cuadrado2 = 0;
+            $index1 = 1; $index2 = 21; $cont = 0; $djsum1 = 0; $_djsum1 = 0; 
+            $_djsum12 = 0; $total_xaj2 = 0; $total_xbj2 = 0; $djsum2 = 0; $_djsum2 = 0;
+            $total_xaj = 0; $total_xbj = 0;
+            $cuadrado1 = 0; $cuadrado2 = 0;
         ?>
         <?php 
             foreach($report->measurements['xaj'] as $mp):
@@ -43,47 +33,34 @@
             <table class="table table-striped">
                 <thead class="text-center">
                     <tr>
-                        <th>Distancia(m)</th>
-                        <th>Promedio(m)</th>
-                        <th>Patron(m)</th>
-                        <th>Residuo(mm)</th>
-                        <th>Residuo cuadratico</th>
-                        
+                        <th>j</th>
+                        <th>X <sub>AJ</sub></th>
+                        <th>X <sub>BJ</sub></th>
+                        <th>dj</th>
+                        <th>rj</th>
+                        <th>r<sup>2</sup>j</th>
+                        <th>j</th>
+                        <th>X <sub>AJ</sub></th>
+                        <th>X <sub>BJ</sub></th>
+                        <th>dj</th>
+                        <th>rj</th>
+                        <th>r<sup>2</sup>j</th>
                     </tr>
                 </thead>
                 <tbody id="reportMedicion" class="text-center">
-                    <?php
-                    $cont = 0;
-                    $dj1Round = 0;
-                    $dj2Round = 0;
-                    ?>
-
+                    <?php $cont = 0; $dj1Round = 0; $dj2Round = 0; ?>
                     @foreach($report->measurements['xaj'] as $m)
-                        <?php
-
+                        <?php 
                             $djsum1 = $djsum1 + $report->measurements['dj1'][$cont];
                             $djsum2 = $djsum2 + $report->measurements['dj2'][$cont];
                         ?>
                         <tr id="row-{{ $index1 }}">
-                            <td>
-
-                            <input type="text" name="dist1" class="dist1" placeholder="distancia 1" /><br><br>
-                            <input type="text" name="dist2" class="dist2" placeholder="distancia 2"/><br><br>
-                            <input type="text" name="dist3" class="dist3" placeholder="distancia 3"/>
-
-                            </td>
-                            <td><input type="text" class=" input1" name="xaj[]" value="{{ $m }}" disabled></td>
-
-                            <td><select type="text" id="select_num">
-                            <option >--seleccione--</option>
-                                <option id ="patron1" value="21.784">21.784</option>
-                                <option id ="patron2" value="54.055">54.055</option>
-                                <option id ="patron3" value="76.502">76.502</option>
-                                <option id ="patron4" value="152.248">152.248</option>
-                            </td>
+                            <td>{{ $index1++ }}</td>
+                            <td><input type="text" class="form-control input1" name="xaj[]" value="{{ $m }}"></td>
+                            <td><input type="text" class="form-control input2" name="xbj[]" value="{{ $report->measurements['xbj'][$cont] }}"></td>
                             <td>
                                 <span class="disabled">
-                                    <input class="input2 form-control" type="text" value="{{ $report->measurements['dj1'][$cont] }}" disabled>
+                                    <input class="dj1 form-control" type="text" value="{{ $report->measurements['dj1'][$cont] }}" disabled>
                                     <input class="dj1" name="dj1[]" type="hidden" value="{{ $report->measurements['dj1'][$cont] }}">
                                 </span> 
                             </td>
@@ -95,7 +72,38 @@
                                 </span> 
                             </td>
                             <td>
+                                <?php $cuadrado1 =  $cuadrado1 + ( $dj1Round * $dj1Round );  ?>
+                                <span class="disabled">
+                                    <input class="r2j1 form-control" type="text" value="{{ ($dj1Round*$dj1Round) }}" disabled> 
+                                    <input class="r2j1" name="r2j1[]" type="hidden" value="{{ ($dj1Round*$dj1Round) }}">
+                                </span> 
+                            </td>
                             
+                            <td>{{ $index2++ }}</td>
+                            <td><input type="text" class="form-control input3" name="xaj2[]" value="{{ $report->measurements['xaj2'][$cont] }}"></td>
+                            <td><input type="text" class="form-control input4" name="xbj2[]" value="{{ $report->measurements['xbj2'][$cont] }}"></td>
+                            <td>
+                                <span class="disabled">
+                                    <input type="text" class="form-control dj2" value="{{ $report->measurements['dj2'][$cont] }}" disabled>
+                                    <input class="dj2" type="hidden" name="dj2[]" value="{{ $report->measurements['dj2'][$cont] }}">
+                                </span>
+                            </td>
+                            <td>
+                                <?php  $dj2Round = round( ( $_djsum2 - $report->measurements['dj2'][$cont] ), 2 ); ?>
+                                <span class="disabled">
+                                    <input type="text" class="form-control rj2" value="{{ $dj2Round }}" disabled>
+                                    <input class="rj2" type="hidden" name="rj2[]" value="{{ $dj2Round }}">
+                                </span> 
+                            </td>
+                            <td>
+                                <?php $cuadrado2 =  $cuadrado2 + ( $dj2Round * $dj2Round );  ?>
+                                <span class="disabled">
+                                    <input type="text" class="form-control r2j2" value="{{ ( $dj2Round * $dj2Round ) }}" disabled>
+                                    <input class="2j2" type="hidden" name="r2j2[]" value="{{ ( $dj2Round * $dj2Round ) }}">
+                                </span> 
+                            </td>
+                        </tr>
+                        <?php $cont ++; ?>
                     @endforeach
                     <tr>
                         <td></td>
@@ -151,10 +159,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<!-- <div class="col-sm-12 col-lg-12">
-    <button type="submit" class="btn btn-lg my-4 btn-primary font-weight-bold">Guardar</button>
-</div> -->

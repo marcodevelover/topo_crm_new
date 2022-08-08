@@ -17,7 +17,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Environment
+    | Application Environment & Version
     |--------------------------------------------------------------------------
     |
     | This value determines the "environment" your application is currently
@@ -27,6 +27,8 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+
+    'version' => md5("1.0.6"),
 
     /*
     |--------------------------------------------------------------------------

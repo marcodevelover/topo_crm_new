@@ -46,20 +46,21 @@ class ReportController extends Controller
         $report = new Report();
         $customer = new Customer();
         $equipment = new Equipment();
-        $report->measurements = [ 
-            "xaj"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "xbj"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "dj1"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "rj1"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "r2j1"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "xaj2"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "xbj2"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "dj2"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "rj2"=> ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"],
-            "r2j2" => ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"]
+        $report->measurements = [
+            "xaj"=> ["0","0","0","0"],
+            "xbj"=> ["0","0","0","0"],
+            "dj1"=> ["0","0","0","0"],
+            "rj1"=> ["0","0","0","0"],
+            "r2j1"=> ["0","0","0","0"],
+            "xaj2"=> ["0","0","0","0"],
+            "xbj2"=> ["0","0","0","0"],
+            "dj2"=> ["0","0","0","0",],
+            "rj2"=> ["0","0","0","0"],
+            "r2j2" => ["0","0","0","0"]
         ];
         return view('certificaciones.new', compact('report','customer','equipment'));
     }
+
     public function store(Request $request)
     {
         request()->validate([
@@ -249,7 +250,6 @@ class ReportController extends Controller
         
         $report->save();
         return redirect()->route('certificaciones.edit', $report)->with(['message'=>'Registro actualizado con éxito']);
-
     }
 
     public function destroy(Report $report)
@@ -257,11 +257,21 @@ class ReportController extends Controller
         //
     }
 
-    public function createcertificado($id){
+    public function createcertificado(Request $request, $id)
+    {
         $service = Laboratorio::find($id);
+
         $report = new Report();
-        $pattern = Pattern::find(1);
-        
+
+        if($request->get("pattern") == 1)
+        {
+          $pattern = Pattern::find(1);
+        }
+        elseif($request->get("pattern") == 2)
+        {
+          $pattern = Pattern::find(2);
+        }
+
         return view('laboratorio.new', compact('service','report','pattern'));
     }
 }

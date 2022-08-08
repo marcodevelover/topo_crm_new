@@ -23,6 +23,17 @@
                 <label for="staticModel" class="col-form-label">Modelo</label>
                 <input id="producModel" type="text" class="form-control" name="model" placeholder="Modelo" value="{{ old( 'model',$pattern->model) }}">
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-lg-3">
+                <label for="staticModel" class="col-form-label">Tipo</label>
+                <select name="tipo" id="producTipo" class="form-control">
+                <option value="">Seleccione...</option>
+                <option value="NIVEL" {{ ( old('tipo', $pattern->tipo) == "NIVEL" ? "selected":"") }}>Nivel</option>
+                <option value="ESTACION_TOTAL" {{ ( old('tipo', $pattern->tipo) == "ESTACION_TOTAL" ? "selected":"") }}>Estacion Total</option>
+
+                </select>
+            </div>
+
             <div class="col-xs-12 col-sm-12 col-lg-3">
                 <label for="staticSerie" class="col-form-label">No. de serie</label>
                 <input id="producNoSerie" type="text" class="form-control" name="no_serie" placeholder="No. de serie" value="{{ old( 'no_serie',$pattern->no_serie) }}">

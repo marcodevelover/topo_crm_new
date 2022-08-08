@@ -81,7 +81,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ get_asset('js/app.js') }}"></script>
+    <script src="{{ get_asset('js/dashboard.js') }}"></script>
 </body>
 </html>

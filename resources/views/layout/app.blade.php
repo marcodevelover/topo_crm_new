@@ -61,6 +61,8 @@
   @stack('plugin-scripts')
   <!-- end plugin js -->
 
+  <script src="{{ get_asset('js/utils.js') }}"></script>
+
   <!-- common js -->
   {!! Html::script('assets/js/off-canvas.js') !!}
   {!! Html::script('assets/js/hoverable-collapse.js') !!}
@@ -69,7 +71,9 @@
   {!! Html::script('assets/js/todolist.js') !!}
   <!-- end common js -->
 
+  <script src="{{ get_asset('js/app.js') }}"></script>
+  <script src="{{ get_asset('js/dashboard.js') }}"></script>
+
   @stack('custom-scripts')
-  <script src="{{ asset('js/dashboard.js') }}"></script>
 </body>
 </html>

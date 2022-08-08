@@ -26,18 +26,27 @@
         }
     }
 </style>
-    @include('components.validate-errors')
+
     @include('components.messages')
+
+
+    
+
     <div class="row mb-4">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <h4 class="mb-2">En construcción</h4>
+            <h4 class="mb-2">En construcción (Carpeta Certificaciones)</h4>
         </div>
     </div>
-    {{-- @include('certificaciones._modal-customer')
-    @include('certificaciones._modal-product')
+
     <form action="{{ route('certificaciones.store') }}" method="post">
-        @include('certificaciones._form')
-    </form> --}}
+        @include('certificaciones._report_Avertical')
+    </form> 
+
+
+
+
+
+
 @endsection
 
 @push('plugin-scripts')

@@ -39,9 +39,7 @@ Route::resource('/patrones','PatternController')
 Route::resource('/verificados','LaboratorioController')
 ->parameters(['laboratorio'=>'lab'])->names('verificados');
 
-
 // Route::get('laboratorio','DashboardController@labs')->name('laboratorio');
-
 
 Route::group(['prefix' => 'basic-ui'], function(){
     Route::get('accordions', function () { return view('pages.basic-ui.accordions'); });

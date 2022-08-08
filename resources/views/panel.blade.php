@@ -29,7 +29,7 @@
                     class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
                     <div class="float-left">
                         <i class="mdi mdi-book-open-page-variant text-danger icon-lg"></i>
-                        
+
                     </div>
                     <div class="float-right">
                         <p class="mb-0 text-right">CERT</p>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ Storage::url($user1->signed)}}" class="img-fluid" style="width:100%;">
+                        <img src="{{ Storage::url($user1->signed) }}" class="img-fluid" style="width:100%;">
                     </div>
                 </div>
             </div>

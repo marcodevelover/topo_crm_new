@@ -29,7 +29,8 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function pdf($folio){
+    public function pdf($folio)
+    {
         $report = Report::whereFolio($folio)->first();
         $user1 = User::where('job','Jefe de laboratorio')->first();
         // $user2 = User::where('job','Ingeniero de servicio')->first();
@@ -38,9 +39,10 @@ class HomeController extends Controller
         $equipment = $report->equipment[0];
         $pattern = $report->pattern;
         // return View('publicpdf', compact('report','customer','equipment', 'pattern','user1','user2'));
-        $view = View('publicpdf', 
+        $view = View('publicpdf',
             compact('report','customer','equipment', 'pattern','user1')
         );
+        
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view->render());
         return $pdf->stream();

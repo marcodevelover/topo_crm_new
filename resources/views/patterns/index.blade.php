@@ -18,6 +18,7 @@
                             <th>Certificado</th>
                             <th>Marca</th>
                             <th>Modelo</th>
+                            <th>Tipo</th>
                             <th>No. Serie</th>
                             <th>Acciones</th>
                         </tr>
@@ -28,10 +29,11 @@
                             <td>{{$pattern->certificate}}</td>
                             <td>{{$pattern->brand}}</td>
                             <td>{{$pattern->model}}</td>
+                            <td>{{$pattern->tipo}}</td>
                             <td>{{$pattern->no_serie}}</td>
                             <td>{{$pattern->calibrated}}</td>
                             <td>
-                                @if( Auth::user()->rol == 'admin' )
+                                @if(Auth::user()->rol == 'admin')
                                     <form method="POST" action="{{route('patrones.destroy', $pattern->id)}}"
                                         onsubmit="return confirm('¿Esta seguro de querer eliminar este registro?');"
                                         class="btn-group" 

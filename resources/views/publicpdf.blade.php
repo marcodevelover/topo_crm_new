@@ -23,6 +23,10 @@
                 width:100%;
                 height:100%;
             }
+
+            .table-sm{
+                line-height: 1; 
+            }
             /** Definir las reglas del pie de página **/
             footer {
                 font-size:12px;
@@ -98,14 +102,14 @@
         <main>
             <table>
                 <tr>
-                    <td>
+                    <td class="text-center">
                         <img src="https://certificaciones.toposervis.com.mx/assets/images/Toposervis-Logo.png" width="120">
                     </td>
                     <td class="text-center">
-                        <p style="font-size:22px;font-weight:bold;line-height:28px;">TOPOSERVIS S DE RL DE CV CERTIFICADO DE CALIBRACIÓN</p>
+                        <p style="font-size:22px;font-weight:bold;line-height:28px;">TOPOSERVIS S DE RL DE CV CONSTANCIA DE CALIBRACIÓN</p>
                         <strong>{{$report->folio}}</strong>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <img src="https://certificaciones.toposervis.com.mx/assets/images/Toposervis-Logo.png" width="120">
                     </td>
                 </tr>
@@ -167,8 +171,7 @@
             </table>
         </main>
         <main>
-            <div style="page-break-after:always;"></div>
-            <p style="font-size:24px;font-weight:bold;text-align:center;margin-top:1cm;margin-bottom:1cm;">Toposervis laboratorio de calibración</p>
+            <!-- <div style="page-break-after:always;"></div> -->
             <table class="table table-sm" style="border:0px;">
                 <tr class="bg-topo">
                     <th colspan="2">Reporte de medición </th>
@@ -194,14 +197,14 @@
                 </tr>
             </table>
             
-            <table class="table table-sm text-center" style="border:0px;margin-top:60px;">
+            <!-- <table class="table table-sm text-center" style="border:0px;margin-top:60px;">
                 <tr>
                     <td colspan="1" style="border:0px;"></td><td style="border:0px;"></td>
                 </tr>
                 <tr>
                     <td colspan="1">Cumple</td><td>No cumple</td>
                 </tr>
-            </table>
+            </table> -->
         </main>
         <div style="page-break-after:always;"></div>
         <main>
@@ -296,6 +299,8 @@
                         <td></td>
                     </tr> 
                 </tfoot>
+
+
             </table>
             <div style="margin-top:1cm;" class="text-center">
                 <p>Especificaciones del instrumento:</p>
@@ -303,6 +308,9 @@
             <div class="text-center">
                 <p>Precisión (desviación estándar para la nivelación de doble recorrido en 1 km): 0,7 mm</p>
             </div>
+
+            <div style="page-break-after:always;"></div>
+
             <div class="text-center">
                 <p>Configuración para la calibración</p>
                 <img src="{{ asset('/images/reporte-medicion.png') }}" class="img-fluid">

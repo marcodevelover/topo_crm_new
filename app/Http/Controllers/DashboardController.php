@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        
+
         $user1 = User::where('job','Jefe de laboratorio')->first();
         $user2 = auth::user();
         $certificaciones = Report::all();

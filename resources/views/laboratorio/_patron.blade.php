@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-lg-9">
                         <label for="staticProduct" name="product" class="col-form-label">Descripción</label>
-                        <input type="hidden" name="equipment_id" value="{{$pattern->id}}">
+                        <input type="hidden" name="equipment_id" value="{{ $pattern->id }}">
                         <input type="text" class="form-control" name="equipment[description]" placeholder="Descripción" value="{{ $pattern->description }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-3">
@@ -36,6 +36,10 @@
                     <div class="col-xs-12 col-sm-12 col-lg-3">
                         <label for="staticModel" class="col-form-label">Modelo</label>
                         <input id="producModel" type="text" class="form-control" name="equipment[model]" placeholder="Modelo" value="{{ $pattern->model }}" disabled>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-3">
+                        <label for="staticModel" class="col-form-label">Tipo</label>
+                        <input id="producTipo" type="text" class="form-control" name="equipment[tipo]" placeholder="Tipo" value="{{ $pattern->tipo }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-3">
                         <label for="staticSerie" class="col-form-label">No. de serie</label>

@@ -28,6 +28,9 @@
 </style>
 @include('components.validate-errors')
 @include('components.messages')
+
+
+
     <div class="row mb-4">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <h4 class="mb-2">Nuevo registro</h4>
@@ -40,6 +43,9 @@
     <form action="{{ route('certificaciones.store') }}" method="post">
         @include('laboratorio._form')
     </form>
+
+
+    
 
 @endsection
 

@@ -26,6 +26,7 @@
             </a>
         </li>
         @endif
+        
         <li class="nav-item {{ active_class('usuarios') }}">
             <a class="nav-link" href="{{ route('usuarios.index') }}">
                 <i class="menu-icon mdi mdi-account-multiple"></i>

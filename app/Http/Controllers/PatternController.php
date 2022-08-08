@@ -25,7 +25,13 @@ class PatternController extends Controller
      */
     public function create()
     {
-        //
+      $pattern = new Pattern();
+
+      $response = array();
+
+      $response["pattern"] = $pattern;
+
+      return view('patterns.new', $response);
     }
 
     /**
@@ -36,12 +42,14 @@ class PatternController extends Controller
      */
     public function store(Request $request)
     {
-        if( auth::user()->rol != 'admin'){
-            return redirect()->route('certificaciones.index')->with([
-                'message'=>'Acceso restringido para administradores',
-                'clase' => 'warning'
-            ]);
+        if( auth::user()->rol != 'admin')
+        {
+          return redirect()->route('certificaciones.index')->with([
+            'message'=>'Acceso restringido para administradores',
+            'clase' => 'warning'
+          ]);
         }
+
         request()->validate([
             'description' => 'required',
             'certificate' => 'required',
@@ -52,19 +60,19 @@ class PatternController extends Controller
         ],[
             'name.required' => __('I need your name')
         ]);
-        
+
         $pattern = new Pattern();
 
-        $pattern->description = $request->description; 
-        $pattern->certificate = $request->certificate; 
-        $pattern->brand = $request->brand; 
-        $pattern->model = $request->model; 
-        $pattern->no_serie = $request->no_serie; 
+        $pattern->description = $request->description;
+        $pattern->certificate = $request->certificate;
+        $pattern->brand = $request->brand;
+        $pattern->model = $request->model;
+        $pattern->no_serie = $request->no_serie;
         $pattern->calibrated = $request->calibrated;
         $pattern->comments = $request->comments;
         $pattern->save();
 
-        return redirect()->route('patrones.edit',$pattern->id)->with(['message'=>'Registro guardadi con éxito']);
+        return redirect()->route('patrones.edit', $pattern->id)->with(['message'=>'Registro guardado con éxito']);
     }
 
     /**
@@ -86,13 +94,15 @@ class PatternController extends Controller
      */
     public function edit(Pattern $pattern)
     {
-        if( auth::user()->rol != 'admin'){
-            return redirect()->route('certificaciones.index')->with([
-                'message'=>'Acceso restringido para administradores',
-                'clase' => 'warning'
-            ]);
+        if( auth::user()->rol != 'admin')
+        {
+          return redirect()->route('certificaciones.index')->with([
+            'message'=>'Acceso restringido para administradores',
+            'clase' => 'warning'
+          ]);
         }
-        return view('patterns.edit',compact('pattern'));
+
+        return view('patterns.edit', compact('pattern'));
     }
 
     /**

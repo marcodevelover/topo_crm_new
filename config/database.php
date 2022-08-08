@@ -65,6 +65,7 @@ return [
         'crm' => [
             'driver' => 'mysql',
             'host' => env('CRM_HOST', '127.0.0.1'),
+            'port' => env('CRM_PORT', '3306'),
             'database' => env('CRM_DATABASE', 'forge'),
             'username' => env('CRM_USERNAME', 'forge'),
             'password' => env('CRM_PASSWORD', ''),
