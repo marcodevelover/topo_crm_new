@@ -48,7 +48,7 @@ class ReportController extends Controller
         $equipment = new Equipment();
         $report->measurements = [
             "xaj"=> ["0","0","0","0"],
-            "xbj"=> ["0","0","0","0"],
+            "xbj"=> ["21.784","54.055","76.502","152.248"],
             "dj1"=> ["0","0","0","0"],
             "rj1"=> ["0","0","0","0"],
             "r2j1"=> ["0","0","0","0"],
@@ -205,6 +205,8 @@ class ReportController extends Controller
             "rj2" => $request->rj2,
             "r2j2" => $request->r2j2
         ];
+
+
     }
 
     public function update(Request $request, $id)

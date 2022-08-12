@@ -122,7 +122,9 @@ function formula1(parent, arg1, arg2, dj ){
     const result = $(parent).find(arg1).val() - $(parent).find(arg2).val();
     $(parent).find(dj).val(result);
 }
-function columdj(colum, total1, promedio, columrj1, columnr2j1, sumcuadrado){
+
+function columdj(colum, total1, promedio, columrj1, columnr2j1, sumcuadrado)
+{
     const dj1s = $(colum);
     const rj1s = $(columrj1);
     const r2j1s = $(columnr2j1);
@@ -167,7 +169,10 @@ $('#reportMedicion').on('keyup change','input',function(){
 
   let className = $(this).attr('class');
 
-  let $input1 = $tr.find(".input1").first();
+  let $promedio = $tr.find(".input1").first();
+  let $patron = $tr.find(".patron").first();
+  let $residuo = $tr.find(".residuo").first();
+  let $cuadratico = $tr.find(".cuadratico").first();
 
   let $dist1 = $tr.find(".dist1").first();
   let $dist2 = $tr.find(".dist2").first();
@@ -179,14 +184,30 @@ $('#reportMedicion').on('keyup change','input',function(){
 
   let dPromedio = 0;
   let iAux = 0;
+  let iResiduo = 0;
 
   if(dDist1 > 0) ++iAux;
   if(dDist2 > 0) ++iAux;
   if(dDist3 > 0) ++iAux;
 
   dPromedio = (dDist1 + dDist2 + dDist3) / iAux;
+  dPromedio = number_round(dPromedio, 3);
 
-  $input1.val(number_truncate(dPromedio));
+  $promedio.val(dPromedio);
+
+  dPatronInicial  = $patron.data("patron");
+
+  dPatronInicial = number_truncate(dPatronInicial,3);
+
+  dResiduo = (dPatronInicial - dPromedio) * 1000;
+
+  dResiduo = number_round(dResiduo);
+  iResiduo = Math.trunc(dResiduo);
+
+  $residuo.val(iResiduo);
+
+  iCuadratico = (iResiduo * iResiduo);
+  $cuadratico.val(iCuadratico);
 
 
   if( className == 'form-control input1' || className == 'form-control input2' )
@@ -197,7 +218,7 @@ $('#reportMedicion').on('keyup change','input',function(){
 
   if( className == 'form-control input3' || className == 'form-control input4' )
   {
-    formula1( $trº, '.input3', '.input4', '.dj2');
+    formula1( $tr, '.input3', '.input4', '.dj2');
     columdj('.dj2.form-control', '#total2', '#promedio2', '.rj2.form-control','.r2j2.form-control','#sumcuadrado2');
   }
 })

@@ -71,7 +71,6 @@
   {!! Html::script('assets/js/todolist.js') !!}
   <!-- end common js -->
 
-  <script src="{{ get_asset('js/app.js') }}"></script>
   <script src="{{ get_asset('js/dashboard.js') }}"></script>
 
   @stack('custom-scripts')
