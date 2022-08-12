@@ -89,58 +89,31 @@
 
                     @endforeach
 
-
-
-
                     <tr>
-                        <td></td>
-                        <td>{{ $total_xaj }}</td>
-                        <td>{{ $total_xbj }}</td>
-                        <td><span id="total1">{{$djsum1}}</span></td>
-                        <td></td>
-                        <td><span id="sumcuadrado1">{{$cuadrado1}}</span></td>
-                        <td></td>
-                        <td>{{ $total_xaj2 }}</td>
-                        <td>{{ $total_xbj2 }}</td>
-                        <td><span id="total2">{{$djsum2}}</span></td>
-                        <td></td>
-                        <td><span id="sumcuadrado2">{{$cuadrado2}}</span></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>d1=</td>
-                        <td> <span id="promedio1">{{ $djsum1 / 20 }}</span> </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>d2=</td>
-                        <td> <span id="promedio2">{{ $djsum2 / 20 }}</span></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Σrj2= <span id="sumatoriarj2">{{ $cuadrado1 + $cuadrado2 }}</span></td>
-                        <?php 
-                            $raiz = $cuadrado1 + $cuadrado2;
-                            $raiz = $raiz / 38;
-                            $raiz = sqrt( $raiz ); 
-                            $raiz = round($raiz, 2);
-                            $sisolev = $raiz * 2.89;
-                        ?>
-                        <td>s = <span id="ese">{{ $raiz }}</span></td>
-                        <td></td>
-                        <td></td>
-                        <td>sisolev=</td>
-                        <td> <span id="sisolev">{{ $sisolev }}</span></td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                      <td>TOTAL DE PUNTOS DE MEDICION</td>
+                      <td><input name="txtTotalMedicion" class="txtTotalMedicion" type="text"></td>
+                      </tr>
+                      <tr>
+                      <td>TOTAL DE MEDICIONES POSIBLES</td>
+                      <td><input name="txtMedidasPosibles" class="txtMedidasPosibles" type="text" disabled></td>
+                      </tr>
+                      <tr>
+                      <td>TOTAL DE PUNTOS CONOCIDOS</td>
+                      <td><input name="txtTotalPuntosPosibles" class="txtTotalPuntosPosibles" type="text" disabled></td>
+                      </tr>
+                      <tr>
+                      <td>NUMERO DE GRADOS DE LIBERTAD</td>
+                      <td><input name="txtNumeroGradoLibertad" class="txtNumeroGradoLibertad" type="text" disabled></td>
+                      </tr>
+                      <tr>
+                      <td>SUMATORIA RESIDUO CUADRATICO MM</td>
+                      <td><input name="txtSumatoriaResiduoCuadratico" class="txtSumatoriaResiduoCuadratico" type="text" disabled></td>
+                      </tr>
+                      <tr>
+                      <td>Desviacion</td>
+                      <td><input name="txtDesviacion" class="txtDesviacion" type="text" disabled></td>
+                      </tr>
+
                 </tbody>
             </table>
         </div>

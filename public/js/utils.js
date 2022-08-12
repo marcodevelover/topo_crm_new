@@ -1,6 +1,8 @@
 function number_round(sVal, nDec)
 {
+  sVal = sVal || 0;
   nDec = nDec || 2;
+
   var n = parseFloat(sVal);
   var s = "0.00";
 
@@ -17,6 +19,7 @@ function number_round(sVal, nDec)
 
 function number_truncate(sVal, nDec)
 {
+  sVal = sVal || 0;
   nDec = nDec || 2;
 
   var numS = sVal.toString(),

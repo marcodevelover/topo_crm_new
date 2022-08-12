@@ -173,6 +173,8 @@ $('#reportMedicion').on('keyup change','input',function(){
   let $patron = $tr.find(".patron").first();
   let $residuo = $tr.find(".residuo").first();
   let $cuadratico = $tr.find(".cuadratico").first();
+  let $mPosibles = $tr.find(".mPosibles").first();
+  let $tMedicion = $tr.find(".tMedicion").first();
 
   let $dist1 = $tr.find(".dist1").first();
   let $dist2 = $tr.find(".dist2").first();
@@ -209,7 +211,6 @@ $('#reportMedicion').on('keyup change','input',function(){
   iCuadratico = (iResiduo * iResiduo);
   $cuadratico.val(iCuadratico);
 
-
   if( className == 'form-control input1' || className == 'form-control input2' )
   {
     formula1( $tr, '.input1', '.input2', '.dj1');
@@ -221,8 +222,56 @@ $('#reportMedicion').on('keyup change','input',function(){
     formula1( $tr, '.input3', '.input4', '.dj2');
     columdj('.dj2.form-control', '#total2', '#promedio2', '.rj2.form-control','.r2j2.form-control','#sumcuadrado2');
   }
-})
+});
 
 $('#auxsigned').click(function(){
     $('#signed').trigger('click');
 });
+
+$('#reportMedicion').find(".txtTotalMedicion").on('keyup',function(evt){
+  evt.preventDefault();
+
+  let $txtTotalMedicion   = $(".txtTotalMedicion").first();
+  let $txtMedidasPosibles = $(".txtMedidasPosibles").first();
+  let $txtTotalPuntosPosibles = $(".txtTotalPuntosPosibles").first();
+  let $txtNumeroGradoLibertad = $(".txtNumeroGradoLibertad").first();
+  let $txtSumatoriaResiduoCuadratico = $(".txtSumatoriaResiduoCuadratico").first();
+  let $txtDesviacion = $(".txtDesviacion").first();
+
+  let iTotalMedicion = parseInt($txtTotalMedicion.val());
+
+  let dTotalSumatoriaResiduoCuadratico = 0;
+
+  iTotalMedicion = (!isNaN(iTotalMedicion)) ? iTotalMedicion : 0;
+
+  $txtTotalMedicion.val(iTotalMedicion);
+
+  dTotalMedicion = ((1+iTotalMedicion) * iTotalMedicion) / 2;
+
+  $txtMedidasPosibles.val(dTotalMedicion);
+
+  dTotalPuntosPosibles = ( 1 + iTotalMedicion) ;
+
+  $txtTotalPuntosPosibles.val(dTotalPuntosPosibles);
+
+  dNumeroGradoLibertad =  (dTotalMedicion - dTotalPuntosPosibles);
+
+  $txtNumeroGradoLibertad.val(dNumeroGradoLibertad);
+
+  $( ".cuadratico" ).each(function( index ) {
+    $cuadratico = $(this);
+
+    dTotalSumatoriaResiduoCuadratico+= get_numeric($cuadratico.val());
+  });
+
+  $( ".txtSumatoriaResiduoCuadratico" ).first().val(dTotalSumatoriaResiduoCuadratico);
+
+  dDesviacion = number_truncate(Math.sqrt((dTotalSumatoriaResiduoCuadratico / dNumeroGradoLibertad)),1);
+
+  $txtDesviacion.val(dDesviacion);
+
+});
+
+
+
+
