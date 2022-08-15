@@ -58,6 +58,17 @@ class ReportController extends Controller
             "rj2"=> ["0","0","0","0"],
             "r2j2" => ["0","0","0","0"]
         ];
+
+        $report->angulosHorizontales = [
+            "i"=> ["0","0","0"],
+            "k"=> ["1","2","3","4"],
+            "cara1"=> ["0","0","0","0"],
+            "cara2"=> ["0","0","0","0"],
+            "sumacaras"=> ["0","0","0","0"],
+            "promedio"=> ["0","0","0","0"],
+        ];
+
+
         return view('certificaciones.new', compact('report','customer','equipment'));
     }
 

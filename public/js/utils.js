@@ -31,13 +31,16 @@ function number_truncate(sVal, nDec)
   return parseFloat(finalResult);
 };
 
-function get_numeric(expr, decimals)
+function get_numeric(sVal, nDec)
 {
-  expr = expr || 0;
-  decimals = decimals || 3;
-  expr = String(expr);
-  expr = expr.replaceAll(',', '');
-  expr = parseFloat(expr);
-  response = number_truncate(expr, decimals);
+  sVal = sVal || 0;
+  nDec = nDec || 2;
+
+  sVal = String(sVal);
+  sVal = sVal.replaceAll(',', '');
+  sVal = parseFloat(sVal);
+
+  response = number_truncate(sVal, nDec);
+
   return response;
 };
