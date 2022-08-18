@@ -120,9 +120,6 @@
     </div>
 </div>
 
-
-
-
-<!-- <div class="col-sm-12 col-lg-12">
+ <div class="col-sm-12 col-lg-12">
     <button type="submit" class="btn btn-lg my-4 btn-primary font-weight-bold">Guardar</button>
-</div> -->
+</div>

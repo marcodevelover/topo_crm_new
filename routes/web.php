@@ -13,6 +13,10 @@
 // use QrCode;
 Route::get('/foo', 'ReportController@qrcode');
 
+Route::group(['prefix' => 'sandbox'], function(){
+  Route::post('save','ReportController@save_medicion');
+});
+
 Route::get('/template', function () {
     return view('dashboard');
 });
@@ -152,6 +156,8 @@ Route::group(['prefix' => 'ecommerce'], function(){
     Route::get('project-list', function () { return view('pages.ecommerce.project-list'); });
     Route::get('orders', function () { return view('pages.ecommerce.orders'); });
 });
+
+
 
 // For Clear cache
 Route::get('/clear-cache', function() {

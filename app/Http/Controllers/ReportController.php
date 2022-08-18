@@ -12,6 +12,7 @@ use App\Equipment;
 use App\Customer;
 use App\Pattern;
 use App\Laboratorio;
+use App\Temp;
 
 class ReportController extends Controller
 {
@@ -66,6 +67,21 @@ class ReportController extends Controller
             "cara2"=> ["0","0","0","0"],
             "sumacaras"=> ["0","0","0","0"],
             "promedio"=> ["0","0","0","0"],
+            "vacio1"=> ["0","0","0","0"],
+            "vacio2"=> ["0","0","0","0"],
+            "vacio3"=> ["0","0","0","0"],
+            "vacio4"=> ["0","0","0","0"],
+            "r"=> ["0","0","0","0"],
+            "r2"=> ["0","0","0","0"],
+        ];
+
+         $report->angulosVerticales = [
+            "i"=> ["0","0","0"],
+            "k"=> ["1","2","3","4"],
+            "Xj,k1"=> ["1","2","3","4"],
+            "Xj,k2"=> ["0","0","0","0"],
+            "sigma"=> ["0","0","0","0"],
+
         ];
 
 
@@ -186,7 +202,7 @@ class ReportController extends Controller
         return view('certificaciones.index', compact('reports'));
     }
     private function saveCustomer($id, $_customer){
-        
+
         $customer = Customer::find($id);    
         $customer->name = $_customer['name'];
         $customer->address = $_customer['address'] ? $_customer['address'] : "Dirección";
@@ -287,4 +303,23 @@ class ReportController extends Controller
 
         return view('laboratorio.new', compact('service','report','pattern'));
     }
+
+  public function save_medicion(Request $request)
+  {
+    $Dato = array();
+
+    parse_str($request->get("qs"), $get_array);
+
+    $arrAux = array();
+
+    $cara1 = $get_array["cara1"];
+
+    $arrAux["cara1"] = $cara1;
+
+    $json = json_encode($arrAux);
+
+    $Dato["medicion"] = $json;
+
+    Temp::insert($Dato);
+  }
 }

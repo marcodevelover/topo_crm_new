@@ -14,7 +14,7 @@ function number_round(sVal, nDec)
     s = s.substr(0, s.indexOf(".") + nDec + 1);
   }
 
-  return s;
+  return parseFloat(s);
 };
 
 function number_truncate(sVal, nDec)
