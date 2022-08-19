@@ -32,7 +32,6 @@
                       <th></th>
                       <th>r</th>
                       <th>r2</th>
-                      <th>r2</th>
 
                   </tr>
               </thead>
@@ -46,7 +45,7 @@
 
 
 
-                      <tr id="row{{ $index1 }}">
+                      <tr id="row{{ $index1 }}" class="roww">
 
 
                           <td>
@@ -100,43 +99,43 @@
                               <input type="text" class="promedio prom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
                               <input type="text" class="promedio prom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
                               <input type="text" class="promedio prom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
-                              <input type="text" class="totalpromedio" style="widht: 60px;width: 100px;text-align: center;" disabled/><br>
+                              <input type="text" class="totalpromedio" style="widht: 60px;width: 100px;text-align: center;"   disabled/><br>
                               </span>
                           </td>
 
-                           <!-- vacio1 -->
+                           <!-- suma de los promedios =400-F2+F3, =400-F2+F4 ... -->
 
                           <td>
                               <span class="disabled">
-                              <input type="text" class="vacio1_vacio1_1" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['vacio1'][$cont] }}" disabled /><br>
-                              <input type="text" class="vacio1_vacio1_2" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="vacio1_vacio1_3" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="vacio1_vacio1_4" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="totalvacio1" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="sumaprom sumaprom_1" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['sumaprom'][$cont] }}" disabled /><br>
+                              <input type="text" class="sumaprom sumaprom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
+                              <input type="text" class="sumaprom sumaprom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
+                              <input type="text" class="sumaprom sumaprom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
+                              <input type="text" class="sumaprom totalsumaprom" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
                               </span>
                           </td>
 
-                           <!-- vacio2 -->
+                           <!-- promedio de las sumas =PROMEDIO(G3,G9,G15)... -->
 
                            <td>
                               <span class="disabled">
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['vacio2'][$cont] }}" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['promsuma'][$cont] }}" disabled /><br>
+                              <input type="text" class="promsuma promsuma_1" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="promsuma promsuma_2" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="promsuma promsuma_3" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="promsuma promsuma_4" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
                               </span>
                           </td>
 
-                           <!-- vacio3 -->
+                           <!-- restas de promedio =H3-G3, =H4-G4 ... -->
 
                             <td>
                               <span class="disabled">
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['vacio3'][$cont] }}" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="restaprom restaprom_1" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['vacio3'][$cont] }}" disabled /><br>
+                              <input type="text" class="restaprom restaprom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
+                              <input type="text" class="restaprom restaprom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
+                              <input type="text" class="restaprom restaprom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
+                              <input type="text" class="restaprom restaprom_5" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
                               </span>
                           </td>
 
@@ -270,43 +269,40 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
 
   let $promedio1 = $tr.find(".promedio.prom_1").first();
   let dProm1     = get_numeric($promedio1.val(), 4);
-  let dVacio1    = 0;
-  let dTotalVacio1 = 0;
+  let dSumaProm    = 0;
+  let dTotalSumaProm = 0;
 
   $tr.find(".promedio").each(function( index ) {
     $promedio = $(this);
 
-    dVacio1 = 400;
+    dSumaProm = 400;
 
     $aux = $tr.find(".promedio.prom_" + $promedio.data("ancla"));
-    $vacio1_vacio1 = $tr.find(".vacio1_vacio1_" + $promedio.data("ancla"));
+    $sumaprom = $tr.find(".sumaprom.sumaprom_" + $promedio.data("ancla"));
 
-      dTotal = get_numeric($aux.val(), 4);
+    dTotal = get_numeric($aux.val(), 4);
 
     if($tr.attr("id") == "row3" && dTotal != 0)
     {
+      dSumaProm = dTotal - dProm1  ;
+      dSumaProm = number_round(dSumaProm, 4);
 
-       dVacio1 = dTotal - dProm1  ;
-        dVacio1 = number_round(dVacio1, 4);
+      dTotalSumaProm += dSumaProm;
 
-        dTotalVacio1 += dVacio1;
-
-        $vacio1_vacio1.val(dVacio1);
+      $sumaprom.val(dSumaProm);
     }
     else
     {
       if(index > 0 && index < 4)
       {
-
-
         if(dTotal != 0)
         {
-          dVacio1 = dVacio1 - dProm1 + dTotal;
-          dVacio1 = number_round(dVacio1, 4);
+          dSumaProm = dSumaProm - dProm1 + dTotal;
+          dSumaProm = number_round(dSumaProm, 4);
 
-          dTotalVacio1 += dVacio1;
+          dTotalSumaProm += dSumaProm;
 
-          $vacio1_vacio1.val(dVacio1);
+          $sumaprom.val(dSumaProm);
         }
       }
     }
@@ -314,9 +310,98 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
 
   });
 
-  $tr.find(".totalvacio1").val(number_truncate(dTotalVacio1, 4));
+  $tr.find(".totalsumaprom").val(number_truncate(dTotalSumaProm, 4));
+
+
+
+// =PROMEDIO(G3,G9,G15)...
+
+  var $sumaprom  = $tr.find(".sumaprom_" + iAncla);
+
+  var dTotalPromSuma_ind1 = 0;
+  var dTotalPromSuma_ind2 = 0;
+  var dTotalPromSuma_ind3 = 0;
+  var dTotalPromSuma_ind4 = 0;
+
+  var div1 = 0;
+  var div2 = 0;
+  var div3 = 0;
+  var div4 = 0;
+
+  $(".roww").each(function( index ) {
+    $roww = $(this);
+
+    $roww.find(".sumaprom").each(function( index ) {
+      $sumaprom = $(this);
+
+      if(index == 1)
+      {
+        dTotalPromSuma_ind1+= get_numeric($sumaprom.val(), 4);
+      }
+
+      if(index == 2)
+      {
+        dTotalPromSuma_ind2+= get_numeric($sumaprom.val(), 4) ;
+      }
+
+      if(index == 3)
+      {
+      dTotalPromSuma_ind3+= get_numeric($sumaprom.val(), 4);
+      }
+
+      if(index == 4)
+      {
+      dTotalPromSuma_ind4+= get_numeric($sumaprom.val(), 4);
+      }
+
+    });
+
+  });
+
+  $(".roww").each(function( index ) {
+    $roww = $(this);
+
+    $promsuma1 = $roww.find(".promsuma_1").first();
+    $promsuma2 = $roww.find(".promsuma_2").first();
+    $promsuma3 = $roww.find(".promsuma_3").first();
+    $promsuma4 = $roww.find(".promsuma_4").first();
+
+    div1 = dTotalPromSuma_ind1 / 3;
+    div2 = dTotalPromSuma_ind2 / 3;
+    div3 = dTotalPromSuma_ind3 / 3;
+    div4 = dTotalPromSuma_ind4 / 3;
+
+    $promsuma1.val(number_truncate(div1 , 4));
+    $promsuma2.val(number_truncate(div2 , 4));
+    $promsuma3.val(number_truncate(div3 , 4));
+    $promsuma4.val(number_truncate(div4 , 4));
+  });
+
+
+// =H3-G3, =H4-G4 ...
+
+
+
+
+
+
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $(".btnSubmit").on( "click", function(evt) {
