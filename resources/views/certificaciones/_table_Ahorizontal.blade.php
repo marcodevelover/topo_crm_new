@@ -378,8 +378,37 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
   });
 
 
-// =H3-G3, =H4-G4 ...
+    // =H3-G3, =H4-G4 ...
 
+    var $restaprom2 = $tr.find(".restaprom_2");
+    var $restaprom3 = $tr.find(".restaprom_3");
+    var $restaprom4 = $tr.find(".restaprom_4");
+    var $restaprom5 = $tr.find(".restaprom_5");
+
+    let $sumaprom2 = $tr.find(".sumaprom.sumaprom_2").first();
+    let $sumaprom3 = $tr.find(".sumaprom.sumaprom_3").first();
+    let $sumaprom4 = $tr.find(".sumaprom.sumaprom_4").first();
+    let $sumapromtotal = $tr.find(".sumaprom.totalsumaprom").first();
+
+    let dSumaProm2  = get_numeric($sumaprom2.val(), 4);
+    let dSumaProm3  = get_numeric($sumaprom3.val(), 4);
+    let dSumaProm4  = get_numeric($sumaprom4.val(), 4);
+    let dSumaPromTotal  = get_numeric($sumapromtotal.val(), 4);
+
+    let dTotalProm2 = 0;
+    let dTotalProm3 = 0;
+    let dTotalProm4 = 0;
+    let dTotalSumProm = 0;
+
+    dTotalProm2 = div1 - dSumaProm2;
+    dTotalProm3 = div2 - dSumaProm3;
+    dTotalProm4 = div3 - dSumaProm4;
+    dTotalSumProm = div4 - dSumaPromTotal;
+
+    $restaprom2.val(number_round(dTotalProm2 , 4));
+    $restaprom3.val(number_round(dTotalProm3 , 4));
+    $restaprom4.val(number_round(dTotalProm4 , 4));
+    $restaprom5.val(number_round(dTotalSumProm , 4));
 
 
 
