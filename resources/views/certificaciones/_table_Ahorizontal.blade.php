@@ -131,19 +131,19 @@
 
                             <td>
                               <span class="disabled">
-                              <input type="text" class="restaprom restaprom_1" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['vacio3'][$cont] }}" disabled /><br>
-                              <input type="text" class="restaprom restaprom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
-                              <input type="text" class="restaprom restaprom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
-                              <input type="text" class="restaprom restaprom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
-                              <input type="text" class="restaprom restaprom_5" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
+                              <input type="text" class="restaprom restaprom_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" value="{{ $report->angulosHorizontales['restaprom'][$cont] }}" disabled /><br>
+                              <input type="text" class="restaprom restaprom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
+                              <input type="text" class="restaprom restaprom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
+                              <input type="text" class="restaprom restaprom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
+                              <input type="text" class="restaprom restaprom_5" style="widht: 60px;width: 100px;text-align: center;" data-ancla="5" disabled /><br>
                               </span>
                           </td>
 
-                           <!-- vacio4 -->
+                           <!-- promedio restaprom =PROMEDIO(I2:I5), =PROMEDIO(I8:I11) ... -->
 
                           <td>
                               <span class="disabled">
-                             <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                             <input type="text" class="promresta promresta_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
                               </span>
                           </td>
 
@@ -412,7 +412,25 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
 
 
 
+    // =PROMEDIO(I2:I5), =PROMEDIO(I8:I11)
 
+     var $restaprom   = $tr.find(".restaprom_" + iAncla);
+     var $promresta  = $tr.find(".promresta_" + iAncla);
+     var dTotalPromResta = 0;
+     var div = 0;
+
+      $tr.find(".restaprom").each(function( index ) {
+        $restaprom = $(this);
+
+        if(index < 4)
+        {
+          dTotalPromResta+= get_numeric($restaprom.val(), 4);
+        }
+
+          div = dTotalPromResta / 4;
+          $promresta.val(number_round(div, 4));
+
+      });
 
 
 });
