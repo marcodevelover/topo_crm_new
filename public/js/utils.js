@@ -44,3 +44,6 @@ function get_numeric(sVal, nDec)
 
   return response;
 };
+
+
+

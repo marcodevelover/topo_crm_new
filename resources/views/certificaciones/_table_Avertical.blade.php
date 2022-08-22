@@ -50,20 +50,20 @@
 
                             <!-- Xj,k1 -->
                             <td>
-                              <input type="text" class="Xj,k1" data-ancla="1" /><br>
-                              <input type="text" class="Xj,k1" data-ancla="2" /><br>
-                              <input type="text" class="Xj,k1" data-ancla="3" /><br>
-                              <input type="text" class="Xj,k1" data-ancla="4" /><br>
-                               <input type="text" class="total_Xj,k1"  data-ancla ="1" disabled /><br>
+                              <input type="text" class="Xj1 k1_1" data-ancla="1" /><br>
+                              <input type="text" class="Xj1 k1_2" data-ancla="2" /><br>
+                              <input type="text" class="Xj1 k1_3" data-ancla="3" /><br>
+                              <input type="text" class="Xj1 k1_4" data-ancla="4" /><br>
+                               <input type="text" class="total_Xj"  data-ancla ="1" disabled /><br>
                             </td>
 
                             <!-- Xj,k2 -->
                             <td>
                             <span class="disabled">
-                            <input type="text" class="Xj,k2" data-ancla="1" /><br>
-                            <input type="text" class="Xj,k2" data-ancla="2" /><br>
-                            <input type="text" class="Xj,k2" data-ancla="3" /><br>
-                            <input type="text" class="Xj,k2" data-ancla="4" /><br>
+                            <input type="text" class="Xj2 k2_1" data-ancla="1" /><br>
+                            <input type="text" class="Xj2 k2_2" data-ancla="2" /><br>
+                            <input type="text" class="Xj2 k2_3" data-ancla="3" /><br>
+                            <input type="text" class="Xj2 k2_4" data-ancla="4" /><br>
                             <input type="text" class="total_Xj,k2" disabled /><br>
                             </span>
                             </td>
@@ -92,6 +92,12 @@
 
 @push('custom-scripts')
 <script type="text/javascript">
+
+$(document).on("keyup", ".Xj1, .Xj2", function(evt){
+
+
+
+});
 
 </script>
 @endpush

@@ -151,11 +151,11 @@
 
                            <td>
                               <span class="disabled">
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="r r_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
+                              <input type="text" class="r r_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
+                              <input type="text" class="r r_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
+                              <input type="text" class="r r_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
+                              <input type="text" class="totalsuma_r" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
                               </span>
                           </td>
 
@@ -163,20 +163,32 @@
 
                           <td>
                               <span class="disabled">
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                               <input type="text" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="cubo cubo_1" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="cubo cubo_2" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="cubo cubo_3" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="cubo cubo_4" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="totalcubo" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
                               </span>
                           </td>
 
                           </tr>
                   @endforeach
-
-
               </tbody>
           </table>
+                <br>
+
+                <table class="table table-striped">
+                  <tbody>
+                  <tr>
+                      <td>la diferencia en la apertura de angulos debe ser la misma</td>
+                      <td> <input type="text"  style="text-align: center;" disabled> </td>
+                      </tr>
+                      <tr>
+                      <td>para 3 series de 4 medidas <br> v=(3-1)x(4-1)=6</td>
+                      <td><input type="text"  style="text-align: center;" disabled></td>
+                  </tr>
+                </tbody>
+                </table>
       </div>
 
 
@@ -208,7 +220,6 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
   var $total_cara1   = $tr.find(".total_cara1");
   var $total_cara2   = $tr.find(".total_cara2");
   var $totalpromedio = $tr.find(".totalpromedio");
-
 
   let dCara1 = get_numeric($cara1.val(),4);
   let dCara2 = get_numeric($cara2.val(),4);
@@ -245,7 +256,7 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
     dTotalSumatoriaCara1+= get_numeric($cara1.val(), 4);
   });
 
-  $total_cara1.val(number_round(dTotalSumatoriaCara1, 3));
+  $total_cara1.val(number_round(dTotalSumatoriaCara1, 4));
 
   $tr.find( ".cara2").each(function( index ) {
     $cara2 = $(this);
@@ -253,7 +264,7 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
     dTotalSumatoriaCara2+= get_numeric($cara2.val(), 4);
   });
 
-  $total_cara2.val(number_round(dTotalSumatoriaCara2, 3));
+  $total_cara2.val(number_round(dTotalSumatoriaCara2, 4));
 
   $tr.find(".promedio").each(function( index ) {
     $promedio = $(this);
@@ -414,30 +425,154 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
 
     // =PROMEDIO(I2:I5), =PROMEDIO(I8:I11)
 
-     var $restaprom   = $tr.find(".restaprom_" + iAncla);
-     var $promresta  = $tr.find(".promresta_" + iAncla);
-     var dTotalPromResta = 0;
-     var div = 0;
+    var $restaprom   = $tr.find(".restaprom_" + iAncla);
+    var $promresta  = $tr.find(".promresta_" + iAncla);
+    var dTotalPromResta = 0;
+    var div = 0;
 
-      $tr.find(".restaprom").each(function( index ) {
-        $restaprom = $(this);
+    $tr.find(".restaprom").each(function( index ) {
+      $restaprom = $(this);
 
-        if(index < 4)
-        {
-          dTotalPromResta+= get_numeric($restaprom.val(), 4);
-        }
+      if(index < 4)
+      {
+        dTotalPromResta+= get_numeric($restaprom.val(), 4);
+      }
 
-          div = dTotalPromResta / 4;
-          $promresta.val(number_round(div, 4));
+      div = dTotalPromResta / 4;
+      $promresta.val(number_round(div, 4));
 
-      });
+    });
 
+
+
+
+
+    // r
+
+    var $r1 = $tr.find(".r_1");
+    var $r2 = $tr.find(".r_2");
+    var $r3 = $tr.find(".r_3");
+    var $r4 = $tr.find(".r_4");
+
+    var $restaprom1 = $tr.find(".restaprom.restaprom_1").first();
+    var $restaprom2 = $tr.find(".restaprom.restaprom_2").first();
+    var $restaprom3 = $tr.find(".restaprom.restaprom_3").first();
+    var $restaprom4 = $tr.find(".restaprom.restaprom_4").first();
+
+    var $promresta1 = $tr.find(".promresta.promresta_1").first();
+    let dPromResta =  get_numeric($promresta1.val(), 4);
+
+    let dRestaProm1  = get_numeric($restaprom1.val(), 4);
+    let dRestaProm2  = get_numeric($restaprom2.val(), 4);
+    let dRestaProm3  = get_numeric($restaprom3.val(), 4);
+    let dRestaProm4  = get_numeric($restaprom4.val(), 4);
+
+    let dResta1 = 0;
+    let dResta2 = 0;
+    let dResta3 = 0;
+    let dResta4 = 0;
+
+    dResta1 = dRestaProm1 - dPromResta;
+    dResta2 = dRestaProm2 - dPromResta;
+    dResta3 = dRestaProm3 - dPromResta;
+    dResta4 = dRestaProm4 - dPromResta;
+
+
+    $r1.val(number_round(dResta1, 4));
+    $r2.val(number_round(dResta2, 4));
+    $r3.val(number_round(dResta3, 4));
+    $r4.val(number_round(dResta4, 4));
+
+
+
+    var $r = $tr.find(".r_" + iAncla);
+    var $totalsumr  = $tr.find(".totalsuma_r");
+    var dTotalResta = 0;
+
+    $tr.find(".r").each(function( index ) {
+     $r = $(this);
+
+     dTotalResta += get_numeric($r.val(), 4);
+
+    });
+
+    $totalsumr.val(number_round(dTotalResta, 4));
+
+
+    // r2
+
+     var $cubo1 = $tr.find(".cubo_1");
+     var $cubo2 = $tr.find(".cubo_2");
+     var $cubo3 = $tr.find(".cubo_3");
+     var $cubo4 = $tr.find(".cubo_4");
+
+     var $rr1 = $tr.find(".r.r_1").first();
+     var $rr2 = $tr.find(".r.r_2").first();
+     var $rr3 = $tr.find(".r.r_3").first();
+     var $rr4 = $tr.find(".r.r_4").first();
+
+     let dRr1  = get_numeric($rr1.val(), 4);
+     let dRr2  = get_numeric($rr2.val(), 4);
+     let dRr3  = get_numeric($rr3.val(), 4);
+     let dRr4  = get_numeric($rr4.val(), 4);
+
+     let dCubo1 = 0;
+     let dCubo2 = 0;
+     let dCubo3 = 0;
+     let dCubo4 = 0;
+     let totalcubo = 0;
+
+     dCubo1 = dRr1 * dRr1;
+     dCubo2 = dRr2 * dRr2;
+     dCubo3 = dRr3 * dRr3;
+     dCubo4 = dRr4 * dRr4;
+
+     dCubo1 = dCubo1.toFixed(8);
+     dCubo2 = dCubo2.toFixed(7);
+     dCubo3 = dCubo3.toFixed(7);
+     dCubo4 = dCubo4.toFixed(8);
+
+
+     $cubo1.val(dCubo1);
+     $cubo2.val(dCubo2);
+     $cubo3.val(dCubo3);
+     $cubo4.val(dCubo4);
+
+    var $cubo   = $tr.find(".cubo_" + iAncla);
+    var $totalcubo  = $tr.find(".totalcubo" );
+    var dTotalCubo = 0;
+
+    $tr.find(".cubo").each(function( index ) {
+      $cubo = $(this);
+
+      dTotalCubo+= get_numeric($cubo.val(), 4);
+    });
+
+    totalcubo = dTotalCubo.toFixed(7);
+
+    $totalcubo.val(totalcubo);
 
 });
 
-
-
-
+function toFix(x)
+{
+  if (Math.abs(x) < 1.0)
+  {
+    var e = parseInt(x.toString().split('e-')[1]);
+    if (e) {
+        x *= Math.pow(10,e-1);
+        x = '0.' + (new Array(e)).join('0') + x.toString().substring(2);
+    }
+  } else {
+    var e = parseInt(x.toString().split('+')[1]);
+    if (e > 20) {
+        e -= 20;
+        x /= Math.pow(10,e);
+        x += (new Array(e+1)).join('0');
+    }
+  }
+  return x;
+}
 
 
 
