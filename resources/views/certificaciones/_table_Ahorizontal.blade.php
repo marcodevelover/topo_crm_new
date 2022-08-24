@@ -163,32 +163,39 @@
 
                           <td>
                               <span class="disabled">
-                              <input type="text" class="cubo cubo_1" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="cubo cubo_2" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="cubo cubo_3" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="cubo cubo_4" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="totalcubo" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="cubo cubo_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
+                              <input type="text" class="cubo cubo_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
+                              <input type="text" class="cubo cubo_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
+                              <input type="text" class="cubo cubo_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
+                              <input type="text" class="cubo totalcubo" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
                               </span>
                           </td>
-
                           </tr>
+
+
                   @endforeach
               </tbody>
           </table>
-                <br>
 
-                <table class="table table-striped">
-                  <tbody>
-                  <tr>
-                      <td>la diferencia en la apertura de angulos debe ser la misma</td>
-                      <td> <input type="text"  style="text-align: center;" disabled> </td>
-                      </tr>
-                      <tr>
-                      <td>para 3 series de 4 medidas <br> v=(3-1)x(4-1)=6</td>
-                      <td><input type="text"  style="text-align: center;" disabled></td>
-                  </tr>
-                </tbody>
-                </table>
+
+          <br>
+
+          <table class="table table-striped">
+            <tbody>
+            <tr>
+              <td>La diferencia en la apertura de angulos debe ser la misma</td>
+              <td> <input type="text" class="apertura" style="text-align: center;" disabled /></td>
+            </tr>
+            <tr>
+              <td>Para 3 series de 4 medidass</td>
+              <td><input type="text" class="paraserie" style="text-align: center;" disabled /></td>
+            </tr>
+            </tbody>
+          </table>
+
+
+
+
       </div>
 
 
@@ -206,7 +213,7 @@
 
 @push('custom-scripts')
 <script type="text/javascript">
-$(document).on("keyup", ".cara1, .cara2", function(evt){
+$(document).on("keyup", ".cara1, .cara2" , function(evt){
   var $cara = $(this);
 
   var $tr = $cara.closest("tr");
@@ -423,6 +430,7 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
 
 
 
+
     // =PROMEDIO(I2:I5), =PROMEDIO(I8:I11)
 
     var $restaprom   = $tr.find(".restaprom_" + iAncla);
@@ -527,10 +535,10 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
      dCubo3 = dRr3 * dRr3;
      dCubo4 = dRr4 * dRr4;
 
-     dCubo1 = dCubo1.toFixed(8);
-     dCubo2 = dCubo2.toFixed(7);
-     dCubo3 = dCubo3.toFixed(7);
-     dCubo4 = dCubo4.toFixed(8);
+     dCubo1 = dCubo1.toFixed(10);
+     dCubo2 = dCubo2.toFixed(10);
+     dCubo3 = dCubo3.toFixed(10);
+     dCubo4 = dCubo4.toFixed(10);
 
 
      $cubo1.val(dCubo1);
@@ -539,20 +547,60 @@ $(document).on("keyup", ".cara1, .cara2", function(evt){
      $cubo4.val(dCubo4);
 
     var $cubo   = $tr.find(".cubo_" + iAncla);
-    var $totalcubo  = $tr.find(".totalcubo" );
+    var $totalcubo  = $tr.find(".cubo.totalcubo" );
     var dTotalCubo = 0;
 
     $tr.find(".cubo").each(function( index ) {
-      $cubo = $(this);
+    $cubo = $(this);
 
-      dTotalCubo+= get_numeric($cubo.val(), 4);
+    if(index < 4)
+    {
+      dTotalCubo+= get_numeric($cubo.val(), 10);
+    }
+
     });
 
-    totalcubo = dTotalCubo.toFixed(7);
-
+    totalcubo = dTotalCubo.toFixed(10);
     $totalcubo.val(totalcubo);
 
+
+    // Diferencia de apertura de los angulos
+
+    var $cubo  = $tr.find(".cubo_" + iAncla);
+    var dTotalSumCubo= 0;
+
+    $(".roww").each(function( index ) {
+    $roww = $(this);
+
+    $roww.find(".cubo").each(function( index ) {
+    $cubo = $(this);
+
+    if(index == 4)
+    {
+      dTotalSumCubo+= get_numeric($cubo.val(), 10);
+    }
+
+    });
+
+    });
+
+    $( ".apertura" ).first().val(dTotalSumCubo, 4);
+
+    //
+
+    var $apertura = $(".apertura").first();
+    var dApertura  = get_numeric($apertura.val(), 10);
+    var dDiv = 0;
+
+    dDiv = dApertura / 6 ;
+
+    console.log(dDiv);
+
+    $( ".paraserie" ).first().val(number_truncate(dDiv, 8));
+
 });
+
+
 
 function toFix(x)
 {
