@@ -56,7 +56,7 @@
 
                           <!-- k -->
                           <td >
-                            @for($i = 0; $i < 4; ++$i)
+                            @for($i = 0; $i < 5; ++$i)
                             <input type="text" class="input_{{ $i }}" name="k[]" value="{{ $report->angulosHorizontales['k'][$i] }}" style="text-align:center;width: 50px; "; disabled ><br>
                             @endfor
                           </td>
@@ -214,6 +214,7 @@
 @push('custom-scripts')
 <script type="text/javascript">
 $(document).on("keyup", ".cara1, .cara2" , function(evt){
+
   var $cara = $(this);
 
   var $tr = $cara.closest("tr");
@@ -594,9 +595,11 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     dDiv = dApertura / 6 ;
 
+    dDiv = Math.sqrt(dDiv);
+
     console.log(dDiv);
 
-    $( ".paraserie" ).first().val(number_truncate(dDiv, 8));
+    $( ".paraserie" ).first().val(number_truncate(dDiv, 5));
 
 });
 
