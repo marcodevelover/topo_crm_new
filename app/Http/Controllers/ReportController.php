@@ -81,7 +81,6 @@ class ReportController extends Controller
             "Xj,k1"=> ["1","2","3","4"],
             "Xj,k2"=> ["0","0","0","0"],
             "sigma"=> ["0","0","0","0"],
-            
             "xj,k"=> ["0","0","0","0"],
             "xk"=> ["0","0","0","0"],
             "rj,k"=> ["0","0","0","0"],
@@ -208,7 +207,7 @@ class ReportController extends Controller
     }
     private function saveCustomer($id, $_customer){
 
-        $customer = Customer::find($id);    
+        $customer = Customer::find($id);
         $customer->name = $_customer['name'];
         $customer->address = $_customer['address'] ? $_customer['address'] : "Dirección";
         $customer->email = $_customer['email'] ? $_customer['email'] : "Correo";

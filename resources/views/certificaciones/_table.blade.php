@@ -39,6 +39,9 @@
             $_djsum1 = $_djsum1 / 20;
             $_djsum2 = $_djsum2 / 20;
         ?>
+
+
+
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead class="text-center">
@@ -67,22 +70,22 @@
                         <tr id="row-{{ $index1 }}">
                             <td>
 
-                            <input type="text" name="dist1" class="dist1" placeholder="distancia 1" /><br><br>
-                            <input type="text" name="dist2" class="dist2" placeholder="distancia 2"/><br><br>
-                            <input type="text" name="dist3" class="dist3" placeholder="distancia 3"/>
+                            <input type="text" name="dist1" class="dist1" style="widht: 60px;width: 100px;text-align: center;" /><br>
+                            <input type="text" name="dist2" class="dist2" style="widht: 60px;width: 100px;text-align: center;" /><br>
+                            <input type="text" name="dist3" class="dist3" style="widht: 60px;width: 100px;text-align: center;" />
 
                             </td>
-                            <td><input type="text" class=" input1" name="xaj[]" value="{{  $report->measurements['xaj'][$cont] }}" disabled></td>
+                            <td><input type="text" class=" input1" name="xaj[]" value="{{  $report->measurements['xaj'][$cont] }}" style="text-align: center;" disabled></td>
 
-                            <td><input type="text" class="patron" id="select_num" name="xbj[]" value="{{ $b }}" data-patron="{{ $b }}" disabled>
+                            <td><input type="text" class="patron" id="select_num" name="xbj[]" value="{{ $b }}" data-patron="{{ $b }}" style="text-align: center;" disabled>
                             <td>
                                 <span class="disabled">
-                                    <input class="residuo" type="text" value="{{ $report->measurements['dj1'][$cont] }}" disabled>
+                                    <input class="residuo" type="text" value="{{ $report->measurements['dj1'][$cont] }}" style="text-align: center;" disabled>
                                 </span>
                             </td>
                             <td>
                                 <span class="disabled">
-                                    <input class="cuadratico" name="rj1[]" type="text" value="{{ $report->measurements['rj1'][$cont] }}">
+                                    <input class="cuadratico" name="rj1[]" type="text" value="{{ $report->measurements['rj1'][$cont] }}" style="text-align: center;" >
                                 </span>
                             </td>
                             <td>
@@ -90,33 +93,41 @@
                     @endforeach
 
                     <tr>
-                      <td>TOTAL DE PUNTOS DE MEDICION</td>
-                      <td><input name="txtTotalMedicion" class="txtTotalMedicion" type="text"></td>
-                      </tr>
-                      <tr>
-                      <td>TOTAL DE MEDICIONES POSIBLES</td>
-                      <td><input name="txtMedidasPosibles" class="txtMedidasPosibles" type="text" disabled></td>
-                      </tr>
-                      <tr>
-                      <td>TOTAL DE PUNTOS CONOCIDOS</td>
-                      <td><input name="txtTotalPuntosPosibles" class="txtTotalPuntosPosibles" type="text" disabled></td>
-                      </tr>
-                      <tr>
-                      <td>NUMERO DE GRADOS DE LIBERTAD</td>
-                      <td><input name="txtNumeroGradoLibertad" class="txtNumeroGradoLibertad" type="text" disabled></td>
-                      </tr>
-                      <tr>
-                      <td>SUMATORIA RESIDUO CUADRATICO MM</td>
-                      <td><input name="txtSumatoriaResiduoCuadratico" class="txtSumatoriaResiduoCuadratico" type="text" disabled></td>
-                      </tr>
-                      <tr>
-                      <td>Desviacion</td>
-                      <td><input name="txtDesviacion" class="txtDesviacion" type="text" disabled></td>
-                      </tr>
+                    <td>TOTAL DE PUNTOS DE MEDICION</td>
+                    <td><input name="txtTotalMedicion" class="txtTotalMedicion" type="text" style="text-align: center;width: 100px;" ></td>
+                    </tr>
+                    <tr>
+                    <td>TOTAL DE MEDICIONES POSIBLES</td>
+                    <td><input name="txtMedidasPosibles" class="txtMedidasPosibles" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    </tr>
+                    <tr>
+                    <td>TOTAL DE PUNTOS CONOCIDOS</td>
+                    <td><input name="txtTotalPuntosPosibles" class="txtTotalPuntosPosibles" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    </tr>
+                    <tr>
+                    <td>NUMERO DE GRADOS DE LIBERTAD</td>
+                    <td><input name="txtNumeroGradoLibertad" class="txtNumeroGradoLibertad" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    </tr>
+                    <tr>
+                    <td>SUMATORIA RESIDUO CUADRATICO MM</td>
+                    <td><input name="txtSumatoriaResiduoCuadratico" class="txtSumatoriaResiduoCuadratico" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    </tr>
+                    <tr>
+                    <td>Desviacion</td>
+                    <td><input name="txtDesviacion" class="txtDesviacion" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    </tr>
 
                 </tbody>
             </table>
+
+
+
+
         </div>
+
+     <!-- <input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" /> -->
+
+
     </div>
 </div>
 

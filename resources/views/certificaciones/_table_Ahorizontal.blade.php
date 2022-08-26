@@ -57,7 +57,7 @@
                           <!-- k -->
                           <td >
                             @for($i = 0; $i < 5; ++$i)
-                            <input type="text" class="input_{{ $i }}" name="k[]" value="{{ $report->angulosHorizontales['k'][$i] }}" style="text-align:center;width: 50px; "; disabled ><br>
+                            <input type="text" class="input_{{ $i }}" name="k[]" value="{{ $report->angulosHorizontales['k'][$i] }}" style="text-align:center;width: 50px; " disabled ><br>
                             @endfor
                           </td>
 
@@ -88,6 +88,7 @@
                               <input type="text" class="suma_c1_c2_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
                               <input type="text" class="suma_c1_c2_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
                               <input type="text" class="suma_c1_c2_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
+                              <input type="text" style="widht: 60px;width: 100px;text-align: center;background-color:transparent;border:none;"  disabled />
                               </span>
                           </td>
 
@@ -187,7 +188,7 @@
               <td> <input type="text" class="apertura" style="text-align: center;" disabled /></td>
             </tr>
             <tr>
-              <td>Para 3 series de 4 medidass</td>
+              <td>Para 3 series de 4 medidas</td>
               <td><input type="text" class="paraserie" style="text-align: center;" disabled /></td>
             </tr>
             </tbody>
@@ -201,7 +202,7 @@
 
 
 
-<input type="button" class="btnSubmit" value="Aceptar" />
+<input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />
 </form>
 
 
@@ -655,6 +656,3 @@ $(".btnSubmit").on( "click", function(evt) {
 </script>
 @endpush
 
-<!-- <div class="col-sm-12 col-lg-12">
-    <button type="submit" class="btn btn-lg my-4 btn-primary font-weight-bold">Guardar</button>
-</div> -->

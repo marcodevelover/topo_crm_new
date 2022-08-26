@@ -14,6 +14,8 @@
             $cont = 0;
         ?>
 
+
+
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead class="text-center">
@@ -149,6 +151,11 @@
             </tbody>
             </table>
         </div>
+
+
+
+    <!--<input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />   -->
+
     </div>
 </div>
 
@@ -312,10 +319,10 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
     div3 = dTotalProm_ind3 / 3;
     div4 = dTotalProm_ind4 / 3;
 
-    $xk1.val(number_round(div1, 6));
-    $xk2.val(number_round(div2, 6));
-    $xk3.val(number_round(div3, 5));
-    $xk4.val(number_round(div4, 5));
+    $xk1.val(number_truncate(div1, 5));
+    $xk2.val(number_truncate(div2, 5));
+    $xk3.val(number_truncate(div3, 5));
+    $xk4.val(number_truncate(div4, 5));
 
   });
 
@@ -376,12 +383,12 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
 
         dAux   = dRj1 * dRj1;
         dTotal+= dAux;
-        $rj2.val(dAux.toFixed(9));
+        $rj2.val(dAux.toFixed(10));
 
 
     });
 
-    $tr.find( ".totalrj2").val(dTotal.toFixed(9));
+    $tr.find( ".totalrj2").val(dTotal.toFixed(10));
 
 
    //Sumatoria de los totales de rj2
@@ -398,13 +405,15 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
     if(index == 4)
     {
       dTotalSumRj2+= get_numeric($rj2.val(), 10);
+
+      $( ".sumatotalrj2" ).first().val(dTotalSumRj2.toFixed(9));
     }
 
     });
 
     });
 
-    $( ".sumatotalrj2" ).first().val(dTotalSumRj2.toFixed(9));
+
 
     //
 
@@ -424,9 +433,23 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
 
 });
 
+$(".btnSubmit").on( "click", function(evt) {
+  evt.preventDefault();
+
+  var $btnSubmit = $(this);
+  var $form = $btnSubmit.closest("form");
+
+  var qs = $form.serialize();
+
+  var _token = $('meta[name="_token"]').first().attr('content');
+
+  var xhr = $.post('/sandbox/save', { '_token': _token, 'qs':qs }, null, 'json');
+
+  xhr.done(function(response){
+
+  });
+});
+
 </script>
 @endpush
 
-<!-- <div class="col-sm-12 col-lg-12">
-    <button type="submit" class="btn btn-lg my-4 btn-primary font-weight-bold">Guardar</button>
-</div> -->
