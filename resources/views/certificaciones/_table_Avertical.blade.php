@@ -123,7 +123,7 @@
                             <input type="text" style="widht: 60px;width: 100px;text-align: center;" class="rj2 rj2_2" data-ancla="2" disabled /><br>
                             <input type="text" style="widht: 60px;width: 100px;text-align: center;" class="rj2 rj2_3" data-ancla="3" disabled /><br>
                             <input type="text" style="widht: 60px;width: 100px;text-align: center;" class="rj2 rj2_4" data-ancla="4" disabled /><br>
-                            <input type="text" style="widht: 60px;width: 100px;text-align: center;" class="totalrj2" data-ancla="1" disabled /><br>
+                            <input type="text" style="widht: 60px;width: 100px;text-align: center;" class="rj2 totalrj2" data-ancla="1" disabled /><br>
                             </span>
                             </td>
 
@@ -135,6 +135,18 @@
 
 
                 </tbody>
+            </table>
+              <br>
+            <table class="table table-striped">
+            <tbody>
+            <tr>
+            <td>s=</td>
+            <td>
+              <input type="text" style="float: right" class="sumatotalrj2" disabled />
+              <input type="text" class="raizsumatoria" disabled />
+            </td>
+            </tr>
+            </tbody>
             </table>
         </div>
     </div>
@@ -362,39 +374,49 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
 
       dRj1 = get_numeric($rj1.val(), 6);
 
-      dAux   = dRj1 * dRj1;
-      dTotal+= dAux;
+        dAux   = dRj1 * dRj1;
+        dTotal+= dAux;
+        $rj2.val(dAux.toFixed(9));
 
-      $rj2.val(dAux.toFixed(9));
 
-      /*return false; */
-
-      /*$rj2 = $tr.find( ".rj2_" + $rj1.data("ancla"));
-
-      dRj1 = get_numeric($rj1.val(), 6);
-
-      dAux = dRj1 * dRj1;
-
-      $rj2.val(dAux);*/
     });
 
     $tr.find( ".totalrj2").val(dTotal.toFixed(9));
 
-    /*dAux = 0;
 
-    $rj2 = $tr.find(".rj2_" + iAncla);
+   //Sumatoria de los totales de rj2
 
-    var $rj1 = $tr.find(".rj1_"+ iAncla).first();
+    var $rj2  = $tr.find(".rj2_" + iAncla);
+    var dTotalSumRj2= 0;
 
-    dRj1 = get_numeric($rj1.val(), 6);
+    $(".roww").each(function( index ) {
+    $roww = $(this);
 
-    $tr.find( ".rj1").each(function( index ) {
-      $rj1 = $(this);
+    $roww.find(".rj2").each(function( index ) {
+    $rj2 = $(this);
 
-      dAux = dRj1 * dRj1;
+    if(index == 4)
+    {
+      dTotalSumRj2+= get_numeric($rj2.val(), 10);
+    }
+
     });
 
-    $rj2.val(dAux);*/
+    });
+
+    $( ".sumatotalrj2" ).first().val(dTotalSumRj2.toFixed(9));
+
+    //
+
+      var $sumatotalrj2 = $(".sumatotalrj2").first();
+      var dSumatoriaTotalrj2  = get_numeric($sumatotalrj2.val(), 10);
+      var dDiv = 0;
+
+      dDiv = dSumatoriaTotalrj2 / 8 ;
+
+      dDiv = Math.sqrt(dDiv);
+
+      $( ".raizsumatoria" ).first().val(number_round(dDiv, 5));
 
 
 }

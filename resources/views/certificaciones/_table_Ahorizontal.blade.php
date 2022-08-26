@@ -597,8 +597,6 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     dDiv = Math.sqrt(dDiv);
 
-    console.log(dDiv);
-
     $( ".paraserie" ).first().val(number_truncate(dDiv, 5));
 
 });
