@@ -10,34 +10,8 @@
     <div class="card-body">
         <?php 
             $index1 = 1; 
-            $index2 = 21; 
-            $cont = 0; 
-            $djsum1 = 0; 
-            $_djsum1 = 0; 
-            $_djsum12 = 0; 
-            $total_xaj2 = 0; 
-            $total_xbj2 = 0; 
-            $djsum2 = 0; 
-            $_djsum2 = 0;
-            $total_xaj = 0; 
-            $total_xbj = 0;
-            $cuadrado1 = 0; 
-            $cuadrado2 = 0;
-        ?>
-        <?php 
-            foreach($report->measurements['xaj'] as $mp):
-                $_djsum1 = $_djsum1 + $report->measurements['dj1'][$cont];
-                $total_xaj = $total_xaj + $mp;
-                $total_xbj = $total_xbj + $report->measurements['xbj'][$cont];
-
-                $_djsum2 = $_djsum2 + $report->measurements['dj2'][$cont];
-                $total_xaj2 = $total_xaj2 + $report->measurements['xaj2'][$cont];
-                $total_xbj2 = $total_xbj2 + $report->measurements['xbj2'][$cont];
-
-                $cont++;
-            endforeach;
-            $_djsum1 = $_djsum1 / 20;
-            $_djsum2 = $_djsum2 / 20;
+            $index2 = 21;
+            $cont = 0;
         ?>
 
 
@@ -51,41 +25,36 @@
                         <th>Patron(m)</th>
                         <th>Residuo(mm)</th>
                         <th>Residuo cuadratico</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody id="reportMedicion" class="text-center">
                     <?php
                     $cont = 0;
-                    $dj1Round = 0;
-                    $dj2Round = 0;
                     ?>
 
-                    @foreach($report->measurements['xbj'] as $b)
-                        <?php
+                    @foreach($report->angulosprisma['patron'] as $patron)
 
-                            $djsum1 = $djsum1 + $report->measurements['dj1'][$cont];
-                            $djsum2 = $djsum2 + $report->measurements['dj2'][$cont];
-                        ?>
                         <tr id="row-{{ $index1 }}">
+
                             <td>
 
-                            <input type="text" name="dist1" class="dist1" style="widht: 60px;width: 100px;text-align: center;" /><br>
-                            <input type="text" name="dist2" class="dist2" style="widht: 60px;width: 100px;text-align: center;" /><br>
-                            <input type="text" name="dist3" class="dist3" style="widht: 60px;width: 100px;text-align: center;" />
+                            <input type="text" name="dist1[]" class="dist1" value="{{ $aux['dist1'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" /><br>
+                            <input type="text" name="dist2[]" class="dist2" value="{{ $aux['dist2'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" /><br>
+                            <input type="text" name="dist3[]" class="dist3" value="{{ $aux['dist3'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" />
 
                             </td>
-                            <td><input type="text" class=" input1" name="xaj[]" value="{{  $report->measurements['xaj'][$cont] }}" style="text-align: center;" disabled></td>
+                            <td><input type="text" class=" input1 input_promedio" name="promedio_prisma[]" value="{{ $aux['promedio_prisma'][$loop->index] ?? "" }}" style="text-align: center;" readonly></td>
 
-                            <td><input type="text" class="patron" id="select_num" name="xbj[]" value="{{ $b }}" data-patron="{{ $b }}" style="text-align: center;" disabled>
+                            <td><input type="text" class="patron input_patron" id="select_num" name="patron[]" value="{{ $aux['patron'][$loop->index] ?? $patron }}" data-patron="{{ $patron }}" style="text-align: center;" readonly>
                             <td>
                                 <span class="disabled">
-                                    <input class="residuo" type="text" value="{{ $report->measurements['dj1'][$cont] }}" style="text-align: center;" disabled>
+                                    <input class="residuo input_residuo" type="text" name="residuo[]"  value="{{ $aux['residuo'][$loop->index] ?? "" }}" style="text-align: center;" readonly>
                                 </span>
                             </td>
                             <td>
                                 <span class="disabled">
-                                    <input class="cuadratico" name="rj1[]" type="text" value="{{ $report->measurements['rj1'][$cont] }}" style="text-align: center;" >
+                                    <input class="cuadratico input_cuadratico" name="residuocuadratico[]" value="{{ $aux['residuocuadratico'][$loop->index] ?? "" }}" type="text"  style="text-align: center;" readonly >
                                 </span>
                             </td>
                             <td>
@@ -94,27 +63,27 @@
 
                     <tr>
                     <td>TOTAL DE PUNTOS DE MEDICION</td>
-                    <td><input name="txtTotalMedicion" class="txtTotalMedicion" type="text" style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtTotalMedicion" class="txtTotalMedicion" value="{{ $aux['txtTotalMedicion'] ?? "" }}" type="text" style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>TOTAL DE MEDICIONES POSIBLES</td>
-                    <td><input name="txtMedidasPosibles" class="txtMedidasPosibles" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtMedidasPosibles" class="txtMedidasPosibles" value="{{ $aux['txtMedidasPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>TOTAL DE PUNTOS CONOCIDOS</td>
-                    <td><input name="txtTotalPuntosPosibles" class="txtTotalPuntosPosibles" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtTotalPuntosPosibles" class="txtTotalPuntosPosibles" value="{{ $aux['txtTotalPuntosPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>NUMERO DE GRADOS DE LIBERTAD</td>
-                    <td><input name="txtNumeroGradoLibertad" class="txtNumeroGradoLibertad" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtNumeroGradoLibertad" class="txtNumeroGradoLibertad" value="{{ $aux['txtNumeroGradoLibertad'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>SUMATORIA RESIDUO CUADRATICO MM</td>
-                    <td><input name="txtSumatoriaResiduoCuadratico" class="txtSumatoriaResiduoCuadratico" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtSumatoriaResiduoCuadratico" class="txtSumatoriaResiduoCuadratico" value="{{ $aux['txtSumatoriaResiduoCuadratico'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>Desviacion</td>
-                    <td><input name="txtDesviacion" class="txtDesviacion" type="text" disabled style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtDesviacion" class="txtDesviacion" value="{{ $aux['txtDesviacion'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
 
                 </tbody>
@@ -131,6 +100,3 @@
     </div>
 </div>
 
- <div class="col-sm-12 col-lg-12">
-    <button type="submit" class="btn btn-lg my-4 btn-primary font-weight-bold">Guardar</button>
-</div>

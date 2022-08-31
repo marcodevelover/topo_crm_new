@@ -144,7 +144,7 @@ function columdj(colum, total1, promedio, columrj1, columnr2j1, sumcuadrado)
         item = _promedio - Number( $(dj1s[y]).val() );
         item = formatNum(item, 1);
         $(rj1s[y]).val(item);
-        
+
         alcuadrado = item * item;
         alcuadrado = formatNum(alcuadrado, 2);
         $(r2j1s[y]).val( alcuadrado );
@@ -167,60 +167,73 @@ function columdj(colum, total1, promedio, columrj1, columnr2j1, sumcuadrado)
 $('#reportMedicion').on('keyup change','input',function(){
   let $tr = $(this).parents('tr');
 
-  let className = $(this).attr('class');
+  let $input = $(this);
 
-  let $promedio = $tr.find(".input1").first();
-  let $patron = $tr.find(".patron").first();
-  let $residuo = $tr.find(".residuo").first();
-  let $cuadratico = $tr.find(".cuadratico").first();
-  let $mPosibles = $tr.find(".mPosibles").first();
-  let $tMedicion = $tr.find(".tMedicion").first();
-
-  let $dist1 = $tr.find(".dist1").first();
-  let $dist2 = $tr.find(".dist2").first();
-  let $dist3 = $tr.find(".dist3").first();
-
-  let dDist1 = get_numeric($dist1.val());
-  let dDist2 = get_numeric($dist2.val());
-  let dDist3 = get_numeric($dist3.val());
-
-  let dPromedio = 0;
-  let iAux = 0;
-  let iResiduo = 0;
-
-  if(dDist1 > 0) ++iAux;
-  if(dDist2 > 0) ++iAux;
-  if(dDist3 > 0) ++iAux;
-
-  dPromedio = (dDist1 + dDist2 + dDist3) / iAux;
-  dPromedio = number_round(dPromedio, 3);
-
-  $promedio.val(dPromedio);
-
-  dPatronInicial  = $patron.data("patron");
-
-  dPatronInicial = number_truncate(dPatronInicial,3);
-
-  dResiduo = (dPatronInicial - dPromedio) * 1000;
-
-  dResiduo = number_round(dResiduo);
-  iResiduo = Math.trunc(dResiduo);
-
-  $residuo.val(iResiduo);
-
-  iCuadratico = (iResiduo * iResiduo);
-  $cuadratico.val(iCuadratico);
-
-  if( className == 'form-control input1' || className == 'form-control input2' )
+  if(!$input.hasClass("input_promedio") && !$input.hasClass("input_patron") && !$input.hasClass("input_residuo") && !$input.hasClass("input_cuadratico") )
   {
-    formula1( $tr, '.input1', '.input2', '.dj1');
-    columdj('.dj1.form-control', '#total1', '#promedio1','.rj1.form-control','.r2j1.form-control','#sumcuadrado1');
-  }
+    let className = $(this).attr('class');
 
-  if( className == 'form-control input3' || className == 'form-control input4' )
-  {
-    formula1( $tr, '.input3', '.input4', '.dj2');
-    columdj('.dj2.form-control', '#total2', '#promedio2', '.rj2.form-control','.r2j2.form-control','#sumcuadrado2');
+    let $promedio = $tr.find(".input1").first();
+    let $patron = $tr.find(".patron").first();
+    let $residuo = $tr.find(".residuo").first();
+    let $cuadratico = $tr.find(".cuadratico").first();
+    let $mPosibles = $tr.find(".mPosibles").first();
+    let $tMedicion = $tr.find(".tMedicion").first();
+
+    let $dist1 = $tr.find(".dist1").first();
+    let $dist2 = $tr.find(".dist2").first();
+    let $dist3 = $tr.find(".dist3").first();
+
+    let dDist1 = get_numeric($dist1.val(), 4);
+    let dDist2 = get_numeric($dist2.val(), 4);
+    let dDist3 = get_numeric($dist3.val(), 4);
+
+    let dPromedio = 0;
+    let iAux = 0;
+    let iResiduo = 0;
+
+    if(dDist1 > 0) ++iAux;
+    if(dDist2 > 0) ++iAux;
+    if(dDist3 > 0) ++iAux;
+
+    if(iAux >= 2)
+    {
+      dPromedio = (dDist1 + dDist2 + dDist3) / iAux;
+      dPromedio = number_round(dPromedio, 3);
+
+      $promedio.val(dPromedio);
+
+      dPatronInicial  = $patron.data("patron");
+
+      dPatronInicial = number_truncate(dPatronInicial,3);
+
+      dResiduo = (dPatronInicial - dPromedio) * 1000;
+      dResiduo = number_round(dResiduo);
+      iResiduo = Math.trunc(dResiduo);
+
+      $residuo.val(iResiduo);
+
+      iCuadratico = (iResiduo * iResiduo);
+      $cuadratico.val(iCuadratico);
+
+      if( className == 'form-control input1' || className == 'form-control input2' )
+      {
+        formula1( $tr, '.input1', '.input2', '.dj1');
+        columdj('.dj1.form-control', '#total1', '#promedio1','.rj1.form-control','.r2j1.form-control','#sumcuadrado1');
+      }
+
+      if( className == 'form-control input3' || className == 'form-control input4' )
+      {
+        formula1( $tr, '.input3', '.input4', '.dj2');
+        columdj('.dj2.form-control', '#total2', '#promedio2', '.rj2.form-control','.r2j2.form-control','#sumcuadrado2');
+      }
+    }
+    else
+    {
+      $promedio.val("");
+      $residuo.val("");
+      $cuadratico.val("");
+    }
   }
 });
 

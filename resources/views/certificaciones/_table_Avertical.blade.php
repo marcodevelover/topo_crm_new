@@ -13,7 +13,7 @@
             $index2 = 21;
             $cont = 0;
         ?>
-
+<form>
 
 
         <div class="table-responsive">
@@ -155,6 +155,11 @@
 
 
     <!--<input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />   -->
+
+
+    </form>
+
+
 
     </div>
 </div>
@@ -433,6 +438,7 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
 
 });
 
+/*
 $(".btnSubmit").on( "click", function(evt) {
   evt.preventDefault();
 
@@ -448,8 +454,7 @@ $(".btnSubmit").on( "click", function(evt) {
   xhr.done(function(response){
 
   });
-});
-
+});*/
 </script>
 @endpush
 

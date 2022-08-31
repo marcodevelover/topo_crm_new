@@ -38,6 +38,7 @@
               <tbody id="reportAngulosHorizontales" class="text-center">
                   <?php
                   $cont = 0;
+                  $iAux = 0;
 
                   ?>
 
@@ -62,81 +63,81 @@
                           </td>
 
                           <!-- cara1 -->
-                          <td>
-                            <input type="text" class="cara1 cara1_1" name="cara1[]" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" /><br>
-                            <input type="text" class="cara1 cara1_2" name="cara1[]" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" /><br>
-                            <input type="text" class="cara1 cara1_3" name="cara1[]" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" /><br>
-                            <input type="text" class="cara1 cara1_4" name="cara1[]" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" /><br>
-                            <input type="text" class="total_cara1"  style="widht: 60px;width: 100px;text-align: center;" data-ancla ="1" disabled /><br>
+                           <td>
+                            <input type="text" class="cara1 cara1_1" name="cara1[{{ $loop->index }}][_1]" value="{{ $angulos_h['cara1'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" /><br>
+                            <input type="text" class="cara1 cara1_2" name="cara1[{{ $loop->index }}][_2]" value="{{ $angulos_h['cara1'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" /><br>
+                            <input type="text" class="cara1 cara1_3" name="cara1[{{ $loop->index }}][_3]" value="{{ $angulos_h['cara1'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" /><br>
+                            <input type="text" class="cara1 cara1_4" name="cara1[{{ $loop->index }}][_4]" value="{{ $angulos_h['cara1'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" /><br>
+                            <input type="text" class="total_cara1"   name="cara1[{{ $loop->index }}][_totalcara1]" value="{{ $angulos_h['cara1'][$loop->index]['_totalcara1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla ="1" readonly /><br>
                           </td>
 
                           <!-- cara2 -->
                           <td>
                           <span class="disabled">
-                          <input type="text" class="cara2 cara2_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" /><br>
-                          <input type="text" class="cara2 cara2_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" /><br>
-                          <input type="text" class="cara2 cara2_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" /><br>
-                          <input type="text" class="cara2 cara2_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" /><br>
-                          <input type="text" class="total_cara2"  style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                          <input type="text" class="cara2 cara2_1"  name="cara2[{{ $loop->index }}][_1]" value="{{ $angulos_h['cara2'][$loop->index]['_1'] ?? "" }}"  style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" /><br>
+                          <input type="text" class="cara2 cara2_2"  name="cara2[{{ $loop->index }}][_2]" value="{{ $angulos_h['cara2'][$loop->index]['_2'] ?? "" }}"  style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" /><br>
+                          <input type="text" class="cara2 cara2_3"  name="cara2[{{ $loop->index }}][_3]" value="{{ $angulos_h['cara2'][$loop->index]['_3'] ?? "" }}"  style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" /><br>
+                          <input type="text" class="cara2 cara2_4"  name="cara2[{{ $loop->index }}][_4]" value="{{ $angulos_h['cara2'][$loop->index]['_4'] ?? "" }}"  style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" /><br>
+                          <input type="text" class="total_cara2"    name="cara2[{{ $loop->index }}][_totalcara2]" value="{{ $angulos_h['cara2'][$loop->index]['_totalcara2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
                           </span>
                           </td>
 
                           <!-- suma_c1_c2 -->
                           <td>
                               <span class="disabled">
-                              <input type="text" class="suma_c1_c2_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
-                              <input type="text" class="suma_c1_c2_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
-                              <input type="text" class="suma_c1_c2_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
-                              <input type="text" class="suma_c1_c2_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
+                              <input type="text" class="suma_c1_c2_1" name="sumacara[{{ $loop->index }}][_1]" value="{{ $angulos_h['sumacara'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                              <input type="text" class="suma_c1_c2_2" name="sumacara[{{ $loop->index }}][_2]" value="{{ $angulos_h['sumacara'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                              <input type="text" class="suma_c1_c2_3" name="sumacara[{{ $loop->index }}][_3]" value="{{ $angulos_h['sumacara'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                              <input type="text" class="suma_c1_c2_4" name="sumacara[{{ $loop->index }}][_4]" value="{{ $angulos_h['sumacara'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
                               <input type="text" style="widht: 60px;width: 100px;text-align: center;background-color:transparent;border:none;"  disabled />
                               </span>
                           </td>
 
                             <!-- promedio -->
 
-                           <td>
+                          <td>
                               <span class="disabled">
-                              <input type="text" class="promedio prom_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
-                              <input type="text" class="promedio prom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
-                              <input type="text" class="promedio prom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
-                              <input type="text" class="promedio prom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
-                              <input type="text" class="totalpromedio" style="widht: 60px;width: 100px;text-align: center;"   disabled/><br>
+                              <input type="text" class="promedio prom_1" name="promedio[{{ $loop->index }}][_1]" value="{{ $angulos_h['promedio'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                              <input type="text" class="promedio prom_2" name="promedio[{{ $loop->index }}][_2]" value="{{ $angulos_h['promedio'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                              <input type="text" class="promedio prom_3" name="promedio[{{ $loop->index }}][_3]" value="{{ $angulos_h['promedio'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                              <input type="text" class="promedio prom_4" name="promedio[{{ $loop->index }}][_4]" value="{{ $angulos_h['promedio'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                              <input type="text" class="totalpromedio"  name="promedio[{{ $loop->index }}][_totalpromedio]" value="{{ $angulos_h['promedio'][$loop->index]['_totalpromedio'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"   readonly/><br>
                               </span>
                           </td>
 
                            <!-- suma de los promedios =400-F2+F3, =400-F2+F4 ... -->
 
-                          <td>
+                         <td>
                               <span class="disabled">
-                              <input type="text" class="sumaprom sumaprom_1" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['sumaprom'][$cont] }}" disabled /><br>
-                              <input type="text" class="sumaprom sumaprom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
-                              <input type="text" class="sumaprom sumaprom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
-                              <input type="text" class="sumaprom sumaprom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
-                              <input type="text" class="sumaprom totalsumaprom" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
+                              <input type="text" class="sumaprom sumaprom_1" name="sumapromedio[{{ $loop->index }}][_1]" value="{{ $angulos_h['sumapromedio'][$loop->index]['_1'] ?? $report->angulosHorizontales['sumaprom'][$cont] }}" style="widht: 60px;width: 100px;text-align: center;"  readonly /><br>
+                              <input type="text" class="sumaprom sumaprom_2" name="sumapromedio[{{ $loop->index }}][_2]" value="{{ $angulos_h['sumapromedio'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                              <input type="text" class="sumaprom sumaprom_3" name="sumapromedio[{{ $loop->index }}][_3]" value="{{ $angulos_h['sumapromedio'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                              <input type="text" class="sumaprom sumaprom_4" name="sumapromedio[{{ $loop->index }}][_4]" value="{{ $angulos_h['sumapromedio'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                              <input type="text" class="sumaprom totalsumaprom" name="sumapromedio[{{ $loop->index }}][_totalsumaprom]" value="{{ $angulos_h['sumapromedio'][$loop->index]['_totalsumaprom'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                               </span>
                           </td>
 
                            <!-- promedio de las sumas =PROMEDIO(G3,G9,G15)... -->
 
-                           <td>
+                            <td>
                               <span class="disabled">
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" value="{{ $report->angulosHorizontales['promsuma'][$cont] }}" disabled /><br>
-                              <input type="text" class="promsuma promsuma_1" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="promsuma promsuma_2" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="promsuma promsuma_3" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
-                              <input type="text" class="promsuma promsuma_4" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" name="promediosuma[{{ $loop->index }}][_1]" value="{{ $angulos_h['promediosuma'][$loop->index]['_1'] ?? $report->angulosHorizontales['promsuma'][$cont] }}" readonly /><br>
+                              <input type="text" class="promsuma promsuma_1" name="promediosuma[{{ $loop->index }}][_2]" value="{{ $angulos_h['promediosuma'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="promsuma promsuma_2" name="promediosuma[{{ $loop->index }}][_3]" value="{{ $angulos_h['promediosuma'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="promsuma promsuma_3" name="promediosuma[{{ $loop->index }}][_4]" value="{{ $angulos_h['promediosuma'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="promsuma promsuma_4" name="promediosuma[{{ $loop->index }}][_5]" value="{{ $angulos_h['promediosuma'][$loop->index]['_5'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
                               </span>
                           </td>
 
                            <!-- restas de promedio =H3-G3, =H4-G4 ... -->
 
-                            <td>
+                             <td>
                               <span class="disabled">
-                              <input type="text" class="restaprom restaprom_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" value="{{ $report->angulosHorizontales['restaprom'][$cont] }}" disabled /><br>
-                              <input type="text" class="restaprom restaprom_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
-                              <input type="text" class="restaprom restaprom_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
-                              <input type="text" class="restaprom restaprom_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
-                              <input type="text" class="restaprom restaprom_5" style="widht: 60px;width: 100px;text-align: center;" data-ancla="5" disabled /><br>
+                              <input type="text" class="restaprom restaprom_1" name="restapromedio[{{ $loop->index }}][_1]" value="{{ $angulos_h['restapromedio'][$loop->index]['_1'] ?? $report->angulosHorizontales['restaprom'][$cont]  }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                              <input type="text" class="restaprom restaprom_2" name="restapromedio[{{ $loop->index }}][_2]" value="{{ $angulos_h['restapromedio'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                              <input type="text" class="restaprom restaprom_3" name="restapromedio[{{ $loop->index }}][_3]" value="{{ $angulos_h['restapromedio'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                              <input type="text" class="restaprom restaprom_4" name="restapromedio[{{ $loop->index }}][_4]" value="{{ $angulos_h['restapromedio'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                              <input type="text" class="restaprom restaprom_5" name="restapromedio[{{ $loop->index }}][_totalrestaprom]" value="{{ $angulos_h['restapromedio'][$loop->index]['_totalrestaprom'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="5" readonly /><br>
                               </span>
                           </td>
 
@@ -144,19 +145,20 @@
 
                           <td>
                               <span class="disabled">
-                             <input type="text" class="promresta promresta_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
+                             <input type="text" class="promresta promresta_1" name="promedioresta[{{ $loop->index }}][_1]" value="{{ $angulos_h['promedioresta'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                               </span>
                           </td>
+
 
                           <!-- r -->
 
                            <td>
                               <span class="disabled">
-                              <input type="text" class="r r_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
-                              <input type="text" class="r r_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
-                              <input type="text" class="r r_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
-                              <input type="text" class="r r_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
-                              <input type="text" class="totalsuma_r" style="widht: 60px;width: 100px;text-align: center;" disabled /><br>
+                              <input type="text" class="r r_1" name="r[{{ $loop->index }}][_1]" value="{{ $angulos_h['r'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                              <input type="text" class="r r_2" name="r[{{ $loop->index }}][_2]" value="{{ $angulos_h['r'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                              <input type="text" class="r r_3" name="r[{{ $loop->index }}][_3]" value="{{ $angulos_h['r'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                              <input type="text" class="r r_4" name="r[{{ $loop->index }}][_4]" value="{{ $angulos_h['r'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                              <input type="text" class="totalsuma_r" name="r[{{ $loop->index }}][_totalr]" value="{{ $angulos_h['r'][$loop->index]['_totalr'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
                               </span>
                           </td>
 
@@ -164,13 +166,14 @@
 
                           <td>
                               <span class="disabled">
-                              <input type="text" class="cubo cubo_1" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
-                              <input type="text" class="cubo cubo_2" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" disabled /><br>
-                              <input type="text" class="cubo cubo_3" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" disabled /><br>
-                              <input type="text" class="cubo cubo_4" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" disabled /><br>
-                              <input type="text" class="cubo totalcubo" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" disabled /><br>
+                              <input type="text" class="cubo cubo_1" name="r2[{{ $loop->index }}][_1]" value="{{ $angulos_h['r2'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                              <input type="text" class="cubo cubo_2" name="r2[{{ $loop->index }}][_2]" value="{{ $angulos_h['r2'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                              <input type="text" class="cubo cubo_3" name="r2[{{ $loop->index }}][_3]" value="{{ $angulos_h['r2'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                              <input type="text" class="cubo cubo_4" name="r2[{{ $loop->index }}][_4]" value="{{ $angulos_h['r2'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                              <input type="text" class="cubo totalcubo" name="r2[{{ $loop->index }}][_totalr2]" value="{{ $angulos_h['r2'][$loop->index]['_totalr2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                               </span>
                           </td>
+
                           </tr>
 
 
@@ -185,11 +188,11 @@
             <tbody>
             <tr>
               <td>La diferencia en la apertura de angulos debe ser la misma</td>
-              <td> <input type="text" class="apertura" style="text-align: center;" disabled /></td>
+              <td> <input type="text" class="apertura" name="apertura" value="{{ $angulos_h['apertura'] ?? "" }}" style="text-align: center;" readonly /></td>
             </tr>
             <tr>
               <td>Para 3 series de 4 medidas</td>
-              <td><input type="text" class="paraserie" style="text-align: center;" disabled /></td>
+              <td><input type="text" class="paraserie" name="paraserie" value="{{ $angulos_h['paraserie'] ?? "" }}" style="text-align: center;" readonly /></td>
             </tr>
             </tbody>
           </table>
@@ -203,6 +206,7 @@
 
 
 <input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />
+
 </form>
 
 
@@ -626,30 +630,21 @@ function toFix(x)
 
 
 
-
-
-
-
-
-
-
-
-
-
 $(".btnSubmit").on( "click", function(evt) {
   evt.preventDefault();
 
   var $btnSubmit = $(this);
+
   var $form = $btnSubmit.closest("form");
 
   var qs = $form.serialize();
 
   var _token = $('meta[name="_token"]').first().attr('content');
 
-  var xhr = $.post('/sandbox/save', { '_token': _token, 'qs':qs }, null, 'json');
+  var xhr = $.post('/sandbox/save', { '_token': _token, 'qs':qs }, null, null);
 
   xhr.done(function(response){
-
+    alert("guardado !!");
   });
 });
 

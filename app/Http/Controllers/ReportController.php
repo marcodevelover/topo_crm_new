@@ -44,12 +44,15 @@ class ReportController extends Controller
 
     public function create()
     {
-        $report = new Report();
-        $customer = new Customer();
+        $report    = new Report();
+        $customer  = new Customer();
         $equipment = new Equipment();
+
+        $objTemp = new Temp();
+
         $report->measurements = [
             "xaj"=> ["0","0","0","0"],
-            "xbj"=> ["21.784","54.055","76.502","152.248"],
+            "xbj"=> ["0","0","0","0"],
             "dj1"=> ["0","0","0","0"],
             "rj1"=> ["0","0","0","0"],
             "r2j1"=> ["0","0","0","0"],
@@ -60,6 +63,15 @@ class ReportController extends Controller
             "r2j2" => ["0","0","0","0"]
         ];
 
+         $report->angulosprisma = [
+            "distancia"=> ["0","0","0","0"],
+            "promedio"=> ["0","0","0","0"],
+            "patron"=> ["21.784","54.055","76.502","152.248"],
+            "residuo"=> ["0","0","0","0"],
+            "residuocuadratico"=> ["0","0","0","0"],
+
+        ];
+
         $report->angulosHorizontales = [
             "i"=> ["0","0","0"],
             "k"=> ["1","2","3","4","∑"],
@@ -67,7 +79,7 @@ class ReportController extends Controller
             "cara2"=> ["0","0","0","0"],
             "sumacaras"=> ["0","0","0","0"],
             "promedio"=> ["0","0","0","0"],
-            "sumaprom"=> ["0","0","0","0"],
+            "sumaprom"=> ["0","0","0","0","0"],
             "promsuma"=> ["0","0","0","0","0"],
             "restaprom"=> ["0","0","0","0"],
             "promresta"=> ["0","0","0","0"],
@@ -85,16 +97,27 @@ class ReportController extends Controller
             "xk"=> ["0","0","0","0"],
             "rj,k"=> ["0","0","0","0"],
             "rj,k2"=> ["0","0","0","0"],
-
         ];
 
+        $response = array();
 
-        return view('certificaciones.new', compact('report','customer','equipment'));
+        $temp = $objTemp->find(1);
+
+        $response['report']    = $report;
+        $response['customer']  = $customer;
+        $response['equipment'] = $equipment;
+
+        $response['aux'] = json_decode($temp->medicion, true);
+        $response['angulos_h'] = json_decode($temp->angulos_h, true);
+
+
+
+        return view('certificaciones.new', $response);
     }
 
     public function store(Request $request)
     {
-        request()->validate([
+        /*request()->validate([
             'temperature' => 'required',
             'cumple' => 'required',
             'pressure' => 'required',
@@ -108,10 +131,12 @@ class ReportController extends Controller
             'equipment.brand' => 'required',
             'equipment.model' => 'required',
             'equipment.no_serie' => 'required'
-        ]);
+        ]);*/
 
         $last_user = Report::latest()->orderBy('id', 'DESC')->first();
+
         $folio = explode('-',$last_user->folio);
+
         $_folio = '';
         if( $last_user ){
             if( $folio[1] < 10 ){
@@ -130,19 +155,20 @@ class ReportController extends Controller
             $_folio = 'CT-0001';
         }
 
-        // Create user 
+        // Create user
         $customer = Customer::create([
             'name' => $request->customer['name'],
             'address' => $request->customer['address'],
             'email' => $request->customer['email'],
             'phone' => $request->customer['phone']
         ]);
+
         // Create equipment
         $equipment = Equipment::create([
-            'equipment' => $request->equipment['equipment'],
-            'brand' => $request->equipment['brand'],
-            'model' => $request->equipment['model'],
-            'no_serie' => $request->equipment['no_serie']
+          'equipment' => $request->equipment['equipment'],
+          'brand' => $request->equipment['brand'],
+          'model' => $request->equipment['model'],
+          'no_serie' => $request->equipment['no_serie']
         ]);
         
         $measurements = $this->assignMeasures($request);
@@ -205,6 +231,7 @@ class ReportController extends Controller
         $reports = Report::where ( 'folio', 'LIKE', '%' . $request->folio . '%' )->paginate(10);
         return view('certificaciones.index', compact('reports'));
     }
+
     private function saveCustomer($id, $_customer){
 
         $customer = Customer::find($id);
@@ -215,6 +242,7 @@ class ReportController extends Controller
 
         $customer->save();
     }
+
     private function saveEquipment($id, $_equipment){
         $equipment = Equipment::find($id);
         $equipment->equipment = $_equipment["equipment"] ? $_equipment["equipment"] : '---';
@@ -223,6 +251,7 @@ class ReportController extends Controller
         $equipment->no_serie = $_equipment["no_serie"] ? $_equipment["no_serie"] : '---';
         $equipment->save();
     }
+
     private function assignMeasures($request){
         return [
             "xaj" => $request->xaj,
@@ -312,18 +341,66 @@ class ReportController extends Controller
   {
     $Dato = array();
 
+    $objTemp = new Temp;
+
     parse_str($request->get("qs"), $get_array);
+
+
+    // Angulos Prisma
 
     $arrAux = array();
 
-    $cara1 = $get_array["cara1"];
+    $arrAux["dist1"] = $get_array["dist1"] ?? array();
+    $arrAux["dist2"] = $get_array["dist2"] ?? array();
+    $arrAux["dist3"] = $get_array["dist3"] ?? array();
+    $arrAux["promedio_prisma"] = $get_array["promedio_prisma"] ?? array();
+    $arrAux["patron"] = $get_array["patron"] ?? array();
+    $arrAux["residuo"] = $get_array["residuo"] ?? array();
+    $arrAux["residuocuadratico"] = $get_array["residuocuadratico"] ?? array();
 
-    $arrAux["cara1"] = $cara1;
+    $arrAux["txtTotalMedicion"] = $get_array["txtTotalMedicion"] ?? "";
+    $arrAux["txtMedidasPosibles"] = $get_array["txtMedidasPosibles"] ?? "";
+    $arrAux["txtTotalPuntosPosibles"] = $get_array["txtTotalPuntosPosibles"] ?? "";
+    $arrAux["txtNumeroGradoLibertad"] = $get_array["txtNumeroGradoLibertad"] ?? "";
+    $arrAux["txtSumatoriaResiduoCuadratico"] = $get_array["txtSumatoriaResiduoCuadratico"] ?? "";
+    $arrAux["txtDesviacion"] = $get_array["txtDesviacion"] ?? "";
 
-    $json = json_encode($arrAux);
+    $json_medicion = json_encode($arrAux);
 
-    $Dato["medicion"] = $json;
+    $Dato["medicion"] = $json_medicion;
 
-    Temp::insert($Dato);
+
+    // Angulos Horizontales
+
+    $arrAux = array();
+
+    $arrAux["cara1"] = $get_array["cara1"] ?? array();
+    $arrAux["cara2"] = $get_array["cara2"] ?? array();
+    $arrAux["sumacara"] = $get_array["sumacara"] ?? array();
+    $arrAux["promedio"] = $get_array["promedio"] ?? array();
+    $arrAux["sumapromedio"] = $get_array["sumapromedio"] ?? array();
+    $arrAux["promediosuma"] = $get_array["promediosuma"] ?? array();
+    $arrAux["restapromedio"] = $get_array["restapromedio"] ?? array();
+    $arrAux["promedioresta"] = $get_array["promedioresta"] ?? array();
+    $arrAux["r"] = $get_array["r"] ?? array();
+    $arrAux["r2"] = $get_array["r2"] ?? array();
+    $arrAux["apertura"] = $get_array["apertura"] ?? array();
+    $arrAux["paraserie"] = $get_array["paraserie"] ?? array();
+
+
+    $json_angulos_h = json_encode($arrAux);
+
+    $Dato["angulos_h"] = $json_angulos_h;
+
+
+
+
+
+
+    $Dato["updated_at"] = now();
+
+    $temp = $objTemp->where("id", 1);
+
+    $temp->update($Dato);
   }
 }
