@@ -14,8 +14,8 @@
             $cont = 0;
         ?>
 
-<form id="frmMedicion">
-
+<!--<form id="frmMedicion">
+-->
       <div class="table-responsive">
           <table class="table table-striped">
               <thead class="text-center">
@@ -204,16 +204,16 @@
 
 
 
+<!--
+<input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />-->
 
-<input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />
-
-</form>
-
-
-
+<!--</form>
+-->
 
 
-    </div>
+
+
+  </div>
 </div>
 
 @push('custom-scripts')

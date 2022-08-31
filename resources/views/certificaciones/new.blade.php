@@ -40,7 +40,7 @@
 
     <form action="{{ route('certificaciones.store') }}" method="post">
         @include('certificaciones._report_Avertical')
-    </form> 
+    </form>
 
 
 

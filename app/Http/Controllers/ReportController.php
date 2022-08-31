@@ -109,8 +109,7 @@ class ReportController extends Controller
 
         $response['aux'] = json_decode($temp->medicion, true);
         $response['angulos_h'] = json_decode($temp->angulos_h, true);
-
-
+        $response['angulos_v'] = json_decode($temp->angulos_v, true);
 
         return view('certificaciones.new', $response);
     }
@@ -393,9 +392,25 @@ class ReportController extends Controller
     $Dato["angulos_h"] = $json_angulos_h;
 
 
+    // Angulos Verticales
 
+    $arrAux = array();
 
+    $arrAux["Xj1"] = $get_array["Xj1"] ?? array();
+    $arrAux["Xj2"] = $get_array["Xj2"] ?? array();
+    $arrAux["sigma"] = $get_array["sigma"] ?? array();
+    $arrAux["xj"] = $get_array["xj"] ?? array();
+    $arrAux["xk"] = $get_array["xk"] ?? array();
+    $arrAux["rj1"] = $get_array["rj1"] ?? array();
+    $arrAux["rj2"] = $get_array["rj2"] ?? array();
+    $arrAux["sumatotalrj2"] = $get_array["sumatotalrj2"] ?? array();
+    $arrAux["raizsumatoria"] = $get_array["raizsumatoria"] ?? array();
 
+    $json_angulos_v = json_encode($arrAux);
+
+    $Dato["angulos_v"] = $json_angulos_v;
+
+    ##########################################
 
     $Dato["updated_at"] = now();
 
