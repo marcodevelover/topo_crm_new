@@ -16,7 +16,7 @@
 
 <!--<form id="frmMedicion">
 -->
-      <div class="table-responsive">
+      <div class="table-responsive" id="data">
           <table class="table table-striped">
               <thead class="text-center">
                   <tr>
@@ -291,9 +291,9 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
   dTotal = 0;
 
-  let $promedio1 = $tr.find(".promedio.prom_1").first();
-  let dProm1     = get_numeric($promedio1.val(), 4);
-  let dSumaProm    = 0;
+  let $promedio1     = $tr.find(".promedio.prom_1").first();
+  let dProm1         = get_numeric($promedio1.val(), 4);
+  let dSumaProm      = 0;
   let dTotalSumaProm = 0;
 
   $tr.find(".promedio").each(function( index ) {
@@ -301,37 +301,42 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     dSumaProm = 400;
 
-    $aux = $tr.find(".promedio.prom_" + $promedio.data("ancla"));
+    $prom     = $tr.find(".promedio.prom_" + $promedio.data("ancla"));
     $sumaprom = $tr.find(".sumaprom.sumaprom_" + $promedio.data("ancla"));
+    $cara1    = $tr.find(".cara1_" + $promedio.data("ancla"));
+    $cara2    = $tr.find(".cara2_" + $promedio.data("ancla"));
 
-    dTotal = get_numeric($aux.val(), 4);
+    dTotal = get_numeric($prom.val(), 4);
 
-    if($tr.attr("id") == "row3" && dTotal != 0)
+    $sumaprom.val(0);
+
+    if($cara1.val().toString().length > 0 && $cara2.val().toString().length > 0 )
     {
-      dSumaProm = dTotal - dProm1  ;
-      dSumaProm = number_round(dSumaProm, 4);
-
-      dTotalSumaProm += dSumaProm;
-
-      $sumaprom.val(dSumaProm);
-    }
-    else
-    {
-      if(index > 0 && index < 4)
+      if($tr.attr("id") == "row3" && dTotal != 0)
       {
-        if(dTotal != 0)
+        dSumaProm = dTotal - dProm1  ;
+        dSumaProm = number_round(dSumaProm, 4);
+
+        dTotalSumaProm += dSumaProm;
+
+        $sumaprom.val(dSumaProm);
+      }
+      else
+      {
+        if(index > 0 && index < 4)
         {
-          dSumaProm = dSumaProm - dProm1 + dTotal;
-          dSumaProm = number_round(dSumaProm, 4);
+          if(dTotal != 0)
+          {
+            dSumaProm = dSumaProm - dProm1 + dTotal;
+            dSumaProm = number_round(dSumaProm, 4);
 
-          dTotalSumaProm += dSumaProm;
+            dTotalSumaProm += dSumaProm;
 
-          $sumaprom.val(dSumaProm);
+            $sumaprom.val(dSumaProm);
+          }
         }
       }
     }
-
-
   });
 
   $tr.find(".totalsumaprom").val(number_truncate(dTotalSumaProm, 4));
@@ -347,12 +352,17 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
   var dTotalPromSuma_ind3 = 0;
   var dTotalPromSuma_ind4 = 0;
 
-  var div1 = 0;
-  var div2 = 0;
-  var div3 = 0;
-  var div4 = 0;
+  var dDivision1 = 0;
+  var dDivision2 = 0;
+  var dDivision3 = 0;
+  var dDivision4 = 0;
 
-  $(".roww").each(function( index ) {
+  var iSumasProm2 = 0;
+  var iSumasProm3 = 0;
+  var iSumasProm4 = 0;
+  var iSumasProm5 = 0;
+
+  $(".roww").each(function( index ) {  // max index = 2
     $roww = $(this);
 
     $roww.find(".sumaprom").each(function( index ) {
@@ -360,45 +370,84 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
       if(index == 1)
       {
-        dTotalPromSuma_ind1+= get_numeric($sumaprom.val(), 4);
+        if($sumaprom.val().toString().length > 0)
+        {
+          dTotalPromSuma_ind1+= get_numeric($sumaprom.val(), 4);
+
+          iSumasProm2+=1;
+        }
       }
 
       if(index == 2)
       {
-        dTotalPromSuma_ind2+= get_numeric($sumaprom.val(), 4) ;
+        if($sumaprom.val().toString().length > 0)
+        {
+          dTotalPromSuma_ind2+= get_numeric($sumaprom.val(), 4);
+
+          iSumasProm3+=1;
+        }
       }
 
       if(index == 3)
       {
-      dTotalPromSuma_ind3+= get_numeric($sumaprom.val(), 4);
+        if($sumaprom.val().toString().length > 0)
+        {
+          dTotalPromSuma_ind3+= get_numeric($sumaprom.val(), 4);
+
+          iSumasProm4+=1;
+        }
       }
 
       if(index == 4)
       {
-      dTotalPromSuma_ind4+= get_numeric($sumaprom.val(), 4);
+        if($sumaprom.val().toString().length > 0)
+        {
+          dTotalPromSuma_ind4+= get_numeric($sumaprom.val(), 4);
+
+          iSumasProm5+=1;
+        }
       }
 
     });
 
   });
 
+
+  $(document).find(".promsuma_1").val("");
+  $(document).find(".promsuma_2").val("");
+  $(document).find(".promsuma_3").val("");
+  $(document).find(".promsuma_4").val("");
+
   $(".roww").each(function( index ) {
     $roww = $(this);
 
-    $promsuma1 = $roww.find(".promsuma_1").first();
-    $promsuma2 = $roww.find(".promsuma_2").first();
-    $promsuma3 = $roww.find(".promsuma_3").first();
-    $promsuma4 = $roww.find(".promsuma_4").first();
+    if(iSumasProm2 >= 3)
+    {
+      $promsuma1 = $roww.find(".promsuma_1").first();
+      dDivision1 = dTotalPromSuma_ind1 / 3;
+      $promsuma1.val(number_truncate(dDivision1 , 4));
+    }
 
-    div1 = dTotalPromSuma_ind1 / 3;
-    div2 = dTotalPromSuma_ind2 / 3;
-    div3 = dTotalPromSuma_ind3 / 3;
-    div4 = dTotalPromSuma_ind4 / 3;
+    if(iSumasProm3 >= 3)
+    {
+      $promsuma2 = $roww.find(".promsuma_2").first();
+      dDivision2 = dTotalPromSuma_ind2 / 3;
+      $promsuma2.val(number_truncate(dDivision2 , 4));
+    }
 
-    $promsuma1.val(number_truncate(div1 , 4));
-    $promsuma2.val(number_truncate(div2 , 4));
-    $promsuma3.val(number_truncate(div3 , 4));
-    $promsuma4.val(number_truncate(div4 , 4));
+    if(iSumasProm4 >= 3)
+    {
+      $promsuma3 = $roww.find(".promsuma_3").first();
+      dDivision3 = dTotalPromSuma_ind3 / 3;
+      $promsuma3.val(number_truncate(dDivision3 , 4));
+    }
+
+    if(iSumasProm5 >= 3)
+    {
+      $promsuma4 = $roww.find(".promsuma_4").first();
+      dDivision4 = dTotalPromSuma_ind4 / 3;
+      $promsuma4.val(number_truncate(dDivision4 , 4));
+    }
   });
 
 
@@ -424,16 +473,17 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
     let dTotalProm4 = 0;
     let dTotalSumProm = 0;
 
-    dTotalProm2 = div1 - dSumaProm2;
-    dTotalProm3 = div2 - dSumaProm3;
-    dTotalProm4 = div3 - dSumaProm4;
-    dTotalSumProm = div4 - dSumaPromTotal;
 
-    $restaprom2.val(number_round(dTotalProm2 , 4));
-    $restaprom3.val(number_round(dTotalProm3 , 4));
-    $restaprom4.val(number_round(dTotalProm4 , 4));
-    $restaprom5.val(number_round(dTotalSumProm , 4));
+      dTotalProm2   = dDivision1 - dSumaProm2;
+      dTotalProm3   = dDivision2 - dSumaProm3;
+      dTotalProm4   = dDivision3 - dSumaProm4;
+      dTotalSumProm = dDivision4 - dSumaPromTotal;
 
+
+      $restaprom2.val(number_round(dTotalProm2 , 4));
+      $restaprom3.val(number_round(dTotalProm3 , 4));
+      $restaprom4.val(number_round(dTotalProm4 , 4));
+      $restaprom5.val(number_round(dTotalSumProm , 4));
 
 
 
@@ -630,7 +680,7 @@ function toFix(x)
   return x;
 }
 
-
+$("#data").load(" #data");
 
 $(".btnSubmit").on( "click", function(evt) {
   evt.preventDefault();
