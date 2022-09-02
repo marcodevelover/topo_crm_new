@@ -241,6 +241,7 @@ $('#reportMedicion').on('keyup change','input',function(){
   }
 });
 
+
 $('#auxsigned').click(function(){
     $('#signed').trigger('click');
 });

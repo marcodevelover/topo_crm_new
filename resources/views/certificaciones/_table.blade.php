@@ -2,6 +2,35 @@
     td input.form-control{
         width:60px;
     }
+
+    .input1{
+      text-align: center;
+      background: #d5d5d5;
+      border:none;
+    }
+
+    .patron{
+      text-align: center;
+    }
+
+    .residuo{
+      text-align: center;
+      background: #d5d5d5;
+      border:none;
+    }
+
+     .cuadratico{
+      text-align: center;
+      background: #d5d5d5;
+      border:none;
+    }
+
+    .disable{
+      text-align: center;
+      background: #d5d5d5;
+      border:none;
+    }
+
 </style>
 <div class="card my-2">
     <div class="card-header">
@@ -44,17 +73,17 @@
                             <input type="text" name="dist3[]" class="dist3" value="{{ $aux['dist3'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" />
 
                             </td>
-                            <td><input type="text" class=" input1 input_promedio" name="promedio_prisma[]" value="{{ $aux['promedio_prisma'][$loop->index] ?? "" }}" style="text-align: center;" readonly></td>
+                            <td><input type="text"  class=" input1 input_promedio" name="promedio_prisma[]" value="{{ $aux['promedio_prisma'][$loop->index] ?? "" }}" readonly></td>
 
-                            <td><input type="text" class="patron input_patron" id="select_num" name="patron[]" value="{{ $aux['patron'][$loop->index] ?? "" }}" data-patron="{{ $patron }}" style="text-align: center;" >
+                            <td><input type="text" class="patron input_patron" id="select_num" name="patron[]" value="{{ $aux['patron'][$loop->index] ?? "" }}" data-patron="{{ $patron }}" >
                             <td>
                                 <span class="disabled">
-                                    <input class="residuo input_residuo" type="text" name="residuo[]"  value="{{ $aux['residuo'][$loop->index] ?? "" }}" style="text-align: center;" readonly>
+                                    <input class="residuo input_residuo" type="text" name="residuo[]"  value="{{ $aux['residuo'][$loop->index] ?? "" }}" readonly>
                                 </span>
                             </td>
                             <td>
                                 <span class="disabled">
-                                    <input class="cuadratico input_cuadratico" name="residuocuadratico[]" value="{{ $aux['residuocuadratico'][$loop->index] ?? "" }}" type="text"  style="text-align: center;" readonly >
+                                    <input type="text" class="cuadratico input_cuadratico" name="residuocuadratico[]" value="{{ $aux['residuocuadratico'][$loop->index] ?? "" }}"  readonly >
                                 </span>
                             </td>
                             <td>
@@ -67,23 +96,23 @@
                     </tr>
                     <tr>
                     <td>TOTAL DE MEDICIONES POSIBLES</td>
-                    <td><input name="txtMedidasPosibles" class="txtMedidasPosibles" value="{{ $aux['txtMedidasPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtMedidasPosibles" class="disable txtMedidasPosibles" value="{{ $aux['txtMedidasPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>TOTAL DE PUNTOS CONOCIDOS</td>
-                    <td><input name="txtTotalPuntosPosibles" class="txtTotalPuntosPosibles" value="{{ $aux['txtTotalPuntosPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtTotalPuntosPosibles" class="disable txtTotalPuntosPosibles" value="{{ $aux['txtTotalPuntosPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>NUMERO DE GRADOS DE LIBERTAD</td>
-                    <td><input name="txtNumeroGradoLibertad" class="txtNumeroGradoLibertad" value="{{ $aux['txtNumeroGradoLibertad'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtNumeroGradoLibertad" class="disable txtNumeroGradoLibertad" value="{{ $aux['txtNumeroGradoLibertad'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>SUMATORIA RESIDUO CUADRATICO MM</td>
-                    <td><input name="txtSumatoriaResiduoCuadratico" class="txtSumatoriaResiduoCuadratico" value="{{ $aux['txtSumatoriaResiduoCuadratico'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtSumatoriaResiduoCuadratico" class="disable txtSumatoriaResiduoCuadratico" value="{{ $aux['txtSumatoriaResiduoCuadratico'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>Desviacion</td>
-                    <td><input name="txtDesviacion" class="txtDesviacion" value="{{ $aux['txtDesviacion'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtDesviacion" class="disable txtDesviacion" value="{{ $aux['txtDesviacion'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
 
                 </tbody>
