@@ -46,7 +46,7 @@
                             </td>
                             <td><input type="text" class=" input1 input_promedio" name="promedio_prisma[]" value="{{ $aux['promedio_prisma'][$loop->index] ?? "" }}" style="text-align: center;" readonly></td>
 
-                            <td><input type="text" class="patron input_patron" id="select_num" name="patron[]" value="{{ $aux['patron'][$loop->index] ?? $patron }}" data-patron="{{ $patron }}" style="text-align: center;" readonly>
+                            <td><input type="text" class="patron input_patron" id="select_num" name="patron[]" value="{{ $aux['patron'][$loop->index] ?? "" }}" data-patron="{{ $patron }}" style="text-align: center;" >
                             <td>
                                 <span class="disabled">
                                     <input class="residuo input_residuo" type="text" name="residuo[]"  value="{{ $aux['residuo'][$loop->index] ?? "" }}" style="text-align: center;" readonly>

@@ -169,12 +169,15 @@ $('#reportMedicion').on('keyup change','input',function(){
 
   let $input = $(this);
 
-  if(!$input.hasClass("input_promedio") && !$input.hasClass("input_patron") && !$input.hasClass("input_residuo") && !$input.hasClass("input_cuadratico") )
+  if(!$input.hasClass("input_promedio") /*&& !$input.hasClass("input_patron")*/ && !$input.hasClass("input_residuo") && !$input.hasClass("input_cuadratico") )
   {
     let className = $(this).attr('class');
 
     let $promedio = $tr.find(".input1").first();
+
     let $patron = $tr.find(".patron").first();
+    let dPatron = get_numeric($patron.val(),4);
+
     let $residuo = $tr.find(".residuo").first();
     let $cuadratico = $tr.find(".cuadratico").first();
     let $mPosibles = $tr.find(".mPosibles").first();
@@ -203,15 +206,16 @@ $('#reportMedicion').on('keyup change','input',function(){
 
       $promedio.val(dPromedio);
 
-      dPatronInicial  = $patron.data("patron");
+      if(dPatron != 0)
+      {
+        dResiduo = (dPatron - dPromedio) * 1000;
+        dResiduo = number_round(dResiduo);
+        iResiduo = Math.trunc(dResiduo);
 
-      dPatronInicial = number_truncate(dPatronInicial,3);
 
-      dResiduo = (dPatronInicial - dPromedio) * 1000;
-      dResiduo = number_round(dResiduo);
-      iResiduo = Math.trunc(dResiduo);
+      }
+        $residuo.val(iResiduo);
 
-      $residuo.val(iResiduo);
 
       iCuadratico = (iResiduo * iResiduo);
       $cuadratico.val(iCuadratico);

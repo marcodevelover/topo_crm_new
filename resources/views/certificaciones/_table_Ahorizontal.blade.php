@@ -453,7 +453,7 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
       }
 
       div = dTotalPromResta / 4;
-      $promresta.val(number_round(div, 4));
+      $promresta.val(number_truncate(div, 4));
 
     });
 
@@ -492,7 +492,7 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
     dResta4 = dRestaProm4 - dPromResta;
 
 
-    $r1.val(number_round(dResta1, 4));
+    $r1.val(number_truncate(dResta1, 4));
     $r2.val(number_round(dResta2, 4));
     $r3.val(number_round(dResta3, 4));
     $r4.val(number_round(dResta4, 4));
@@ -584,13 +584,15 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
     if(index == 4)
     {
       dTotalSumCubo+= get_numeric($cubo.val(), 10);
+
+       $( ".apertura" ).first().val(number_truncate(dTotalSumCubo , 10));
     }
 
     });
 
     });
 
-    $( ".apertura" ).first().val(dTotalSumCubo, 4);
+
 
     //
 
@@ -602,7 +604,7 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     dDiv = Math.sqrt(dDiv);
 
-    $( ".paraserie" ).first().val(number_truncate(dDiv, 5));
+    $( ".paraserie" ).first().val(number_truncate(dDiv, 4));
 
 });
 

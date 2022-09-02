@@ -66,7 +66,7 @@ class ReportController extends Controller
          $report->angulosprisma = [
             "distancia"=> ["0","0","0","0"],
             "promedio"=> ["0","0","0","0"],
-            "patron"=> ["21.784","54.055","76.502","152.248"],
+            "patron"=> ["0","0","0","0"],
             "residuo"=> ["0","0","0","0"],
             "residuocuadratico"=> ["0","0","0","0"],
 
