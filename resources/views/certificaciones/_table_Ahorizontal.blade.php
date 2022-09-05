@@ -578,7 +578,7 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
             dAux = dPromSuma - dSumaProm;
 
-            $restaprom.val(dAux, 5);
+            $restaprom.val(number_round(dAux, 5));
           }
         }
 
@@ -593,27 +593,45 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     // =PROMEDIO(I2:I5), =PROMEDIO(I8:I11)
 
-    var $restaprom   = $tr.find(".restaprom_" + iAncla);
-    var $promresta  = $tr.find(".promresta_" + iAncla);
+    var $restaprom      = $tr.find(".restaprom_" + iAncla);
+    var $promresta      = $tr.find(".promresta_" + iAncla);
     var dTotalPromResta = 0;
     var div = 0;
 
-    $tr.find(".restaprom").each(function( index ) {
-      $restaprom = $(this);
+    var dTotalPromTodo = 0;
 
-      if(index < 4)
-      {
-        dTotalPromResta+= get_numeric($restaprom.val(), 4);
-      }
+    $(".roww").each(function( index_roww ) {
+      $roww = $(this);
 
-      div = dTotalPromResta / 4;
-      $promresta.val(number_truncate(div, 4));
+      dTotalPromResta = 0;
 
+      $roww.find(".restaprom").each(function( index ) {
+        $restaprom = $(this);
+
+        if(index <= 3)
+        {
+          if($restaprom.val().toString().length > 0)
+          {
+            dTotalPromResta+= get_numeric($restaprom.val(), 4);
+          }
+        }
+      });
+
+      $roww.find(".promresta").val(number_round(dTotalPromResta/4 , 4));
     });
 
 
 
+    /*$(".roww").each(function( index ) {
+      $roww = $(this);
 
+      $roww.find(".promresta").each(function( index ) {
+        $promresta = $(this);
+
+        div = dTotalPromResta / 4;
+        $promresta.val(number_truncate(div, 4));
+      });
+    });*/
 
     // r
 
