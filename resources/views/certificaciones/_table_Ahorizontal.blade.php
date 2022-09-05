@@ -121,7 +121,7 @@
 
                             <td>
                               <span class="disabled">
-                              <input type="text" style="widht: 60px;width: 100px;text-align: center;" name="promediosuma[{{ $loop->index }}][_1]" value="{{ $angulos_h['promediosuma'][$loop->index]['_1'] ?? $report->angulosHorizontales['promsuma'][$cont] }}" readonly /><br>
+                              <input type="text" class="promsuma" style="widht: 60px;width: 100px;text-align: center;" name="promediosuma[{{ $loop->index }}][_1]" value="{{ $angulos_h['promediosuma'][$loop->index]['_1'] ?? $report->angulosHorizontales['promsuma'][$cont] }}" readonly /><br>
                               <input type="text" class="promsuma promsuma_1" name="promediosuma[{{ $loop->index }}][_2]" value="{{ $angulos_h['promediosuma'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
                               <input type="text" class="promsuma promsuma_2" name="promediosuma[{{ $loop->index }}][_3]" value="{{ $angulos_h['promediosuma'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
                               <input type="text" class="promsuma promsuma_3" name="promediosuma[{{ $loop->index }}][_4]" value="{{ $angulos_h['promediosuma'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
@@ -206,6 +206,8 @@
 
 <!--
 <input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />-->
+<!--
+<input type="button" value="Refresh" onclick="reload();" />-->
 
 <!--</form>
 -->
@@ -308,7 +310,9 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     dTotal = get_numeric($prom.val(), 4);
 
-    $sumaprom.val(0);
+    $sumaprom.val("");
+
+    $tr.find(".sumaprom").eq(0).val(0);
 
     if($cara1.val().toString().length > 0 && $cara2.val().toString().length > 0 )
     {
@@ -468,24 +472,124 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
     let dSumaProm4  = get_numeric($sumaprom4.val(), 4);
     let dSumaPromTotal  = get_numeric($sumapromtotal.val(), 4);
 
-    let dTotalProm2 = 0;
-    let dTotalProm3 = 0;
-    let dTotalProm4 = 0;
+    let dTotalProm2   = 0;
+    let dTotalProm3   = 0;
+    let dTotalProm4   = 0;
     let dTotalSumProm = 0;
 
+    /*var $promsuma = $tr.find("promsuma_" + iAncla);*/
+    /*var $promsuma = $tr.find(".promsuma").eq((iAncla - 1));     */
 
-      dTotalProm2   = dDivision1 - dSumaProm2;
-      dTotalProm3   = dDivision2 - dSumaProm3;
-      dTotalProm4   = dDivision3 - dSumaProm4;
-      dTotalSumProm = dDivision4 - dSumaPromTotal;
+    dTotalProm2   = dDivision2 - dSumaProm3;
+    dTotalProm3   = dDivision2 - dSumaProm3;
+    dTotalProm4   = dDivision3 - dSumaProm4;
+    dTotalSumProm = dDivision4 - dSumaPromTotal;
 
+    $restaprom2.val("");
 
+    /*if($promsuma.val().toString().length > 0 )
+    {
       $restaprom2.val(number_round(dTotalProm2 , 4));
-      $restaprom3.val(number_round(dTotalProm3 , 4));
-      $restaprom4.val(number_round(dTotalProm4 , 4));
-      $restaprom5.val(number_round(dTotalSumProm , 4));
+    }*/
+
+    $(".roww").each(function( index ) {
+      $roww = $(this);
+
+      $roww.find(".promsuma").each(function( index ) {
+        $promsuma = $(this);
+
+        if(index == 1)
+        {
+          $sumaprom  = $roww.find(".sumaprom").eq(index);
+          $restaprom = $roww.find(".restaprom").eq(index);
+
+          $restaprom.val("");
+
+          if($promsuma.val().toString().length > 0 && $sumaprom.val().toString().length > 0)
+          {
+            dPromSuma = $promsuma.val();
+            dPromSuma = get_numeric(dPromSuma, 5);
+
+            dSumaProm = $sumaprom.val();
+            dSumaProm = get_numeric(dSumaProm, 5);
+
+            dAux = dPromSuma - dSumaProm;
+
+            $restaprom.val(number_round(dAux, 5));
+          }
+        }
+
+        if(index == 2)
+        {
+          $sumaprom  = $roww.find(".sumaprom").eq(index);
+          $restaprom = $roww.find(".restaprom").eq(index);
+
+          $restaprom.val("");
+
+          if($promsuma.val().toString().length > 0 && $sumaprom.val().toString().length > 0)
+          {
+            dPromSuma = $promsuma.val();
+            dPromSuma = get_numeric(dPromSuma, 5);
+
+            dSumaProm = $sumaprom.val();
+            dSumaProm = get_numeric(dSumaProm, 5);
+
+            dAux = dPromSuma - dSumaProm;
+
+            $restaprom.val(number_round(dAux, 4));
+          }
+        }
+
+         if(index == 3)
+        {
+          $sumaprom  = $roww.find(".sumaprom").eq(index);
+          $restaprom = $roww.find(".restaprom").eq(index);
+
+          $restaprom.val("");
+
+          if($promsuma.val().toString().length > 0 && $sumaprom.val().toString().length > 0)
+          {
+            dPromSuma = $promsuma.val();
+            dPromSuma = get_numeric(dPromSuma, 5);
+
+            dSumaProm = $sumaprom.val();
+            dSumaProm = get_numeric(dSumaProm, 5);
+
+            dAux = dPromSuma - dSumaProm;
+
+            $restaprom.val(number_round(dAux, 5));
+          }
+        }
+
+         if(index == 4)
+        {
+          $sumaprom  = $roww.find(".sumaprom").eq(index);
+          $restaprom = $roww.find(".restaprom").eq(index);
+
+          $restaprom.val("");
+
+          if($promsuma.val().toString().length > 0 && $sumaprom.val().toString().length > 0)
+          {
+            dPromSuma = $promsuma.val();
+            dPromSuma = get_numeric(dPromSuma, 5);
+
+            dSumaProm = $sumaprom.val();
+            dSumaProm = get_numeric(dSumaProm, 5);
+
+            dAux = dPromSuma - dSumaProm;
+
+            $restaprom.val(dAux, 5);
+          }
+        }
+
+      });
+    });
 
 
+    /*$restaprom2.val(number_round(dTotalProm3 , 4));
+    /*$restaprom3.val(number_round(dTotalProm3 , 4));
+    $restaprom4.val(number_round(dTotalProm4 , 4));
+    $restaprom5.val(number_round(dTotalSumProm , 4));*/
 
     // =PROMEDIO(I2:I5), =PROMEDIO(I8:I11)
 
@@ -680,7 +784,7 @@ function toFix(x)
   return x;
 }
 
-$("#data").load(" #data");
+/*$("#data").load(" #data"); */
 
 $(".btnSubmit").on( "click", function(evt) {
   evt.preventDefault();
