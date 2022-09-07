@@ -679,15 +679,9 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
       $roww.find(".totalsuma_r").val(number_round(dTotalResta, 4));
     });
 
-
-
-
-
-
-
     // r2
 
-     var $cubo1 = $tr.find(".cubo_1");
+/*     var $cubo1 = $tr.find(".cubo_1");
      var $cubo2 = $tr.find(".cubo_2");
      var $cubo3 = $tr.find(".cubo_3");
      var $cubo4 = $tr.find(".cubo_4");
@@ -722,7 +716,24 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
      $cubo1.val(dCubo1);
      $cubo2.val(dCubo2);
      $cubo3.val(dCubo3);
-     $cubo4.val(dCubo4);
+     $cubo4.val(dCubo4);*/
+
+
+    $r = $tr.find(".r_" + iAncla);
+    dTotal = 0;
+
+    $tr.find( ".r").each(function( index ) {
+      $r = $(this);
+      $r2 = $tr.find( ".cubo_" + $r.data("ancla"));
+
+      dR1 = get_numeric($r.val(), 4);
+
+      dAux   = dR1 * dR1;
+      dTotal+= dAux;
+      $r2.val(dAux.toFixed(10));
+
+    });
+
 
     var $cubo   = $tr.find(".cubo_" + iAncla);
     var $totalcubo  = $tr.find(".cubo.totalcubo" );
