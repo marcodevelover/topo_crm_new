@@ -584,8 +584,6 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
     var dTotalPromResta = 0;
     var div = 0;
 
-    var dTotalPromTodo = 0;
-
     $(".roww").each(function( index_roww ) {
       $roww = $(this);
 
@@ -608,55 +606,34 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     // r
 
-    /*var $r1 = $tr.find(".r_1");
-    var $r2 = $tr.find(".r_2");
-    var $r3 = $tr.find(".r_3");
-    var $r4 = $tr.find(".r_4");;
-
-    var $r = $tr.find(".r_" + iAncla);
-
-    var $restaprom1 = $tr.find(".restaprom.restaprom_1").first();
-    var $restaprom2 = $tr.find(".restaprom.restaprom_2").first();
-    var $restaprom3 = $tr.find(".restaprom.restaprom_3").first();
-    var $restaprom4 = $tr.find(".restaprom.restaprom_4").first();
-
-    var $promresta1 = $tr.find(".promresta.promresta_1").first();
-    let dPromResta =  get_numeric($promresta1.val(), 4);
-
-    let dRestaProm1  = get_numeric($restaprom1.val(), 4);
-    let dRestaProm2  = get_numeric($restaprom2.val(), 4);
-    let dRestaProm3  = get_numeric($restaprom3.val(), 4);
-    let dRestaProm4  = get_numeric($restaprom4.val(), 4);
-
-    let dResta1 = 0;
-    let dResta2 = 0;
-    let dResta3 = 0;
-    let dResta4 = 0;
-
-    $r1.val("");
-    $r2.val("");
-    $r3.val("");
-    $r4.val("");*/
-
     $(".roww").each(function( index_roww ) {
       $roww = $(this);
 
       $promresta = $roww.find(".promresta").first();
-
       dPromResta = get_numeric($promresta.val(), 4);
 
       $roww.find(".r").each(function( index_r ) {
         $r = $(this);
 
+
         dAux = 0;
+        var dTotalResta = 0;
 
         $restaprom = $roww.find(".restaprom_" + $r.data("ancla"));
+
 
         dRestaProm = get_numeric($restaprom.val(), 4);
 
         if(index_roww == 0)
         {
-          dAux = dPromResta - dRestaProm;
+          if(index_r == 0)
+          {
+             dAux = dPromResta - dRestaProm;
+          }
+          else{
+             dAux =dRestaProm -  dPromResta;
+          }
+
         }
         else
         {
@@ -665,51 +642,47 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
         $r.val(number_round(dAux, 4));
       });
-
-
-      /*$roww.find(".promresta").each(function( index_promresta ) {
-        $promresta1 = $(this);
-
-        if($promresta1.val().toString().length > 0)
-        {
-          dResta1 = dRestaProm1 - dPromResta;
-        }
-
-        if($promresta1.val().toString().length > 0)
-        {
-          dResta2 = dRestaProm2 - dPromResta;
-        }
-
-        if($promresta1.val().toString().length > 0)
-        {
-          dResta3 = dRestaProm3 - dPromResta;
-        }
-
-         if($promresta1.val().toString().length > 0)
-        {
-          dResta4 = dRestaProm4 - dPromResta;
-        }
-      });
-
-      $roww.find( ".r_1" ).val(number_round(dResta1, 4));
-      $roww.find( ".r_2" ).val(number_round(dResta2, 4));
-      $roww.find( ".r_3" ).val(number_round(dResta2, 4));
-      $roww.find( ".r_4" ).val(number_round(dResta2, 4));*/
     });
 
     // r sumatoria total
 
-    var $r = $tr.find(".r_" + iAncla);
+/*    var $r = $tr.find(".r_" + iAncla);
     var $totalsumr  = $tr.find(".totalsuma_r");
     var dTotalResta = 0;
 
-    $tr.find(".r").each(function( index ) {
-     $r = $(this);
 
-     dTotalResta += get_numeric($r.val(), 4);
+   $tr.find(".r").each(function( index ) {
+      $r = $(this);
+
+         dTotalResta += get_numeric($r.val(), 4);
+
     });
 
-    $totalsumr.val(number_round(dTotalResta, 4));
+     $totalsumr.val(number_round(dTotalResta, 4));*/
+
+      $(".roww").each(function( index_roww ) {
+      $roww = $(this);
+
+      dTotalResta = 0;
+
+      $roww.find(".r").each(function( index ) {
+        $r = $(this);
+
+
+          if($r.val().toString().length > 0)
+          {
+            dTotalResta+= get_numeric($r.val(), 4);
+          }
+
+      });
+
+      $roww.find(".totalsuma_r").val(number_round(dTotalResta, 4));
+    });
+
+
+
+
+
 
 
     // r2
