@@ -719,21 +719,32 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
      $cubo4.val(dCubo4);*/
 
 
-    $r = $tr.find(".r_" + iAncla);
-    dTotal = 0;
 
-    $tr.find( ".r").each(function( index ) {
-      $r = $(this);
-      $r2 = $tr.find( ".cubo_" + $r.data("ancla"));
+    $(".roww").each(function( index_roww ) {
+      $roww = $(this);
 
-      dR1 = get_numeric($r.val(), 4);
 
-      dAux   = dR1 * dR1;
-      dTotal+= dAux;
-      $r2.val(dAux.toFixed(10));
+      $roww.find( ".cubo").each(function( index_cubo ) {
+        $cubo = $(this);
+
+        $r = $roww.find( ".r_" + $cubo.data("ancla"));
+
+        if(index_cubo <= 3)
+        {
+          dR1 = get_numeric($r.val(), 4);
+
+          dAux   = dR1 * dR1;
+
+          $cubo.val(dAux.toFixed(10));
+        }
+
+
+
+       });
 
     });
 
+    // Sumatoria cubo
 
     var $cubo   = $tr.find(".cubo_" + iAncla);
     var $totalcubo  = $tr.find(".cubo.totalcubo" );
@@ -742,7 +753,7 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
     $tr.find(".cubo").each(function( index ) {
     $cubo = $(this);
 
-    if(index < 4)
+    if(index <= 3)
     {
       dTotalCubo+= get_numeric($cubo.val(), 10);
     }
