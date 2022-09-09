@@ -646,20 +646,6 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     // r sumatoria total
 
-/*    var $r = $tr.find(".r_" + iAncla);
-    var $totalsumr  = $tr.find(".totalsuma_r");
-    var dTotalResta = 0;
-
-
-   $tr.find(".r").each(function( index ) {
-      $r = $(this);
-
-         dTotalResta += get_numeric($r.val(), 4);
-
-    });
-
-     $totalsumr.val(number_round(dTotalResta, 4));*/
-
       $(".roww").each(function( index_roww ) {
       $roww = $(this);
 
@@ -681,45 +667,6 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
     // r2
 
-/*     var $cubo1 = $tr.find(".cubo_1");
-     var $cubo2 = $tr.find(".cubo_2");
-     var $cubo3 = $tr.find(".cubo_3");
-     var $cubo4 = $tr.find(".cubo_4");
-
-     var $rr1 = $tr.find(".r.r_1").first();
-     var $rr2 = $tr.find(".r.r_2").first();
-     var $rr3 = $tr.find(".r.r_3").first();
-     var $rr4 = $tr.find(".r.r_4").first();
-
-     let dRr1  = get_numeric($rr1.val(), 4);
-     let dRr2  = get_numeric($rr2.val(), 4);
-     let dRr3  = get_numeric($rr3.val(), 4);
-     let dRr4  = get_numeric($rr4.val(), 4);
-
-     let dCubo1 = 0;
-     let dCubo2 = 0;
-     let dCubo3 = 0;
-     let dCubo4 = 0;
-     let totalcubo = 0;
-
-     dCubo1 = dRr1 * dRr1;
-     dCubo2 = dRr2 * dRr2;
-     dCubo3 = dRr3 * dRr3;
-     dCubo4 = dRr4 * dRr4;
-
-     dCubo1 = dCubo1.toFixed(10);
-     dCubo2 = dCubo2.toFixed(10);
-     dCubo3 = dCubo3.toFixed(10);
-     dCubo4 = dCubo4.toFixed(10);
-
-
-     $cubo1.val(dCubo1);
-     $cubo2.val(dCubo2);
-     $cubo3.val(dCubo3);
-     $cubo4.val(dCubo4);*/
-
-
-
     $(".roww").each(function( index_roww ) {
       $roww = $(this);
 
@@ -737,16 +684,12 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
 
           $cubo.val(dAux.toFixed(10));
         }
-
-
-
-       });
-
+      });
     });
 
     // Sumatoria cubo
 
-    var $cubo   = $tr.find(".cubo_" + iAncla);
+   /* var $cubo   = $tr.find(".cubo_" + iAncla);
     var $totalcubo  = $tr.find(".cubo.totalcubo" );
     var dTotalCubo = 0;
 
@@ -761,7 +704,27 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
     });
 
     totalcubo = dTotalCubo.toFixed(10);
-    $totalcubo.val(totalcubo);
+    $totalcubo.val(totalcubo);*/
+
+    $(".roww").each(function( index_roww ) {
+      $roww = $(this);
+
+      var dTotalCubo = 0;
+      var $cubo   = $roww.find(".cubo_" + iAncla);
+      var $totalcubo  = $roww.find(".cubo.totalcubo" );
+
+      $roww.find(".cubo").each(function( index ) {
+        $cubo = $(this);
+
+        if(index <= 3)
+        {
+          dTotalCubo+= get_numeric($cubo.val(), 10);
+        }
+      });
+
+     $totalcubo.val(dTotalCubo.toFixed(10));
+
+    });
 
 
     // Diferencia de apertura de los angulos
