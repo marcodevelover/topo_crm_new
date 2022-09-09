@@ -141,11 +141,11 @@
 
                             <td>
                               <span class="disabled">
-                              <input type="text" class="disabledinput disabledinput promsuma" style="widht: 60px;width: 100px;text-align: center;" name="promediosuma[{{ $loop->index }}][_1]" value="{{ $angulos_h['promediosuma'][$loop->index]['_1'] ?? $report->angulosHorizontales['promsuma'][$cont] }}" readonly /><br>
-                              <input type="text" class="disabledinput disabledinput promsuma promsuma_1" name="promediosuma[{{ $loop->index }}][_2]" value="{{ $angulos_h['promediosuma'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
-                              <input type="text" class="disabledinput disabledinput promsuma promsuma_2" name="promediosuma[{{ $loop->index }}][_3]" value="{{ $angulos_h['promediosuma'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
-                              <input type="text" class="disabledinput disabledinput promsuma promsuma_3" name="promediosuma[{{ $loop->index }}][_4]" value="{{ $angulos_h['promediosuma'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
-                              <input type="text" class="disabledinput disabledinput promsuma promsuma_4" name="promediosuma[{{ $loop->index }}][_5]" value="{{ $angulos_h['promediosuma'][$loop->index]['_5'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="disabledinput promsuma" style="widht: 60px;width: 100px;text-align: center;" name="promediosuma[{{ $loop->index }}][_1]" value="{{ $angulos_h['promediosuma'][$loop->index]['_1'] ?? $report->angulosHorizontales['promsuma'][$cont] }}" readonly /><br>
+                              <input type="text" class="disabledinput promsuma promsuma_1" name="promediosuma[{{ $loop->index }}][_2]" value="{{ $angulos_h['promediosuma'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="disabledinput promsuma promsuma_2" name="promediosuma[{{ $loop->index }}][_3]" value="{{ $angulos_h['promediosuma'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="disabledinput promsuma promsuma_3" name="promediosuma[{{ $loop->index }}][_4]" value="{{ $angulos_h['promediosuma'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="disabledinput promsuma promsuma_4" name="promediosuma[{{ $loop->index }}][_5]" value="{{ $angulos_h['promediosuma'][$loop->index]['_5'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
                               </span>
                           </td>
 
@@ -635,12 +635,10 @@ $(document).on("keyup", ".cara1, .cara2" , function(evt){
       $roww.find(".r").each(function( index_r ) {
         $r = $(this);
 
-
         dAux = 0;
         var dTotalResta = 0;
 
         $restaprom = $roww.find(".restaprom_" + $r.data("ancla"));
-
 
         dRestaProm = get_numeric($restaprom.val(), 4);
 
