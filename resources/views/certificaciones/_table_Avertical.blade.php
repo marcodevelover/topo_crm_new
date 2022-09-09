@@ -37,7 +37,7 @@
 
                     </tr>
                 </thead>
-                <tbody id="reportAngulosHorizontales" class="text-center">
+                <tbody id="reportAngulosVertical" class="text-center">
                     <?php
                     $cont = 0;
 
@@ -193,7 +193,6 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
 
   if($Xj1.val().toString().length > 0 && $Xj2.val().toString().length > 0)
   {
-
     var $total_Xj1   = $tr.find(".total_Xj1");
     var $total_Xj2   = $tr.find(".total_Xj2");
     var $total_sigma = $tr.find(".total_sigma");
@@ -202,17 +201,17 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
     var dTotalSumatoriaXj2   = 0;
     var dTotalSumatoriaSigma = 0;
 
-     $(".roww").each(function( index_roww ) {
+    $("#reportAngulosVertical").find(".roww").each(function( index_roww ) {
       $roww = $(this);
 
       $roww.find(".sigma").each(function( index_s ) {
         $sigma = $(this);
 
         $Xj1 = $roww.find(".Xj1_" +  $sigma.data("ancla"));
-        dXj1   = get_numeric($Xj1.val(),4);
+        dXj1 = get_numeric($Xj1.val(),4);
 
         $Xj2 = $roww.find(".Xj2_" +  $sigma.data("ancla"));
-        dXj2   = get_numeric($Xj2.val(),4);
+        dXj2 = get_numeric($Xj2.val(),4);
 
         dAux = 0;
 
@@ -225,14 +224,19 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
               dAux = dXj1 + dXj2 - 400;
             }
           }
+          else
+          {
+            dAux = (dXj1 + dXj2 - 400)/2;
+          }
         }
         else
         {
           if(dXj1 > 0 && dXj2 > 0)
-            {
-              dAux = (dXj1 + dXj2 - 400)/2;
-            }
+          {
+            dAux = (dXj1 + dXj2 - 400)/2;
+          }
         }
+
         $sigma.val(number_round(dAux, 5));
       });
     });
