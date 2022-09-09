@@ -2,6 +2,11 @@
     td input.form-control{
         width:60px;
     }
+
+    .margin{
+      margin:1px;
+    }
+
 </style>
 <div class="card my-2">
     <div class="card-header">
@@ -50,82 +55,82 @@
                             <!-- k -->
                             <td >
                               @for($i = 0; $i < 5; ++$i)
-                              <input type="text" class="input_{{ $i }}" value="{{ $report->angulosVerticales['k'][$i] }}" style="text-align:center;width: 50px; " disabled ><br>
+                              <input type="text" class="margin input_{{ $i }}" value="{{ $report->angulosVerticales['k'][$i] }}" style="text-align:center;width: 50px; " disabled ><br>
                               @endfor
                             </td>
 
                             <!-- Xj,k1 -->
                             <td>
-                              <input type="text" class="Xj1 Xj1_1" name="Xj1[{{ $loop->index }}][_1]" value="{{ $angulos_v['Xj1'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" /><br>
-                              <input type="text" class="Xj1 Xj1_2" name="Xj1[{{ $loop->index }}][_2]" value="{{ $angulos_v['Xj1'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" /><br>
-                              <input type="text" class="Xj1 Xj1_3" name="Xj1[{{ $loop->index }}][_3]" value="{{ $angulos_v['Xj1'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" /><br>
-                              <input type="text" class="Xj1 Xj1_4" name="Xj1[{{ $loop->index }}][_4]" value="{{ $angulos_v['Xj1'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" /><br>
-                              <input type="text" class="total_Xj1" name="Xj1[{{ $loop->index }}][_total]" value="{{ $angulos_v['Xj1'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
+                              <input type="text" class="margin Xj1 Xj1_1" name="Xj1[{{ $loop->index }}][_1]" value="{{ $angulos_v['Xj1'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" /><br>
+                              <input type="text" class="margin Xj1 Xj1_2" name="Xj1[{{ $loop->index }}][_2]" value="{{ $angulos_v['Xj1'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" /><br>
+                              <input type="text" class="margin Xj1 Xj1_3" name="Xj1[{{ $loop->index }}][_3]" value="{{ $angulos_v['Xj1'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" /><br>
+                              <input type="text" class="margin Xj1 Xj1_4" name="Xj1[{{ $loop->index }}][_4]" value="{{ $angulos_v['Xj1'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" /><br>
+                              <input type="text" class="disabledinput total_Xj1" name="Xj1[{{ $loop->index }}][_total]" value="{{ $angulos_v['Xj1'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" readonly /><br>
                             </td>
 
                             <!-- Xj,k2 -->
                             <td>
                             <span class="disabled">
-                            <input type="text" class="Xj2 Xj2_1" name="Xj2[{{ $loop->index }}][_1]" value="{{ $angulos_v['Xj2'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" /><br>
-                            <input type="text" class="Xj2 Xj2_2" name="Xj2[{{ $loop->index }}][_2]" value="{{ $angulos_v['Xj2'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" class="Xj2 Xj2_2" data-ancla="2" /><br>
-                            <input type="text" class="Xj2 Xj2_3" name="Xj2[{{ $loop->index }}][_3]" value="{{ $angulos_v['Xj2'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" class="Xj2 Xj2_3" data-ancla="3" /><br>
-                            <input type="text" class="Xj2 Xj2_4" name="Xj2[{{ $loop->index }}][_4]" value="{{ $angulos_v['Xj2'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" class="Xj2 Xj2_4" data-ancla="4" /><br>
-                            <input type="text" class="total_Xj2" name="Xj2[{{ $loop->index }}][_total]" value="{{ $angulos_v['Xj2'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" class="total_Xj2" readonly /><br>
+                            <input type="text" class="margin Xj2 Xj2_1" name="Xj2[{{ $loop->index }}][_1]" value="{{ $angulos_v['Xj2'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" /><br>
+                            <input type="text" class="margin Xj2 Xj2_2" name="Xj2[{{ $loop->index }}][_2]" value="{{ $angulos_v['Xj2'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="2" /><br>
+                            <input type="text" class="margin Xj2 Xj2_3" name="Xj2[{{ $loop->index }}][_3]" value="{{ $angulos_v['Xj2'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="3" /><br>
+                            <input type="text" class="margin Xj2 Xj2_4" name="Xj2[{{ $loop->index }}][_4]" value="{{ $angulos_v['Xj2'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="4" /><br>
+                            <input type="text" class="disabledinput total_Xj2" name="Xj2[{{ $loop->index }}][_total]" value="{{ $angulos_v['Xj2'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" class="total_Xj2" readonly /><br>
                             </span>
                             </td>
 
                             <!-- Sigma -->
                             <td>
                             <span class="disabled">
-                            <input type="text" class="sigma sigma_1" name="sigma[{{ $loop->index }}][_1]" value="{{ $angulos_v['sigma'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
-                            <input type="text" class="sigma sigma_2" name="sigma[{{ $loop->index }}][_2]" value="{{ $angulos_v['sigma'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
-                            <input type="text" class="sigma sigma_3" name="sigma[{{ $loop->index }}][_3]" value="{{ $angulos_v['sigma'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
-                            <input type="text" class="sigma sigma_4" name="sigma[{{ $loop->index }}][_4]" value="{{ $angulos_v['sigma'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
-                            <input type="text" class="total_sigma"   name="sigma[{{ $loop->index }}][_total]" value="{{ $angulos_v['sigma'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput sigma sigma_1" name="sigma[{{ $loop->index }}][_1]" value="{{ $angulos_v['sigma'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput sigma sigma_2" name="sigma[{{ $loop->index }}][_2]" value="{{ $angulos_v['sigma'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                            <input type="text" class="disabledinput sigma sigma_3" name="sigma[{{ $loop->index }}][_3]" value="{{ $angulos_v['sigma'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                            <input type="text" class="disabledinput sigma sigma_4" name="sigma[{{ $loop->index }}][_4]" value="{{ $angulos_v['sigma'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                            <input type="text" class="disabledinput total_sigma"   name="sigma[{{ $loop->index }}][_total]" value="{{ $angulos_v['sigma'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                             </span>
                             </td>
 
                             <!-- xj, k  -->
                             <td>
                             <span class="disabled">
-                            <input type="text" class="xj xj_1" name="xj[{{ $loop->index }}][_1]" value="{{ $angulos_v['xj'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
-                            <input type="text" class="xj xj_2" name="xj[{{ $loop->index }}][_2]" value="{{ $angulos_v['xj'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
-                            <input type="text" class="xj xj_3" name="xj[{{ $loop->index }}][_3]" value="{{ $angulos_v['xj'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
-                            <input type="text" class="xj xj_4" name="xj[{{ $loop->index }}][_4]" value="{{ $angulos_v['xj'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
-                            <input type="text" class="totalxj" name="xj[{{ $loop->index }}][_total]" value="{{ $angulos_v['xj'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput xj xj_1" name="xj[{{ $loop->index }}][_1]" value="{{ $angulos_v['xj'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput xj xj_2" name="xj[{{ $loop->index }}][_2]" value="{{ $angulos_v['xj'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                            <input type="text" class="disabledinput xj xj_3" name="xj[{{ $loop->index }}][_3]" value="{{ $angulos_v['xj'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                            <input type="text" class="disabledinput xj xj_4" name="xj[{{ $loop->index }}][_4]" value="{{ $angulos_v['xj'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                            <input type="text" class="disabledinput totalxj" name="xj[{{ $loop->index }}][_total]" value="{{ $angulos_v['xj'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                             </span>
                             </td>
 
                             <!-- xk -->
                             <td>
                             <span class="disabled">
-                            <input type="text" class="xk xk_1" name="xk[{{ $loop->index }}][_1]" value="{{ $angulos_v['xk'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" readonly /><br>
-                            <input type="text" class="xk xk_2" name="xk[{{ $loop->index }}][_2]" value="{{ $angulos_v['xk'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
-                            <input type="text" class="xk xk_3" name="xk[{{ $loop->index }}][_3]" value="{{ $angulos_v['xk'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
-                            <input type="text" class="xk xk_4" name="xk[{{ $loop->index }}][_4]" value="{{ $angulos_v['xk'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
-                            <input type="text" class="totalxk" name="xk[{{ $loop->index }}][_total]" value="{{ $angulos_v['xk'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput xk xk_1" name="xk[{{ $loop->index }}][_1]" value="{{ $angulos_v['xk'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput xk xk_2" name="xk[{{ $loop->index }}][_2]" value="{{ $angulos_v['xk'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                            <input type="text" class="disabledinput xk xk_3" name="xk[{{ $loop->index }}][_3]" value="{{ $angulos_v['xk'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                            <input type="text" class="disabledinput xk xk_4" name="xk[{{ $loop->index }}][_4]" value="{{ $angulos_v['xk'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                            <input type="text" class="disabledinput totalxk" name="xk[{{ $loop->index }}][_total]" value="{{ $angulos_v['xk'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                             </span>
                             </td>
 
                             <!-- rj,k -->
                             <td>
                             <span class="disabled">
-                            <input type="text" class="rj1 rj1_1" name="rj1[{{ $loop->index }}][_1]" value="{{ $angulos_v['rj1'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
-                            <input type="text" class="rj1 rj1_2" name="rj1[{{ $loop->index }}][_2]" value="{{ $angulos_v['rj1'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
-                            <input type="text" class="rj1 rj1_3" name="rj1[{{ $loop->index }}][_3]" value="{{ $angulos_v['rj1'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
-                            <input type="text" class="rj1 rj1_4" name="rj1[{{ $loop->index }}][_4]" value="{{ $angulos_v['rj1'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
-                            <input type="text" class="totalrj1"  name="rj1[{{ $loop->index }}][_total]" value="{{ $angulos_v['rj1'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput rj1 rj1_1" name="rj1[{{ $loop->index }}][_1]" value="{{ $angulos_v['rj1'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput rj1 rj1_2" name="rj1[{{ $loop->index }}][_2]" value="{{ $angulos_v['rj1'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                            <input type="text" class="disabledinput rj1 rj1_3" name="rj1[{{ $loop->index }}][_3]" value="{{ $angulos_v['rj1'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                            <input type="text" class="disabledinput rj1 rj1_4" name="rj1[{{ $loop->index }}][_4]" value="{{ $angulos_v['rj1'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                            <input type="text" class="disabledinput totalrj1"  name="rj1[{{ $loop->index }}][_total]" value="{{ $angulos_v['rj1'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                             </span>
                             </td>
 
                             <!-- rj,k2 -->
                             <td>
                             <span class="disabled">
-                            <input type="text" class="rj2 rj2_1" name="rj2[{{ $loop->index }}][_1]" value="{{ $angulos_v['rj2'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" readonly /><br>
-                            <input type="text" class="rj2 rj2_2" name="rj2[{{ $loop->index }}][_2]" value="{{ $angulos_v['rj2'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
-                            <input type="text" class="rj2 rj2_3" name="rj2[{{ $loop->index }}][_3]" value="{{ $angulos_v['rj2'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
-                            <input type="text" class="rj2 rj2_4" name="rj2[{{ $loop->index }}][_4]" value="{{ $angulos_v['rj2'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
-                            <input type="text" class="rj2 totalrj2" name="rj2[{{ $loop->index }}][_total]" value="{{ $angulos_v['rj2'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput rj2 rj2_1" name="rj2[{{ $loop->index }}][_1]" value="{{ $angulos_v['rj2'][$loop->index]['_1'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;"  data-ancla="1" readonly /><br>
+                            <input type="text" class="disabledinput rj2 rj2_2" name="rj2[{{ $loop->index }}][_2]" value="{{ $angulos_v['rj2'][$loop->index]['_2'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="2" readonly /><br>
+                            <input type="text" class="disabledinput rj2 rj2_3" name="rj2[{{ $loop->index }}][_3]" value="{{ $angulos_v['rj2'][$loop->index]['_3'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="3" readonly /><br>
+                            <input type="text" class="disabledinput rj2 rj2_4" name="rj2[{{ $loop->index }}][_4]" value="{{ $angulos_v['rj2'][$loop->index]['_4'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="4" readonly /><br>
+                            <input type="text" class="disabledinput rj2 totalrj2" name="rj2[{{ $loop->index }}][_total]" value="{{ $angulos_v['rj2'][$loop->index]['_total'] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" data-ancla="1" readonly /><br>
                             </span>
                             </td>
 
@@ -144,8 +149,8 @@
             <tr>
             <td>s=</td>
             <td>
-              <input type="text" class="sumatotalrj2" name="sumatotalrj2" value="{{ $angulos_v['sumatotalrj2'] ?? "" }}" style="float: right" readonly />
-              <input type="text" class="raizsumatoria"  name="raizsumatoria" value="{{ $angulos_v['raizsumatoria'] ?? "" }}" readonly />
+              <input type="text" class="disabledinput sumatotalrj2" name="sumatotalrj2" value="{{ $angulos_v['sumatotalrj2'] ?? "" }}" style="float: right" readonly />
+              <input type="text" class="disabledinput raizsumatoria"  name="raizsumatoria" value="{{ $angulos_v['raizsumatoria'] ?? "" }}" readonly />
             </td>
             </tr>
             </tbody>
@@ -438,23 +443,6 @@ $(document).on("keyup", ".Xj1, .Xj2", function(evt){
 
 });
 
-/*
-$(".btnSubmit").on( "click", function(evt) {
-  evt.preventDefault();
-
-  var $btnSubmit = $(this);
-  var $form = $btnSubmit.closest("form");
-
-  var qs = $form.serialize();
-
-  var _token = $('meta[name="_token"]').first().attr('content');
-
-  var xhr = $.post('/sandbox/save', { '_token': _token, 'qs':qs }, null, 'json');
-
-  xhr.done(function(response){
-
-  });
-});*/
 </script>
 @endpush
 

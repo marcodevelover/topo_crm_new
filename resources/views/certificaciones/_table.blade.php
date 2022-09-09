@@ -6,7 +6,12 @@
     .input1{
       text-align: center;
       background: #d5d5d5;
+       margin:4px;
       border:none;
+    }
+
+    .inputdist{
+      margin:2px;
     }
 
     .patron{
@@ -25,7 +30,7 @@
       border:none;
     }
 
-    .disable{
+    .dis{
       text-align: center;
       background: #d5d5d5;
       border:none;
@@ -68,9 +73,9 @@
 
                             <td>
 
-                            <input type="text" name="dist1[]" class="dist1" value="{{ $aux['dist1'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" /><br>
-                            <input type="text" name="dist2[]" class="dist2" value="{{ $aux['dist2'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" /><br>
-                            <input type="text" name="dist3[]" class="dist3" value="{{ $aux['dist3'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" />
+                            <input type="text" name="dist1[]" class="inputdist dist1" value="{{ $aux['dist1'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" /><br>
+                            <input type="text" name="dist2[]" class="inputdist dist2" value="{{ $aux['dist2'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" /><br>
+                            <input type="text" name="dist3[]" class="inputdist dist3" value="{{ $aux['dist3'][$loop->index] ?? "" }}" style="widht: 60px;width: 100px;text-align: center;" />
 
                             </td>
                             <td><input type="text"  class=" input1 input_promedio" name="promedio_prisma[]" value="{{ $aux['promedio_prisma'][$loop->index] ?? "" }}" readonly></td>
@@ -96,23 +101,23 @@
                     </tr>
                     <tr>
                     <td>TOTAL DE MEDICIONES POSIBLES</td>
-                    <td><input name="txtMedidasPosibles" class="disable txtMedidasPosibles" value="{{ $aux['txtMedidasPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtMedidasPosibles" class="dis txtMedidasPosibles" value="{{ $aux['txtMedidasPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>TOTAL DE PUNTOS CONOCIDOS</td>
-                    <td><input name="txtTotalPuntosPosibles" class="disable txtTotalPuntosPosibles" value="{{ $aux['txtTotalPuntosPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtTotalPuntosPosibles" class="dis txtTotalPuntosPosibles" value="{{ $aux['txtTotalPuntosPosibles'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>NUMERO DE GRADOS DE LIBERTAD</td>
-                    <td><input name="txtNumeroGradoLibertad" class="disable txtNumeroGradoLibertad" value="{{ $aux['txtNumeroGradoLibertad'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtNumeroGradoLibertad" class="dis txtNumeroGradoLibertad" value="{{ $aux['txtNumeroGradoLibertad'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>SUMATORIA RESIDUO CUADRATICO MM</td>
-                    <td><input name="txtSumatoriaResiduoCuadratico" class="disable txtSumatoriaResiduoCuadratico" value="{{ $aux['txtSumatoriaResiduoCuadratico'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtSumatoriaResiduoCuadratico" class="dis txtSumatoriaResiduoCuadratico" value="{{ $aux['txtSumatoriaResiduoCuadratico'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>
                     <td>Desviacion</td>
-                    <td><input name="txtDesviacion" class="disable txtDesviacion" value="{{ $aux['txtDesviacion'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
+                    <td><input name="txtDesviacion" class="dis txtDesviacion" value="{{ $aux['txtDesviacion'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
 
                 </tbody>
