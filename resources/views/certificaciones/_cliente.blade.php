@@ -6,11 +6,12 @@
                     <h5 class="my-1">Datos del cliente</h5>
                 </div>
                 <div class="card-body pt-2">
+
                     <div class="row">
                         <div class="col-sm-6 col-lg-6">
                             <label for="staticNombre" class="col-form-label">Nombre</label>
                             <input type="hidden" name="customer_id" value="{{ $customer->id }}">
-                            <input id="staticNombre" type="text" class="form-control" placeholder="" name="customer[name]" 
+                            <input id="staticNombre" type="text" class="form-control" placeholder="" name="customer[name]"
                                 value="{{ old("customer[name]", $customer->name ) }}"
                             >
                         </div>
@@ -33,6 +34,7 @@
                             >
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

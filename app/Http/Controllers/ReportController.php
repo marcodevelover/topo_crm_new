@@ -16,231 +16,269 @@ use App\Temp;
 
 class ReportController extends Controller
 {
-    public function __construct()
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
+  // public function access(){
+  //     if( auth::user()->rol != 'admin'){
+  //         return redirect()->route('certificaciones.index')->with([
+  //             'message'=>'Acceso restringido para administradores',
+  //             'clase' => 'warning'
+  //         ]);
+  //     }
+  // }
+
+  public function qrcode()
+  {
+    \QrCode::format('png')
+    ->size(473)
+    ->margin(1)
+    ->generate( route('cdc-toposervis','CT-0004') ,public_path('storage/qrcodes/CT-0004.png'));
+  }
+
+  public function index()
+  {
+    $reports = Report::paginate(12);
+
+    return view('certificaciones.index', compact('reports'));
+  }
+
+  public function create(Request $request, $idserv="")
+  {
+    $reponse = [];
+
+      $objReport      = new Report();
+      $objCustomer    = new Customer();
+      $objEquipment   = new Equipment();
+      $objLaboratorio = new Laboratorio();
+
+      $objTemp = new Temp();
+
+      $report    = $objReport;
+      $customer  = $objCustomer;
+      $equipment = $objEquipment;
+
+      if(!empty($idserv))
+      {
+        $service_order  = $objLaboratorio->find($idserv);
+
+        $customer = $service_order->customer;
+        $producto = $service_order->product;
+
+        $equipment = $producto;
+
+        $equipment->equipment = $producto->name;
+        $equipment->no_serie  = $service_order->serie;
+        $equipment->brand     = $service_order->brand;
+        $equipment->model  = $service_order->model;
+
+      }
+
+      $report->measurements = [
+          "xaj"=> ["0","0","0","0"],
+          "xbj"=> ["0","0","0","0"],
+          "dj1"=> ["0","0","0","0"],
+          "rj1"=> ["0","0","0","0"],
+          "r2j1"=> ["0","0","0","0"],
+          "xaj2"=> ["0","0","0","0"],
+          "xbj2"=> ["0","0","0","0"],
+          "dj2"=> ["0","0","0","0",],
+          "rj2"=> ["0","0","0","0"],
+          "r2j2" => ["0","0","0","0"]
+      ];
+
+       $report->angulosprisma = [
+          "distancia"=> ["0","0","0","0"],
+          "promedio"=> ["0","0","0","0"],
+          "patron"=> ["0","0","0","0"],
+          "residuo"=> ["0","0","0","0"],
+          "residuocuadratico"=> ["0","0","0","0"],
+
+      ];
+
+      $report->angulosHorizontales = [
+          "i"=> ["0","0","0"],
+          "k"=> ["1","2","3","4","∑"],
+          "cara1"=> ["0","0","0","0"],
+          "cara2"=> ["0","0","0","0"],
+          "sumacaras"=> ["0","0","0","0"],
+          "promedio"=> ["0","0","0","0"],
+          "sumaprom"=> ["0","0","0","0","0"],
+          "promsuma"=> ["0","0","0","0","0"],
+          "restaprom"=> ["0","0","0","0"],
+          "promresta"=> ["0","0","0","0"],
+          "r"=> ["0","0","0","0"],
+          "r2"=> ["0","0","0","0"],
+      ];
+
+       $report->angulosVerticales = [
+          "i"=> ["0","0","0"],
+          "k"=> ["1","2","3","4","∑"],
+          "Xj,k1"=> ["1","2","3","4"],
+          "Xj,k2"=> ["0","0","0","0"],
+          "sigma"=> ["0","0","0","0"],
+          "xj,k"=> ["0","0","0","0"],
+          "xk"=> ["0","0","0","0"],
+          "rj,k"=> ["0","0","0","0"],
+          "rj,k2"=> ["0","0","0","0"],
+      ];
+
+      $temp = $objTemp->find(1);
+
+      $response['report']    = $report;
+      $response['customer']  = $customer;
+      $response['equipment'] = $equipment;
+
+      $response['aux'] = json_decode($temp->medicion, true);
+      $response['angulos_h'] = json_decode($temp->angulos_h, true);
+      $response['angulos_v'] = json_decode($temp->angulos_v, true);
+
+      return view('certificaciones.new', $response);
+  }
+
+  public function store(Request $request)
+  {
+      /*request()->validate([
+          'temperature' => 'required',
+          'cumple' => 'required',
+          'pressure' => 'required',
+          'humidity' => 'required',
+          'observation' => 'required',
+          'customer.name' => 'required',
+          'customer.address' => 'required',
+          'customer.phone' => 'required',
+          'customer.email' => 'required',
+          'equipment.equipment' => 'required',
+          'equipment.brand' => 'required',
+          'equipment.model' => 'required',
+          'equipment.no_serie' => 'required'
+      ]);*/
+
+      $last_user = Report::latest()->orderBy('id', 'DESC')->first();
+
+      $folio = explode('-',$last_user->folio);
+
+      $_folio = '';
+      if( $last_user ){
+          if( $folio[1] < 10 ){
+              $_folio = 'CT-000'.( $folio[1] + 1 );
+          }
+          if( $folio[1] > 9 && $folio[1] < 100 ){
+              $_folio = 'CT-00'.( $folio[1] + 1 );
+          }
+          if( $folio[1] > 99 && $folio[1] < 1000 ){
+              $_folio = 'CT-0'.( $folio[1] + 1 );
+          }
+          if( $folio[1]> 1000){
+              $_folio = 'CT-'.( $folio[1] + 1 );
+          }
+      }else{
+          $_folio = 'CT-0001';
+      }
+
+      // Create user
+      $customer = Customer::create([
+          'name' => $request->customer['name'],
+          'address' => $request->customer['address'],
+          'email' => $request->customer['email'],
+          'phone' => $request->customer['phone']
+      ]);
+
+      // Create equipment
+      $equipment = Equipment::create([
+        'equipment' => $request->equipment['equipment'],
+        'brand' => $request->equipment['brand'],
+        'model' => $request->equipment['model'],
+        'no_serie' => $request->equipment['no_serie']
+      ]);
+
+      $measurements = $this->assignMeasures($request);
+      $user = auth()->user();
+      // // Create report
+      $report = Report::create([
+          'customer_id' => $customer->id,
+          'equipment_id' => $equipment->id,
+          'user_id' => $user->id,
+          'pattern_id' => 1,
+          'folio' => $_folio,
+          'date' => date('Y-m-d'),
+          'temperature' => $request->temperature,
+          'cumple' => ( $request->cumple == 'on' ? 1 : 0 ),
+          'pressure' => $request->pressure,
+          'humidity' => $request->humidity,
+          'hour' => $request->hour,
+          'sisolev' => 1,
+          'observation' => $request->observation,
+          'measurements' => $measurements,
+      ]);
+
+      \QrCode::format('png')
+      ->size(473)
+      ->margin(1)
+      ->generate( route('cdc-toposervis',$report->folio), public_path('storage/qrcodes/'. $report->folio.'.png'));
+
+      return redirect()->route('certificaciones.edit', $report->id)->with(['message'=>'Registro creado con éxito']);
+  }
+
+  public function show($id)
+  {
+      $report    = Report::find($id);
+      $customer  = $report->customer;
+      $equipment = $report->equipment[0];
+      $pattern   = $report->pattern;
+      // return View('certificaciones.show', compact('report','customer','equipment', 'pattern'));
+
+      $view = View('certificaciones.show', compact('report','customer','equipment', 'pattern'));
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view->render());
+      return $pdf->stream();
+  }
+
+  public function edit(Report $report, $id)
+  {
+    $response = [];
+
+    if( auth::user()->rol != 'admin')
     {
-        $this->middleware('auth');
+      return redirect()->route('certificaciones.index')->with([
+        'message'=>'Acceso restringido para administradores',
+        'clase' => 'warning',
+      ]);
     }
 
-    // public function access(){
-    //     if( auth::user()->rol != 'admin'){
-    //         return redirect()->route('certificaciones.index')->with([
-    //             'message'=>'Acceso restringido para administradores',
-    //             'clase' => 'warning'
-    //         ]);
-    //     }
-    // }
-    public function qrcode(){
+    $report = Report::find($id);
 
-        \QrCode::format('png')
-        ->size(473)
-        ->margin(1)
-        ->generate( route('cdc-toposervis','CT-0004') ,public_path('storage/qrcodes/CT-0004.png'));
-    }
-    public function index()
-    {
-        $reports = Report::paginate(12);
-        return view('certificaciones.index', compact('reports'));
-    }
+    $customer = $report->customer;
 
-    public function create()
-    {
-        $report    = new Report();
-        $customer  = new Customer();
-        $equipment = new Equipment();
+    $equipment = $report->equipment[0];
 
-        $objTemp = new Temp();
+    $response["report"]    = $report;
+    $response["customer"]  = $customer;
+    $response["equipment"] = $equipment;
 
-        $report->measurements = [
-            "xaj"=> ["0","0","0","0"],
-            "xbj"=> ["0","0","0","0"],
-            "dj1"=> ["0","0","0","0"],
-            "rj1"=> ["0","0","0","0"],
-            "r2j1"=> ["0","0","0","0"],
-            "xaj2"=> ["0","0","0","0"],
-            "xbj2"=> ["0","0","0","0"],
-            "dj2"=> ["0","0","0","0",],
-            "rj2"=> ["0","0","0","0"],
-            "r2j2" => ["0","0","0","0"]
-        ];
+    /*$pattern = $report->pattern;     */
 
-         $report->angulosprisma = [
-            "distancia"=> ["0","0","0","0"],
-            "promedio"=> ["0","0","0","0"],
-            "patron"=> ["0","0","0","0"],
-            "residuo"=> ["0","0","0","0"],
-            "residuocuadratico"=> ["0","0","0","0"],
+    return view('certificaciones.edit', $response);
+  }
 
-        ];
+  public function search(Request $request)
+  {
+    $reports = Report::where ( 'folio', 'LIKE', '%' . $request->folio . '%' )->paginate(10);
+    return view('certificaciones.index', compact('reports'));
+  }
 
-        $report->angulosHorizontales = [
-            "i"=> ["0","0","0"],
-            "k"=> ["1","2","3","4","∑"],
-            "cara1"=> ["0","0","0","0"],
-            "cara2"=> ["0","0","0","0"],
-            "sumacaras"=> ["0","0","0","0"],
-            "promedio"=> ["0","0","0","0"],
-            "sumaprom"=> ["0","0","0","0","0"],
-            "promsuma"=> ["0","0","0","0","0"],
-            "restaprom"=> ["0","0","0","0"],
-            "promresta"=> ["0","0","0","0"],
-            "r"=> ["0","0","0","0"],
-            "r2"=> ["0","0","0","0"],
-        ];
+  private function saveCustomer($id, $_customer)
+  {
+    $customer = Customer::find($id);
+    $customer->name = $_customer['name'];
+    $customer->address = $_customer['address'] ? $_customer['address'] : "Dirección";
+    $customer->email = $_customer['email'] ? $_customer['email'] : "Correo";
+    $customer->phone = $_customer['phone'] ? $_customer['phone'] : "Teléfono";
 
-         $report->angulosVerticales = [
-            "i"=> ["0","0","0"],
-            "k"=> ["1","2","3","4","∑"],
-            "Xj,k1"=> ["1","2","3","4"],
-            "Xj,k2"=> ["0","0","0","0"],
-            "sigma"=> ["0","0","0","0"],
-            "xj,k"=> ["0","0","0","0"],
-            "xk"=> ["0","0","0","0"],
-            "rj,k"=> ["0","0","0","0"],
-            "rj,k2"=> ["0","0","0","0"],
-        ];
-
-        $response = array();
-
-        $temp = $objTemp->find(1);
-
-        $response['report']    = $report;
-        $response['customer']  = $customer;
-        $response['equipment'] = $equipment;
-
-        $response['aux'] = json_decode($temp->medicion, true);
-        $response['angulos_h'] = json_decode($temp->angulos_h, true);
-        $response['angulos_v'] = json_decode($temp->angulos_v, true);
-
-        return view('certificaciones.new', $response);
-    }
-
-    public function store(Request $request)
-    {
-        /*request()->validate([
-            'temperature' => 'required',
-            'cumple' => 'required',
-            'pressure' => 'required',
-            'humidity' => 'required',
-            'observation' => 'required',
-            'customer.name' => 'required',
-            'customer.address' => 'required',
-            'customer.phone' => 'required',
-            'customer.email' => 'required',
-            'equipment.equipment' => 'required',
-            'equipment.brand' => 'required',
-            'equipment.model' => 'required',
-            'equipment.no_serie' => 'required'
-        ]);*/
-
-        $last_user = Report::latest()->orderBy('id', 'DESC')->first();
-
-        $folio = explode('-',$last_user->folio);
-
-        $_folio = '';
-        if( $last_user ){
-            if( $folio[1] < 10 ){
-                $_folio = 'CT-000'.( $folio[1] + 1 );
-            }
-            if( $folio[1] > 9 && $folio[1] < 100 ){
-                $_folio = 'CT-00'.( $folio[1] + 1 );
-            }
-            if( $folio[1] > 99 && $folio[1] < 1000 ){
-                $_folio = 'CT-0'.( $folio[1] + 1 );
-            }
-            if( $folio[1]> 1000){
-                $_folio = 'CT-'.( $folio[1] + 1 );
-            }
-        }else{
-            $_folio = 'CT-0001';
-        }
-
-        // Create user
-        $customer = Customer::create([
-            'name' => $request->customer['name'],
-            'address' => $request->customer['address'],
-            'email' => $request->customer['email'],
-            'phone' => $request->customer['phone']
-        ]);
-
-        // Create equipment
-        $equipment = Equipment::create([
-          'equipment' => $request->equipment['equipment'],
-          'brand' => $request->equipment['brand'],
-          'model' => $request->equipment['model'],
-          'no_serie' => $request->equipment['no_serie']
-        ]);
-        
-        $measurements = $this->assignMeasures($request);
-        $user = auth()->user();
-        // // Create report 
-        $report = Report::create([
-            'customer_id' => $customer->id,
-            'equipment_id' => $equipment->id,
-            'user_id' => $user->id,
-            'pattern_id' => 1,
-            'folio' => $_folio,
-            'date' => date('Y-m-d'),
-            'temperature' => $request->temperature,
-            'cumple' => ( $request->cumple == 'on' ? 1 : 0 ),
-            'pressure' => $request->pressure,
-            'humidity' => $request->humidity,
-            'hour' => $request->hour,
-            'sisolev' => 1,
-            'observation' => $request->observation,
-            'measurements' => $measurements,
-        ]);
-
-        \QrCode::format('png')
-        ->size(473)
-        ->margin(1)
-        ->generate( route('cdc-toposervis',$report->folio) ,public_path('storage/qrcodes/'. $report->folio.'.png'));
-        return redirect()->route('certificaciones.edit',$report->id)->with(['message'=>'Registro creado con éxito']);
-    }
-
-    public function show($id)
-    {
-        $report = Report::find($id);
-        $customer = $report->customer[0];
-        $equipment = $report->equipment[0];
-        $pattern = $report->pattern;
-        // return View('certificaciones.show', compact('report','customer','equipment', 'pattern'));
-
-        $view = View('certificaciones.show', compact('report','customer','equipment', 'pattern'));
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view->render());
-        return $pdf->stream();
-    }
-
-    public function edit(Report $report, $id)
-    {
-        if( auth::user()->rol != 'admin'){
-            return redirect()->route('certificaciones.index')->with([
-                'message'=>'Acceso restringido para administradores',
-                'clase' => 'warning'
-            ]);
-        }
-        $report = Report::find($id);
-        $customer = $report->customer[0];
-        $equipment = $report->equipment[0];
-        $pattern = $report->pattern;
-        return view('certificaciones.edit', compact('report','customer','equipment'));
-    }
-    public function search(Request $request)
-    {
-        $reports = Report::where ( 'folio', 'LIKE', '%' . $request->folio . '%' )->paginate(10);
-        return view('certificaciones.index', compact('reports'));
-    }
-
-    private function saveCustomer($id, $_customer){
-
-        $customer = Customer::find($id);
-        $customer->name = $_customer['name'];
-        $customer->address = $_customer['address'] ? $_customer['address'] : "Dirección";
-        $customer->email = $_customer['email'] ? $_customer['email'] : "Correo";
-        $customer->phone = $_customer['phone'] ? $_customer['phone'] : "Teléfono";
-
-        $customer->save();
-    }
+    $customer->save();
+  }
 
     private function saveEquipment($id, $_equipment){
         $equipment = Equipment::find($id);
@@ -318,23 +356,23 @@ class ReportController extends Controller
         //
     }
 
-    public function createcertificado(Request $request, $id)
+  public function createcertificado(Request $request, $id)
+  {
+    $service = Laboratorio::find($id);
+
+    $report = new Report();
+
+    if($request->get("pattern") == 1)
     {
-        $service = Laboratorio::find($id);
-
-        $report = new Report();
-
-        if($request->get("pattern") == 1)
-        {
-          $pattern = Pattern::find(1);
-        }
-        elseif($request->get("pattern") == 2)
-        {
-          $pattern = Pattern::find(2);
-        }
-
-        return view('laboratorio.new', compact('service','report','pattern'));
+      $pattern = Pattern::find(1);
     }
+    elseif($request->get("pattern") == 2)
+    {
+      $pattern = Pattern::find(2);
+    }
+
+    return view('laboratorio.new', compact('service','report','pattern'));
+  }
 
   public function save_medicion(Request $request)
   {

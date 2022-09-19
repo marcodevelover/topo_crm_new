@@ -159,8 +159,8 @@
 
 
 
-    <input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />
-
+   <!-- <input type="button" class="btnSubmit btn-lg my-4 btn-primary font-weight-bold" value="Aceptar" />   -->
+    <button type="submit" class="btn btn-lg my-4 btn-primary font-weight-bold">Guardar Datos</button>
 
  <!--   </form>
 -->

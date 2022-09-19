@@ -47,7 +47,8 @@
                                             <div class="dropdown-menu" aria-labelledby="dropcert">
                                                 <a class="dropdown-item" href="{{ $base_url.'/certificado-nivel/'. $lab->id}}/?pattern=1">Nivel</a>
                                                 <!-- <a class="dropdown-item" href="{{ $base_url.'/certificado-nivel/'. $lab->id}}/?pattern=2">Estación</a> -->
-                                                <a class="dropdown-item" href="{{ route('certificaciones.create') }}">Estación</a>
+                                                <a class="dropdown-item" href="{{ $base_url.'/certificado-estacion/'. $lab->id. '/create/' }}">Estación</a>
+                                                <!--<a class="dropdown-item" href="{{ route('certificaciones.create') }}">Estación</a> -->
                                             </div>
                                         {{-- @endif --}}
                                     </div>

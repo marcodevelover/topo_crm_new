@@ -34,6 +34,11 @@ Route::get('certificado-nivel/{id}','ReportController@createcertificado');
 Route::resource('/certificaciones','ReportController')
 ->parameters(['certificaciones'=>'certificado'])->names('certificaciones');
 
+
+Route::get('certificado-estacion/{idserv}/create','ReportController@create')->where(['idserv' => '[0-9]+']);
+
+
+
 Route::resource('/usuarios','UserController')
 ->parameters(['usuarios'=>'user'])->names('usuarios');
 

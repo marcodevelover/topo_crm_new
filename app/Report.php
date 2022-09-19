@@ -27,9 +27,16 @@ class Report extends Model
         'measurements' => 'array'
     ];
 
-    public function customer(){
-        return $this->hasMany('App\Customer','id', 'customer_id');
+    public function customer()
+    {
+      return $this->belongsTo('App\Customer', 'customer_id');
     }
+
+    public function customers()
+    {
+      return $this->hasMany('App\Customer','id', 'customer_id');
+    }
+
     public function equipment(){
         return $this->hasMany('App\Equipment','id', 'equipment_id');
     }

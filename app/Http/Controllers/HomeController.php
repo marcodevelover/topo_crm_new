@@ -35,7 +35,7 @@ class HomeController extends Controller
         $user1 = User::where('job','Jefe de laboratorio')->first();
         // $user2 = User::where('job','Ingeniero de servicio')->first();
 
-        $customer = $report->customer[0];
+        $customer = $report->customer;
         $equipment = $report->equipment[0];
         $pattern = $report->pattern;
         // return View('publicpdf', compact('report','customer','equipment', 'pattern','user1','user2'));
