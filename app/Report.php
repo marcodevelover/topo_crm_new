@@ -21,7 +21,8 @@ class Report extends Model
         'hour',
         'sisolev',
         'observation',
-        'measurements'
+        'measurements',
+        'tipo',
     ];
     protected $casts = [
         'measurements' => 'array'
@@ -48,4 +49,12 @@ class Report extends Model
     public function user(){
         return $this->hasOne('App\User','id', 'user_id');
     }
+
+    public function mediciones()
+    {
+      /*return $this->belongsToMany('App\ReportMedicion', 'id', 'idreport');*/
+      return $this->hasMany('App\ReportMedicion', 'idreport');
+    }
+
+
 }

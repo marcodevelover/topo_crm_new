@@ -807,7 +807,7 @@ function toFix(x)
 
 /*$("#data").load(" #data");  */
 
-$(".btnSubmit").on( "click", function(evt) {
+/*$(".btnSubmit").on( "click", function(evt) {
   evt.preventDefault();
 
   var $btnSubmit = $(this);
@@ -823,6 +823,20 @@ $(".btnSubmit").on( "click", function(evt) {
   xhr.done(function(response){
     alert("guardado !!");
   });
+});*/
+
+$(".btnSubmit").on( "click", function(evt) {
+  evt.preventDefault();
+
+  $btnSubmit = $(this);
+
+  $form = $btnSubmit.closest("form");
+
+  qs = $form.serialize();
+
+  $form.append('<input type="text" name="qs" value="'+ qs +'" />');
+
+  $form.submit();
 });
 
 </script>

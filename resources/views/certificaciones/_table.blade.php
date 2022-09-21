@@ -37,6 +37,9 @@
     }
 
 </style>
+
+
+@if(isset($report->angulosprisma['patron']) && !empty($report->angulosprisma['patron']))
 <div class="card my-2">
     <div class="card-header">
         <h5 class="my-1">Reporte de medición (Pruebas de distanciometro usando prisma)</h5>
@@ -119,7 +122,6 @@
                     <td>Desviacion</td>
                     <td><input name="txtDesviacion" class="dis txtDesviacion" value="{{ $aux['txtDesviacion'] ?? "" }}" type="text" readonly style="text-align: center;width: 100px;" ></td>
                     </tr>
-
                 </tbody>
             </table>
 
@@ -133,4 +135,5 @@
 
     </div>
 </div>
+@endif
 

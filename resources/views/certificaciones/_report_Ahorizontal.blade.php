@@ -23,37 +23,34 @@
             </div>
             <div class="form-check form-switch col-sm-2 col-lg-2">
                 <div><label class="form-check-label" for="flexSwitchCheckChecked">Cumple</label></div>
-                <input class="form-check-input" name="cumple" type="checkbox" id="flexSwitchCheckChecked" {{ $report->cumple == 1 ? 'checked' : '' }}>
+                <input class="form-check-input" name="angulos_h[cumple]" type="checkbox" id="flexSwitchCheckChecked" {{ $report->cumple == 1 ? 'checked' : '' }}>
             </div>
             <div class="col-sm-2 col-lg-2">
                 <label for="staticEmail" class="col-form-label">Temperatura</label>
-                <input type="text" class="form-control" placeholder="Temperatura" name="temperature" value="{{ old("", $report->temperature) }}">
+                <input type="text" class="form-control" placeholder="Temperatura" name="angulos_h[temperature]" value="{{ old("", $report->temperature) }}">
             </div>
       
             <div class="col-sm-4 col-lg-2">
                 <label for="staticEmail" class="col-form-label">Presión</label>
-                <input type="text" class="form-control" placeholder="Presión" name="pressure" value="{{ old("pressure", $report->pressure) }}">
+                <input type="text" class="form-control" placeholder="Presión" name="angulos_h[pressure]" value="{{ old("pressure", $report->pressure) }}">
             </div>
 
             <div class="col-sm-4 col-lg-2">
                 <label for="staticEmail" class="col-form-label">Húmedad</label>
-                <input type="text" class="form-control" placeholder="Húmedad" name="humidity" value="{{ old("humidity", $report->humidity) }}">
+                <input type="text" class="form-control" placeholder="Húmedad" name="angulos_h[humidity]" value="{{ old("humidity", $report->humidity) }}">
             </div>
             <div class="col-sm-4 col-lg-4">
                 <label for="staticEmail" class="col-form-label">Observador</label>
-                <input type="text" class="form-control" placeholder="Observador" name="observer" value="{{ old("observer", $report->observer) }}">
+                <input type="text" class="form-control" placeholder="Observador" name="angulos_h[observer]" value="{{ old("observer", $report->observer) }}">
             </div>
             <div class="col-sm-4 col-lg-2">
                 <label for="staticEmail" class="col-form-label">Hora</label>
-                <input type="text" class="form-control" placeholder="Hora" name="hour" value="{{ old("hour", $report->hour) }}">
+                <input type="text" class="form-control" placeholder="Hora" name="angulos_h[hour]" value="{{ old("hour", $report->hour) }}">
             </div>
-            {{-- <div class="col-sm-4 col-lg-4">
-                <label for="staticEmail" class="col-form-label">Resultado sisolev</label>
-                <input id="input_sisolev" type="text" class="form-control" placeholder="Resultado sisolev" name="sisolev" value="{{ old("sisolev", $report->sisolev) }}">
-            </div> --}}
+
             <div class="col-sm-12 col-lg-12">
                 <label for="staticEmail" class="col-form-label">Observaciones</label>
-                <textarea class="form-control" placeholder="Observaciones" name="observation">{{ old('observation', $report->observation) }}</textarea>
+                <textarea class="form-control" placeholder="Observaciones" name="angulos_h[observation]">{{ old('observation', $report->observation) }}</textarea>
             </div>
         </div>
     </div>
