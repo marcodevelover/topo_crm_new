@@ -1,0 +1,233 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>No. CT-{{ $report->folio }}</title>
+        <style>
+            @page {
+                margin: 0cm 0cm;
+            }
+            body {
+                position: relative;
+                margin-top: 1cm;
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-bottom: 2cm;
+                font-size:14px;
+            }
+            .logo{
+                background-image: url('https://certificaciones.toposervis.com.mx/assets/images/ToposervisLogo.png');
+                position:fixed;
+                top:0;
+                left:0;
+                opacity:0.04;
+                width:100%;
+                height:100%;
+            }
+
+            .table-sm{
+                line-height: 1; 
+            }
+            /** Definir las reglas del pie de página **/
+            footer {
+                font-size:12px;
+                position: fixed; 
+                bottom: 1cm; 
+                left: 0cm; 
+                right: 0cm;
+                height: 2cm;
+                padding:0cm 2cm 1cm 2cm;
+                width: 100%;
+            }
+            table{
+                margin:20px 0px;
+            }
+            table tr,
+            table tr td{
+                vertical-align:top;
+            }
+            table tr th{
+                vertical-align:middle;
+            }
+            .bg-topo{background-color:#103442;color:#fff}
+        </style>
+    </head>
+    <body>
+        <div class="logo"></div>
+        <footer>
+            <table class="table table-sm">
+                <tr style="padding:1px 0px;">
+                    <td style="border:0px;padding:0px;text-align:left;">Toposervis S.A de C.V <br>C. 42 #264 por 41A y 41 <br>Col. Francisco de Montejo III,<br> Mérida, Yucatán, México</td>
+                    <td style="border:0px;padding:0px;text-align:right;">
+                        Certificado <strong>No {{$report->folio}}</strong><br>
+                        Queda prohibida la reproducción <br>total o parcial
+                    </td>
+                </tr>
+                <tr style="padding:1px 0px;">
+                    <td style="border:0px;padding:0px;text-align:left;">www.toposervi.com</td>
+                    <td style="border:0px;padding:0px;text-align:right;"></td>
+                </tr>
+                <tr style="padding:1px 0px;">
+                    <td style="border:0px;padding:0px;text-align:left;">(999) 429 8278</td>
+                    <td style="border:0px;padding:0px;text-align:right;"></td>
+                </tr>
+            </table>
+        </footer>
+        
+        <main>
+            <table>
+                <tr>
+                    <td class="text-center">
+                        <img src="https://certificaciones.toposervis.com.mx/assets/images/Toposervis-Logo.png" width="120">
+                    </td>
+                    <td class="text-center">
+                        <p style="font-size:22px;font-weight:bold;line-height:28px;">TOPOSERVIS S DE RL DE CV CONSTANCIA DE CALIBRACIÓN</p>
+                        <strong>{{$report->folio}}</strong>
+                    </td>
+                    <td class="text-center">
+                        <img src="https://certificaciones.toposervis.com.mx/assets/images/Toposervis-Logo.png" width="120">
+                    </td>
+                </tr>
+            </table>
+            
+            <table class="table table-sm" style="border:0px;">
+                <tr class="bg-topo">
+                    <th colspan="2" style="border:0px;vertical-align:middle"> Datos del cliente</th>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Nombre</td><td style="border:0px;">{{$customer['name']}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Dirección</td><td style="border:0px;">{{$customer['address']}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Correo</td><td style="border:0px;">{{$customer['email']}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Teléfono</td><td style="border:0px;">{{$customer['phone']}}</td>
+                </tr>
+            </table>
+            <table class="table table-sm" style="border:0px;">
+                <tr class="bg-topo">
+                    <th colspan="2">Datos del equipo</th>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Equipo</td><td style="border:0px;">{{$equipment['equipment']}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Marca</td><td style="border:0px;">{{$equipment['brand']}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Modelo</td><td style="border:0px;">{{$equipment['model']}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">No. serie</td><td style="border:0px;">{{$equipment['no_serie']}}</td>
+                </tr>
+            </table>
+            <table class="table table-sm" style="border:0px;">
+                <tr class="bg-topo">
+                    <th colspan="2">Patrón de referencia</th>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Descripcion</td><td style="border:0px;">{{$pattern->description}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Marca: {{$pattern->brand}}</td><td style="border:0px;">Modelo: {{$pattern->model}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">No. serie: {{$pattern->no_serie}}</td><td style="border:0px;">Certificado: {{$pattern->equipment}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Calibro</td><td style="border:0px;">Calibro</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Descripción</td><td style="border:0px;">Descripción</td>
+                </tr>
+            </table>
+        </main>
+        <main>
+            <!-- <div style="page-break-after:always;"></div> -->
+            <table class="table table-sm" style="border:0px;">
+                <tr class="bg-topo">
+                    <th colspan="2">Reporte de medición </th>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Fecha: {{$report->created_at}}</td>
+                    <td style="border:0px;">Temperatura: {{$report->temperature}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Producto: {{$report->product}}</td>
+                    <td style="border:0px;">Presión: {{$report->pressure}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">No serial: {{$report->no_serie}}</td>
+                    <td style="border:0px;">Húmedad: {{$report->humidity}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Obvservador</td>
+                    <td style="border:0px;">{{ $report->observation}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Hora: {{ date('H:i:s', strtotime($report->created_at)) }}</td>
+                </tr>
+            </table>
+            
+            <!-- <table class="table table-sm text-center" style="border:0px;margin-top:60px;">
+                <tr>
+                    <td colspan="1" style="border:0px;"></td><td style="border:0px;"></td>
+                </tr>
+                <tr>
+                    <td colspan="1">Cumple</td><td>No cumple</td>
+                </tr>
+            </table> -->
+        </main>
+        <div style="page-break-after:always;"></div>
+        <main>
+
+            <div style="margin-top:1cm;" class="text-center">
+                <p>Especificaciones del instrumento:</p>
+            </div>
+            <div class="text-center">
+                <p>Precisión (desviación estándar para la nivelación de doble recorrido en 1 km): 0,7 mm</p>
+            </div>
+
+            <div style="page-break-after:always;"></div>
+
+            <div class="text-center">
+                <p>Configuración para la calibración</p>
+                <img src="{{ asset('/images/reporte-medicion.png') }}" class="img-fluid">
+            </div>
+            <div class="text-center">
+                <p>Observaciones</p>
+                {{ $report->observation}}
+            </div>
+            <table class="table table-sm text-center" style="border:0px;margin:1cm 0cm;">
+                <tr>
+                    <td style="border:0px;">
+                        <img src="{{ Storage::url($user1->signed)}}" width="150">
+                    </td>
+                    <td style="border:0px;">
+                        <img src="{{ Storage::url($report->user->signed)}}" width="150">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">
+                        {{ $user1->name }} <br>
+                        {{ $user1->job }} 
+                    </td>
+                    <td style="border:0px;">
+                        {{ $report->user->name }} <br>
+                        {{ $report->user->job }} 
+                    </td>
+                </tr>
+            </table>
+            <table class="table table-sm text-center" style="border:0px;margin-top:1cm;">
+                <tr>
+                    <td colspan="2" style="text-align:center;border:0px;">
+                        <img src="{{URL::to('/')}}{{ Storage::url('qrcodes/'.$report->folio.'.png') }}" width="180"><br>
+                        <small>Certificado <strong>No {{$report->folio}}</strong></small>
+                    </td>
+                </tr>
+            </table>
+        </main>
+    </body>
+</html>

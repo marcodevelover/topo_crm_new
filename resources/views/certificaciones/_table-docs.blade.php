@@ -6,6 +6,7 @@
             <th>Certificado</th>
             <th>Calibró</th> 
             <th>No Serie</th>
+            <th>Tipo</th>
             <th>Última fecha de actualización</th>
             <th>Acciones</th>
         </tr>
@@ -18,6 +19,7 @@
             <td>{{$report->pattern['certificate']}}</td> 
             <td>{{$report->pattern['calibrated']}}</td> 
             <td> {{$report->pattern['no_serie']}}</td>
+            <td> {{$report->tipo}}</td>
             <td>{{ strftime("%d %B de %Y", strtotime($report->updated_at)) }} {{ date('H:i:s', strtotime($report->updated_at)) }}</td>
             <td>
                 <a href="{{ route('cdc-toposervis', $report->folio ) }}" class="btn btn-info" title="Ver PDF" target="_blank"> <i class="mdi mdi-file-pdf-box"></i></a>
