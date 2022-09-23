@@ -245,6 +245,12 @@ class ReportController extends Controller
 
         $Dato = $request->get('prisma');
 
+        $cDate = !empty($Dato["date"]) ? $Dato["date"]: date("Y-m-d");
+        $cTime = !empty($Dato["hour"]) ? $Dato["hour"]: date("H:i");
+
+        $Dato["date"] = $cDate . " " . $cTime;
+        $Dato["hour"] = $cTime;
+
         $Dato["idreport"] = $report->id;
         $Dato["cumple"]   = intval(isset($Dato["cumple"]));
         $Dato["tipo"]     = "PRISMA";

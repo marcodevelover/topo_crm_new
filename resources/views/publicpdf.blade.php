@@ -189,7 +189,7 @@
                     <td style="border:0px;">Húmedad: {{$report->humidity}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Obvservador</td>
+                    <td style="border:0px;">Obvservador:</td>
                     <td style="border:0px;">{{ $report->observation}}</td>
                 </tr>
                 <tr>
@@ -197,14 +197,7 @@
                 </tr>
             </table>
             
-            <!-- <table class="table table-sm text-center" style="border:0px;margin-top:60px;">
-                <tr>
-                    <td colspan="1" style="border:0px;"></td><td style="border:0px;"></td>
-                </tr>
-                <tr>
-                    <td colspan="1">Cumple</td><td>No cumple</td>
-                </tr>
-            </table> -->
+
         </main>
         <div style="page-break-after:always;"></div>
         <main>
@@ -233,10 +226,10 @@
                             <td> {{$c}} </td>
                             <td> {{ $report->measurements['xbj'][$count] }} </td>
                             <td> {{ $c - $report->measurements['xbj'][$count] }} </td>
-                            
+
                             <?php  $cuadrado1 = $cuadrado1 + $report->measurements['rj1'][$count]; ?>
                             <td> <span class="rj1">{{ $report->measurements['rj1'][$count] }}</span> </td>
-                            
+
                             <td class="r2j1"> {{ $report->measurements['r2j1'][$count] }} </td>
                             <td> {{ $index2++ }} </td>
                             <td> {{ $report->measurements['xaj2'][$count] }} </td>
@@ -297,7 +290,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                    </tr> 
+                    </tr>
                 </tfoot>
 
 

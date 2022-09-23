@@ -83,20 +83,21 @@ class HomeController extends Controller
         {
           if($medicion->tipo == "PRISMA")
           {
-            $response["prisma"]    = $medicion->json_medicion;
-            $response["arrPrisma"] = json_decode($medicion->json_medicion, true);
-
-           /* exit(var_dump($response["arrPrisma"]));   */
+            $medicion->arrMedicion = json_decode($medicion->json_medicion, true);
+            $response["prisma"]  = $medicion;
+/*            exit(var_dump($medicion->arrMedicion));*/
           }
 
           if($medicion->tipo == "ANGULOS_H")
           {
+            $medicion->arrMedicion = json_decode($medicion->json_medicion, true);
             $response["angulos_h"] = $medicion;
           }
 
           if($medicion->tipo == "ANGULOS_V")
           {
-            $response["angulos_V"] = $medicion;
+            $medicion->arrMedicion = json_decode($medicion->json_medicion, true);
+            $response["angulos_v"] = $medicion;
           }
         }
 

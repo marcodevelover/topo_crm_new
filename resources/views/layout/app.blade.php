@@ -12,6 +12,9 @@
   <link rel="shortcut icon" href="{{ asset('/favicon.png') }}">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/assets/plugins/flatpickr-4.6.3/dist/flatpickr.min.css" />
+
   <!-- plugin css -->
   {!! Html::style('assets/plugins/@mdi/font/css/materialdesignicons.min.css') !!}
   {!! Html::style('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') !!}
@@ -72,6 +75,35 @@
   <!-- end common js -->
 
   <script src="{{ get_asset('js/dashboard.js') }}"></script>
+
+  <script src="/assets/plugins/flatpickr-4.6.3/dist/flatpickr.min.js"></script>
+  <script src="/assets/plugins/flatpickr-4.6.3/dist/l10n/es.js"></script>
+
+  <script type="text/javascript">
+  flatpickr(".fp_date", {
+  "locale": "es",
+  altInput: true,
+  altFormat: "j F Y",
+  dateFormat: "Y-m-d",
+  /*dateFormat: "Y-m-d H:i",*/
+  enableTime: false,
+  /*
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true,
+  */
+});
+
+flatpickr(".fp_time", {
+  locale: "es",
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true,
+});
+
+  </script>
 
   @stack('custom-scripts')
 </body>

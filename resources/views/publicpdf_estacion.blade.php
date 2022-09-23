@@ -50,6 +50,14 @@
             }
             .bg-topo{background-color:#103442;color:#fff}
         </style>
+
+        <?php
+            $index1 = 1;
+            $index2 = 21;
+            $cont = 0;
+        ?>
+
+
     </head>
     <body>
         <div class="logo"></div>
@@ -148,40 +156,274 @@
             <!-- <div style="page-break-after:always;"></div> -->
             <table class="table table-sm" style="border:0px;">
                 <tr class="bg-topo">
-                    <th colspan="2">Reporte de medición </th>
+                    <th colspan="2">Reporte de medición - Pruebas de distanciometro usando prisma</th>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Fecha: {{$report->created_at}}</td>
-                    <td style="border:0px;">Temperatura: {{$report->temperature}}</td>
+                    <td style="border:0px;">Fecha: {{$prisma->date}}</td>
+                    <td style="border:0px;">Temperatura: {{ $prisma->temperature }}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Producto: {{$report->product}}</td>
-                    <td style="border:0px;">Presión: {{$report->pressure}}</td>
+                    <td style="border:0px;">Producto: {{$equipment['equipment']}}</td>
+                    <td style="border:0px;">Presión: {{$prisma->pressure}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">No serial: {{$report->no_serie}}</td>
-                    <td style="border:0px;">Húmedad: {{$report->humidity}}</td>
+                    <td style="border:0px;">No serial: {{$equipment['no_serie']}}</td>
+                    <td style="border:0px;">Húmedad: {{$prisma->humidity}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Obvservador</td>
-                    <td style="border:0px;">{{ $report->observation}}</td>
+                    <td style="border:0px;">Obvservador:</td>
+                    <td style="border:0px;">{{ $prisma->observer}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Hora: {{ date('H:i:s', strtotime($report->created_at)) }}</td>
+                    <td style="border:0px;">Hora: {{ date('H:i:s', strtotime($prisma->date)) }}</td>
                 </tr>
             </table>
-            
-            <!-- <table class="table table-sm text-center" style="border:0px;margin-top:60px;">
-                <tr>
-                    <td colspan="1" style="border:0px;"></td><td style="border:0px;"></td>
-                </tr>
-                <tr>
-                    <td colspan="1">Cumple</td><td>No cumple</td>
-                </tr>
-            </table> -->
+
         </main>
         <div style="page-break-after:always;"></div>
         <main>
+
+           <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th style="text-align: center">Distancia(m)</th>
+                        <th style="text-align: center">Promedio(m)</th>
+                        <th style="text-align: center">Patron(m)</th>
+                        <th style="text-align: center">Residuo(mm)</th>
+                        <th style="text-align: center">Residuo cuadratico</th>
+                    </tr>
+                </thead>
+                <tbody id="reportMedicion">
+                @php
+
+                @endphp
+
+                <tr>
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][0],6)  }}<br>
+                {{ number_format($prisma->arrMedicion['dist2'][0],6) }}<br>
+                {{ number_format($prisma->arrMedicion['dist3'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][0],6) }}</div></td>
+                </tr>
+
+
+
+
+
+                <tr>
+                <td>
+                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][1],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist2'][1],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist3'][1],6) }}</div>
+                </td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][1],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][1],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][1],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][1],6) }}</div></td>
+                </tr>
+
+
+
+
+
+                <tr>
+                <td>
+                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][2],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist2'][2],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist3'][2],6) }}</div>
+                </td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][2],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][2],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][2],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][2],6) }}</div></td>
+                </tr>
+
+
+
+
+
+
+
+                <tr>
+                <td>
+                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][3],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist2'][3],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist3'][3],6) }}</div>
+                </td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][3],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][3],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][3],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][3],6) }}</div></td>
+                </tr>
+
+
+                </tbody>
+
+                <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td style="text-align: right">Desviacion = {{ $prisma->arrMedicion['txtDesviacion'] }}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                </tfoot>
+
+            </table>
+
+            <main>
+            <!-- <div style="page-break-after:always;"></div> -->
+            <table class="table table-sm" style="border:0px;">
+                <tr class="bg-topo">
+                    <th colspan="2">Reporte de medición - Angulos Horizontales</th>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Fecha: {{$angulos_h->date}}</td>
+                    <td style="border:0px;">Temperatura: {{ $angulos_h->temperature }}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Producto: {{$equipment['equipment']}}</td>
+                    <td style="border:0px;">Presión: {{$angulos_h->pressure}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">No serial: {{$equipment['no_serie']}}</td>
+                    <td style="border:0px;">Húmedad: {{$angulos_h->humidity}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Obvservador:</td>
+                    <td style="border:0px;">{{ $angulos_h->observer}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Hora: {{ date('H:i:s', strtotime($angulos_h->date)) }}</td>
+                </tr>
+            </table>
+        </main>
+
+        <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th style="text-align: center">j</th>
+                        <th style="text-align: center">k</th>
+                        <th style="text-align: center">Cara 1</th>
+                        <th style="text-align: center">Cara 2</th>
+                        <th style="text-align: center">sum c1 y c2prom</th>
+                        <th style="text-align: center">Promedio</th>
+
+                    </tr>
+                </thead>
+                <tbody id="reportMedicion">
+                @php
+
+                @endphp
+
+                <tr>
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][0],6)  }}<br>
+                {{ number_format($prisma->arrMedicion['dist2'][0],6) }}<br>
+                {{ number_format($prisma->arrMedicion['dist3'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][0],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][0],6) }}</div></td>
+                </tr>
+
+
+
+
+
+                <tr>
+                <td>
+                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][1],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist2'][1],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist3'][1],6) }}</div>
+                </td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][1],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][1],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][1],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][1],6) }}</div></td>
+                </tr>
+
+
+
+
+
+                <tr>
+                <td>
+                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][2],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist2'][2],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist3'][2],6) }}</div>
+                </td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][2],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][2],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][2],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][2],6) }}</div></td>
+                </tr>
+
+
+
+
+
+
+
+                <tr>
+                <td>
+                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][3],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist2'][3],6) }}<br>
+                  {{ number_format($prisma->arrMedicion['dist3'][3],6) }}</div>
+                </td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][3],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][3],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][3],6) }}</div></td>
+
+                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][3],6) }}</div></td>
+                </tr>
+
+
+                </tbody>
+
+                <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td style="text-align: right">Desviacion = {{ $prisma->arrMedicion['txtDesviacion'] }}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                </tfoot>
+
+            </table>
 
             <div style="margin-top:1cm;" class="text-center">
                 <p>Especificaciones del instrumento:</p>
@@ -198,7 +440,7 @@
             </div>
             <div class="text-center">
                 <p>Observaciones</p>
-                {{ $report->observation}}
+                {{ $prisma->observation}}
             </div>
             <table class="table table-sm text-center" style="border:0px;margin:1cm 0cm;">
                 <tr>
