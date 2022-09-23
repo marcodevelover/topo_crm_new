@@ -239,6 +239,7 @@ class ReportController extends Controller
           'tipo' => $cTipo,
       ]);
 
+
       #guardado de mediciones prisma
       {
         $Dato = array();

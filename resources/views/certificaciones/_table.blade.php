@@ -99,7 +99,7 @@
                     @endforeach
 
                     <tr>
-                    <td>TOTAL DE PUNTOS DE MEDICION123</td>
+                    <td>TOTAL DE PUNTOS DE MEDICION</td>
                     <td><input name="txtTotalMedicion" class="txtTotalMedicion" value="{{ $aux['txtTotalMedicion'] ?? "" }}" type="text" style="text-align: center;width: 100px;" ></td>
                     </tr>
                     <tr>

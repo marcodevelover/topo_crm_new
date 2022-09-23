@@ -616,7 +616,7 @@
                 <tr>
                   <td></td>
                   <td></td>
-                  <td style="text-align: right">s = {{ $angulos_v->arrMedicion['raizsumatoria'] }}</td> 
+                  <td style="text-align: right">s = {{ $angulos_v->arrMedicion['raizsumatoria'] }}</td>
                   <td></td>
                 </tr>
                 </tfoot>

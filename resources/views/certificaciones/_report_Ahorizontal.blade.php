@@ -19,7 +19,7 @@
             </div>
              <div class="col-sm-3 col-lg-3">
                 <label for="staticEmail" class="col-form-label">Fecha</label>
-                <input type="text"  class="form-control fp_date" name="angulos_h[date]" placeholder="" value="{{ old("date", $report->hour) }}">
+                <input type="text"  class="form-control fp_date" name="angulos_h[date]" placeholder="Fecha" value="{{ old("date", $report->hour) }}">
             </div>
             <div class="form-check form-switch col-sm-2 col-lg-2">
                 <div><label class="form-check-label" for="flexSwitchCheckChecked">Cumple</label></div>
