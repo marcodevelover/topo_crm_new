@@ -85,7 +85,6 @@ class HomeController extends Controller
           {
             $medicion->arrMedicion = json_decode($medicion->json_medicion, true);
             $response["prisma"]  = $medicion;
-/*            exit(var_dump($medicion->arrMedicion));*/
           }
 
           if($medicion->tipo == "ANGULOS_H")
@@ -98,6 +97,7 @@ class HomeController extends Controller
           {
             $medicion->arrMedicion = json_decode($medicion->json_medicion, true);
             $response["angulos_v"] = $medicion;
+            /*exit(var_dump($medicion->arrMedicion));*/
           }
         }
 

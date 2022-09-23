@@ -152,8 +152,20 @@
                 </tr>
             </table>
         </main>
+
+
+
+
+
+
+         <div style="page-break-after:always;"></div>
+
+
+
+
+
         <main>
-            <!-- <div style="page-break-after:always;"></div> -->
+
             <table class="table table-sm" style="border:0px;">
                 <tr class="bg-topo">
                     <th colspan="2">Reporte de medición - Pruebas de distanciometro usando prisma</th>
@@ -180,7 +192,9 @@
             </table>
 
         </main>
-        <div style="page-break-after:always;"></div>
+
+        <br>
+
         <main>
 
            <table class="table table-striped table-sm">
@@ -286,11 +300,31 @@
                   <td></td>
                 </tr>
                 </tfoot>
-
             </table>
 
+            <div class="text-center">
+                <p>Observaciones</p>
+                {{ $prisma->observation}}
+            </div>
+
+
+
+
+
+
+
+
+               <div style="page-break-after:always;"></div>
+
+
+
+
+
+
+
+
+
             <main>
-            <!-- <div style="page-break-after:always;"></div> -->
             <table class="table table-sm" style="border:0px;">
                 <tr class="bg-topo">
                     <th colspan="2">Reporte de medición - Angulos Horizontales</th>
@@ -317,6 +351,8 @@
             </table>
         </main>
 
+        <br>
+
         <table class="table table-striped table-sm">
                 <thead>
                     <tr>
@@ -324,7 +360,7 @@
                         <th style="text-align: center">k</th>
                         <th style="text-align: center">Cara 1</th>
                         <th style="text-align: center">Cara 2</th>
-                        <th style="text-align: center">sum c1 y c2prom</th>
+                        <th style="text-align: center">sum c1 y c2</th>
                         <th style="text-align: center">Promedio</th>
 
                     </tr>
@@ -335,17 +371,65 @@
                 @endphp
 
                 <tr>
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][0],6)  }}<br>
-                {{ number_format($prisma->arrMedicion['dist2'][0],6) }}<br>
-                {{ number_format($prisma->arrMedicion['dist3'][0],6) }}</div></td>
+                  <td><div style="text-align: right">1</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][0],6) }}</div></td>
+                  <td><div style="text-align: right">1<br>2<br>3<br>4</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][0],6) }}</div></td>
+                  <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['cara1'][0]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][0]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][0]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][0]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][0]['_totalcara1'],6) }}</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][0],6) }}</div></td>
+                  <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['cara2'][0]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][0]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][0]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][0]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][0]['_totalcara2'],6) }}</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][0],6) }}</div></td>
+                   <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['sumacara'][0]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][0]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][0]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][0]['_4'],6) }}</div></td>
+
+                   <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['promedio'][0]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][0]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][0]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][0]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][0]['_totalpromedio'],6) }}</div></td>
+                </tr>
+
+
+
+
+
+               <tr>
+                  <td><div style="text-align: right">1</div></td>
+
+                  <td><div style="text-align: right">1<br>2<br>3<br>4</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['cara1'][1]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][1]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][1]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][1]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][1]['_totalcara1'],6) }}</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['cara2'][1]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][1]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][1]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][1]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][1]['_totalcara2'],6) }}</div></td>
+
+                   <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['sumacara'][1]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][1]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][1]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][1]['_4'],6) }}</div></td>
+
+                   <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['promedio'][1]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][1]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][1]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][1]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][1]['_totalpromedio'],6) }}</div></td>
                 </tr>
 
 
@@ -353,61 +437,32 @@
 
 
                 <tr>
-                <td>
-                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][1],6) }}<br>
-                  {{ number_format($prisma->arrMedicion['dist2'][1],6) }}<br>
-                  {{ number_format($prisma->arrMedicion['dist3'][1],6) }}</div>
-                </td>
+                  <td><div style="text-align: right">1</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][1],6) }}</div></td>
+                  <td><div style="text-align: right">1<br>2<br>3<br>4</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][1],6) }}</div></td>
+                  <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['cara1'][2]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][2]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][2]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][2]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara1'][2]['_totalcara1'],6) }}</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][1],6) }}</div></td>
+                  <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['cara2'][2]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][2]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][2]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][2]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['cara2'][2]['_totalcara2'],6) }}</div></td>
 
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][1],6) }}</div></td>
-                </tr>
+                   <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['sumacara'][2]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][2]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][2]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['sumacara'][2]['_4'],6) }}</div></td>
 
-
-
-
-
-                <tr>
-                <td>
-                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][2],6) }}<br>
-                  {{ number_format($prisma->arrMedicion['dist2'][2],6) }}<br>
-                  {{ number_format($prisma->arrMedicion['dist3'][2],6) }}</div>
-                </td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][2],6) }}</div></td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][2],6) }}</div></td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][2],6) }}</div></td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][2],6) }}</div></td>
-                </tr>
-
-
-
-
-
-
-
-                <tr>
-                <td>
-                  <div style="text-align: right">{{ number_format($prisma->arrMedicion['dist1'][3],6) }}<br>
-                  {{ number_format($prisma->arrMedicion['dist2'][3],6) }}<br>
-                  {{ number_format($prisma->arrMedicion['dist3'][3],6) }}</div>
-                </td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['promedio_prisma'][3],6) }}</div></td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['patron'][3],6) }}</div></td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuo'][3],6) }}</div></td>
-
-                <td><div style="text-align: right">{{ number_format($prisma->arrMedicion['residuocuadratico'][3],6) }}</div></td>
+                   <td><div style="text-align: right"> {{ number_format($angulos_h->arrMedicion['promedio'][2]['_1'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][2]['_2'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][2]['_3'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][2]['_4'],6) }}<br>
+                  {{ number_format($angulos_h->arrMedicion['promedio'][2]['_totalpromedio'],6) }}</div></td>
                 </tr>
 
 
@@ -417,30 +472,177 @@
                 <tr>
                   <td></td>
                   <td></td>
-                  <td style="text-align: right">Desviacion = {{ $prisma->arrMedicion['txtDesviacion'] }}</td>
                   <td></td>
+                  <td style="text-align: right">s = {{ $angulos_h->arrMedicion['paraserie'] }}</td>
                   <td></td>
                 </tr>
                 </tfoot>
 
             </table>
 
-            <div style="margin-top:1cm;" class="text-center">
-                <p>Especificaciones del instrumento:</p>
-            </div>
             <div class="text-center">
-                <p>Precisión (desviación estándar para la nivelación de doble recorrido en 1 km): 0,7 mm</p>
+                <p>Observaciones</p>
+                {{ $angulos_h->observation}}
             </div>
 
+
+
+
+
+
+
             <div style="page-break-after:always;"></div>
+
+
+
+
+
+
+           <main>
+
+            <table class="table table-sm" style="border:0px;">
+                <tr class="bg-topo">
+                    <th colspan="2">Reporte de medición - Angulos Verticales</th>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Fecha: {{$angulos_v->date}}</td>
+                    <td style="border:0px;">Temperatura: {{ $angulos_v->temperature }}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Producto: {{$equipment['equipment']}}</td>
+                    <td style="border:0px;">Presión: {{$angulos_v->pressure}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">No serial: {{$equipment['no_serie']}}</td>
+                    <td style="border:0px;">Húmedad: {{$angulos_v->humidity}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Obvservador:</td>
+                    <td style="border:0px;">{{ $angulos_v->observer}}</td>
+                </tr>
+                <tr>
+                    <td style="border:0px;">Hora: {{ date('H:i:s', strtotime($angulos_v->date)) }}</td>
+                </tr>
+            </table>
+
+        </main>
+
+         <br>
+
+        <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th style="text-align: center">j</th>
+                        <th style="text-align: center">k</th>
+                        <th style="text-align: center">Xj,k1</th>
+                        <th style="text-align: center">Xj,k2</th>
+
+                    </tr>
+                </thead>
+                <tbody id="reportMedicion">
+                @php
+
+                @endphp
+
+                <tr>
+                  <td><div style="text-align: right">1</div></td>
+
+                  <td><div style="text-align: right">1<br>2<br>3<br>4</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_v->arrMedicion['Xj1'][0]['_1'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][0]['_2'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][0]['_3'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][0]['_4'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][0]['_total'],6) }}</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_v->arrMedicion['Xj2'][0]['_1'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][0]['_2'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][0]['_3'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][0]['_4'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][0]['_total'],6) }}</div></td>
+
+                </tr>
+
+
+
+
+
+              <tr>
+                  <td><div style="text-align: right">1</div></td>
+
+                  <td><div style="text-align: right">1<br>2<br>3<br>4</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_v->arrMedicion['Xj1'][1]['_1'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][1]['_2'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][1]['_3'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][1]['_4'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][1]['_total'],6) }}</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_v->arrMedicion['Xj2'][1]['_1'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][1]['_2'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][1]['_3'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][1]['_4'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][1]['_total'],6) }}</div></td>
+
+                </tr>
+
+
+
+
+
+               <tr>
+                  <td><div style="text-align: right">1</div></td>
+
+                  <td><div style="text-align: right">1<br>2<br>3<br>4</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_v->arrMedicion['Xj1'][2]['_1'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][2]['_2'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][2]['_3'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][2]['_4'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj1'][2]['_total'],6) }}</div></td>
+
+                  <td><div style="text-align: right"> {{ number_format($angulos_v->arrMedicion['Xj2'][2]['_1'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][2]['_2'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][2]['_3'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][2]['_4'],6) }}<br>
+                  {{ number_format($angulos_v->arrMedicion['Xj2'][2]['_total'],6) }}</div></td>
+
+                </tr>
+
+
+                </tbody>
+
+                <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td style="text-align: right">s = {{ $angulos_v->arrMedicion['raizsumatoria'] }}</td> 
+                  <td></td>
+                </tr>
+                </tfoot>
+
+            </table>
+
+            <div class="text-center">
+                <p>Observaciones</p>
+                {{ $angulos_v->observation}}
+            </div>
+
+
+
+
+
+
+
+
+
+
+          <div style="page-break-after:always;"></div>
+
 
             <div class="text-center">
                 <p>Configuración para la calibración</p>
                 <img src="{{ asset('/images/reporte-medicion.png') }}" class="img-fluid">
-            </div>
-            <div class="text-center">
-                <p>Observaciones</p>
-                {{ $prisma->observation}}
             </div>
             <table class="table table-sm text-center" style="border:0px;margin:1cm 0cm;">
                 <tr>

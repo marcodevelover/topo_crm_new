@@ -25,7 +25,7 @@
             </div>
              <div class="col-sm-3 col-lg-3">
                 <label for="staticEmail" class="col-form-label">Fecha</label>
-                <input type="text" class="form-control" placeholder="" value="">
+                <input type="text" class="form-control fp_date" name="angulos_v[date]" placeholder="" value="{{ old("date", $report->hour) }}">
             </div>
             <div class="form-check form-switch col-sm-2 col-lg-2">
                 <div><label class="form-check-label" for="flexSwitchCheckChecked">Cumple</label></div>
@@ -51,7 +51,7 @@
             </div>
             <div class="col-sm-4 col-lg-2">
                 <label for="staticEmail" class="col-form-label">Hora</label>
-                <input type="text" class="form-control" placeholder="Hora" name="angulos_v[hour]" value="{{ old("hour", $report->hour) }}">
+                <input type="text" class="form-control fp_time" placeholder="Hora" name="angulos_v[hour]" value="{{ old("hour", $report->hour) }}">
             </div>
             <div class="col-sm-12 col-lg-12">
                 <label for="staticEmail" class="col-form-label">Observaciones</label>
