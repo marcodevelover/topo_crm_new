@@ -219,9 +219,30 @@ class ReportController extends Controller
       if(!empty($qs))
       {
         $cTipo = "ESTACION";
-      }
+       /* $pattern->id = 2;  */
+
 
       $report = Report::create([
+          'customer_id' => $customer->id,
+          'equipment_id' => $equipment->id,
+          'user_id' => $user->id,
+          'pattern_id' => 2,
+          'folio' => $_folio,
+          'date' => date('Y-m-d'),
+          'temperature' => $request->temperature ?: '',
+          'cumple' => ( $request->cumple == 'on' ? 1 : 0 ),
+          'pressure' => $request->pressure ?:'',
+          'humidity' => $request->humidity ?:'',
+          'hour' => $request->hour ?:'',
+          'sisolev' => 1,
+          'observation' => $request->observation ?:'',
+          'measurements' => $measurements,
+          'tipo' => $cTipo,
+      ]);
+      }
+      else
+      {
+         $report = Report::create([
           'customer_id' => $customer->id,
           'equipment_id' => $equipment->id,
           'user_id' => $user->id,
@@ -237,7 +258,11 @@ class ReportController extends Controller
           'observation' => $request->observation ?:'',
           'measurements' => $measurements,
           'tipo' => $cTipo,
-      ]);
+
+          ]);
+      }
+
+
 
 
       #guardado de mediciones prisma

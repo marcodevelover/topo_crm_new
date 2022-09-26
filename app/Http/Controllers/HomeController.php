@@ -9,6 +9,7 @@ use QrCode;
 use App\User;
 use App\ReportMedicion;
 
+
 class HomeController extends Controller
 {
     /**

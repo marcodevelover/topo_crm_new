@@ -160,13 +160,10 @@
                     <td style="border:0px;">Marca: {{$pattern->brand}}</td><td style="border:0px;">Modelo: {{$pattern->model}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">No. serie: {{$pattern->no_serie}}</td><td style="border:0px;">Certificado: {{$pattern->equipment}}</td>
+                    <td style="border:0px;">No. serie: {{$pattern->no_serie}}</td><td style="border:0px;">Certificado: {{$pattern->certificate}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Calibro</td><td style="border:0px;">Calibro</td>
-                </tr>
-                <tr>
-                    <td style="border:0px;">Descripción</td><td style="border:0px;">Descripción</td>
+                    <td style="border:0px;">Calibro</td><td style="border:0px;">{{$pattern->calibrated}}</td>
                 </tr>
             </table>
         </main>
@@ -181,18 +178,15 @@
                     <td style="border:0px;">Temperatura: {{$report->temperature}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Producto: {{$report->product}}</td>
+                    <td style="border:0px;">Producto: {{$equipment['equipment']}}</td>
                     <td style="border:0px;">Presión: {{$report->pressure}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">No serial: {{$report->no_serie}}</td>
+                    <td style="border:0px;">No serial: {{$equipment['no_serie']}}</td>
                     <td style="border:0px;">Húmedad: {{$report->humidity}}</td>
                 </tr>
                 <tr>
-                    <td style="border:0px;">Obvservador:</td>
-                    <td style="border:0px;">{{ $report->observation}}</td>
-                </tr>
-                <tr>
+                    <td style="border:0px;">Obvservador: {{ $report->observer}}</td>
                     <td style="border:0px;">Hora: {{ date('H:i:s', strtotime($report->created_at)) }}</td>
                 </tr>
             </table>
