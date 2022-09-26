@@ -1,13 +1,12 @@
 
-@include('components.validate-errors')
-@include('components.messages')
 
 @include('certificaciones._cliente')
 @include('certificaciones._equipo')
 @include('certificaciones._form')
 @include('certificaciones._report_Ahorizontal')
 
-
+<!-- @include('components.validate-errors') -->
+@include('components.messages')
 <div class="card my-2">
     <div class="card-header">
         <h5 class="my-1">Reporte de medición (Angulos Verticales)</h5>

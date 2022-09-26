@@ -35,7 +35,8 @@
     @include('certificaciones._modal-product')
     <form action="{{ route('certificaciones.update',$report->id) }}" method="post">
         <input type="hidden" name="_method" value="PATCH">
-        @include('certificaciones._form')
+        @include('certificaciones._report_Avertical')
+
     </form>
 @endsection
 

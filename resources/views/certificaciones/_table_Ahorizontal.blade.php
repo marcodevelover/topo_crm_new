@@ -62,7 +62,7 @@
 
                   ?>
 
-                  @foreach($report->angulosHorizontales['i'] as $m)
+                  @foreach((array)$report->angulosHorizontales['i'] as $m)
 
 
 

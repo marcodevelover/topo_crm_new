@@ -29,7 +29,7 @@
     @include('certificaciones._modal-product')
     <form action="{{ route('certificaciones.update',$report->id) }}" method="post">
         <input type="hidden" name="_method" value="PUT">
-        @include('certificaciones._form')
+        @include('laboratorio._form')
     </form>
 @endsection
 

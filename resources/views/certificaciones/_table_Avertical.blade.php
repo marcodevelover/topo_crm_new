@@ -43,7 +43,7 @@
 
                     ?>
 
-                    @foreach($report->angulosVerticales['i'] as $m)
+                    @foreach((array)$report->angulosVerticales['i'] as $m)
 
                         <tr id="row" class="roww">
                             <td>

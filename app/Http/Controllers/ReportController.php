@@ -111,7 +111,7 @@ class ReportController extends Controller
       ];
 
       $report->angulosHorizontales = [
-          "i"=> ["0","0","0"],
+          "i"=> ["1","2","3"],
           "k"=> ["1","2","3","4","∑"],
           "cara1"=> ["0","0","0","0"],
           "cara2"=> ["0","0","0","0"],
@@ -152,7 +152,7 @@ class ReportController extends Controller
 
   public function store(Request $request)
   {
-      /*request()->validate([
+      request()->validate([
           'temperature' => 'required',
           'cumple' => 'required',
           'pressure' => 'required',
@@ -166,7 +166,7 @@ class ReportController extends Controller
           'equipment.brand' => 'required',
           'equipment.model' => 'required',
           'equipment.no_serie' => 'required'
-      ]);*/
+      ]);
 
       $last_user = Report::latest()->orderBy('id', 'DESC')->first();
 

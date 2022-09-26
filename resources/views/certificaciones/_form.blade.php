@@ -18,7 +18,7 @@
         margin-left: 20px;
     }
 </style>
-@include('components.validate-errors')
+<!--@include('components.validate-errors')  -->
 @include('components.messages')
 
 <div class="card my-2">
@@ -30,7 +30,7 @@
             <div class="col-sm-4 col-lg-4">
                 <label for="staticEmail" class="col-form-label">Producto</label>
                 <input type="text" class="form-control" name="product" placeholder="Producto" value="{{ old("", $equipment->equipment ) }}">
-                
+
             </div>
             <div class="col-sm-3 col-lg-3">
                 <label for="staticEmail" class="col-form-label">No. de serie</label>
@@ -38,7 +38,7 @@
             </div>
              <div class="col-sm-3 col-lg-3">
                 <label for="staticEmail" class="col-form-label">Fecha</label>
-                <input type="text" class="form-control fp_date" name="prisma[date]" placeholder="Fecha" value="{{ old("date", $report->hour) }}">
+                <input type="text" class="form-control fp_date" name="prisma[date]" placeholder="Fecha" value="{{ old("date", $report->date) }}">
             </div>
             <div class="form-check form-switch col-sm-2 col-lg-2">
                 <div><label class="form-check-label" for="flexSwitchCheckChecked">Cumple</label></div>
@@ -48,7 +48,7 @@
                 <label for="staticEmail" class="col-form-label">Temperatura</label>
                 <input type="text" class="form-control" placeholder="Temperatura" name="prisma[temperature]" value="{{ old("", $report->temperature) }}">
             </div>
-      
+
             <div class="col-sm-4 col-lg-2">
                 <label for="staticEmail" class="col-form-label">Presión</label>
                 <input type="text" class="form-control" placeholder="Presión" name="prisma[pressure]" value="{{ old("pressure", $report->pressure) }}">

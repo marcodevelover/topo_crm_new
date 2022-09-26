@@ -1,5 +1,5 @@
 
-@include('components.validate-errors')
+<!--@include('components.validate-errors') -->
 @include('components.messages')
 
 <div class="card my-2">

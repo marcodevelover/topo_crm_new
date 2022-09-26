@@ -23,31 +23,31 @@
                     <div class="col-xs-12 col-sm-12 col-lg-9">
                         <label for="staticProduct" name="product" class="col-form-label">Descripción</label>
                         <input type="hidden" name="equipment_id" value="{{$equipment->id}}">
-                        <input type="text" class="form-control" name="equipment[patern_reference]" placeholder="Descripción" value="{{ $equipment->description }}" disabled>
+                        <input type="text" class="form-control" name="equipment[patern_reference]" placeholder="Descripción" value="{{ $report->pattern['description'] }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-3">
                         <label for="staticBrand" class="col-form-label">Certificado</label>
-                        <input id="producBrand" type="text" class="form-control" name="equipment[brand]" placeholder="Marca" value="{{ $equipment->brand }}" disabled>
+                        <input id="producBrand" type="text" class="form-control" name="equipment[brand]" placeholder="Marca" value="{{ $report->pattern['certificate'] }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-3">
                         <label for="staticBrand" class="col-form-label">Marca</label>
-                        <input id="producBrand" type="text" class="form-control" name="equipment[brand]" placeholder="Marca" value="{{ $equipment->brand }}" disabled>
+                        <input id="producBrand" type="text" class="form-control" name="equipment[brand]" placeholder="Marca" value="{{ $report->pattern['brand'] }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-3">
                         <label for="staticModel" class="col-form-label">Modelo</label>
-                        <input id="producModel" type="text" class="form-control" name="equipment[model]" placeholder="Modelo" value="{{ $equipment->model }}" disabled>
+                        <input id="producModel" type="text" class="form-control" name="equipment[model]" placeholder="Modelo" value="{{ $report->pattern['model'] }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-3">
                         <label for="staticSerie" class="col-form-label">No. de serie</label>
-                        <input id="producNoSerie" type="text" class="form-control" name="equipment[no_serie]" placeholder="No. de serie" value="{{ $equipment->no_serie }}" disabled>
+                        <input id="producNoSerie" type="text" class="form-control" name="equipment[no_serie]" placeholder="No. de serie" value="{{ $report->pattern['no_serie'] }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-3">
                         <label for="staticEmail" class="col-form-label">Calibro</label>
-                        <input id="productName" type="text" class="form-control" placeholder="Equipo" name="equipment[equipment]" value="{{ $equipment->equipment }}" disabled>
+                        <input id="productName" type="text" class="form-control" placeholder="Equipo" name="equipment[equipment]" value="{{ $report->pattern['calibrated'] }}" disabled>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-12">
                         <label for="staticEmail" class="col-form-label">Verificación</label>
-                        <textarea class="form-control" name="equipment[specification]" placeholder="" disabled>{{ $equipment->specification }}</textarea>
+                        <textarea class="form-control" name="equipment[specification]" placeholder="" disabled>{{ $report->pattern['comments'] }}</textarea>
                     </div>
                 </div>
             </div>

@@ -231,30 +231,30 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['dist1'][0]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist2'][0]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist3'][0]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['dist1'][0] }}<br>
+                            {{ $prisma->arrMedicion['dist2'][0] }}<br>
+                            {{ $prisma->arrMedicion['dist3'][0] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['promedio_prisma'][0]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['promedio_prisma'][0] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['patron'][0]) ,6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['patron'][0] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['residuo'][0]), 6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['residuo'][0] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['residuocuadratico'][0]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['residuocuadratico'][0] }}</div>
                     </td>
                 </tr>
 
@@ -264,30 +264,30 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['dist1'][1]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist2'][1]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist3'][1]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['dist1'][1] }}<br>
+                            {{ $prisma->arrMedicion['dist2'][1] }}<br>
+                            {{ $prisma->arrMedicion['dist3'][1] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['promedio_prisma'][1]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['promedio_prisma'][1] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['patron'][1]), 6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['patron'][1] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['residuo'][1]), 6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['residuo'][1] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['residuocuadratico'][1]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['residuocuadratico'][1] }}</div>
                     </td>
                 </tr>
 
@@ -297,30 +297,30 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['dist1'][2]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist2'][2]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist3'][2]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['dist1'][2] }}<br>
+                            {{ $prisma->arrMedicion['dist2'][2] }}<br>
+                            {{ $prisma->arrMedicion['dist3'][2] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['promedio_prisma'][2]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['promedio_prisma'][2] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['patron'][2]), 6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['patron'][2] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['residuo'][2]), 6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['residuo'][2] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['residuocuadratico'][2]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['residuocuadratico'][2] }}</div>
                     </td>
                 </tr>
 
@@ -332,30 +332,30 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['dist1'][3]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist2'][3]), 6) }}<br>
-                            {{ number_format(doubleval($prisma->arrMedicion['dist3'][3]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['dist1'][3] }}<br>
+                            {{ $prisma->arrMedicion['dist2'][3] }}<br>
+                            {{ $prisma->arrMedicion['dist3'][3] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['promedio_prisma'][3]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['promedio_prisma'][3] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['patron'][3]), 6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['patron'][3] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">{{ number_format(doubleval($prisma->arrMedicion['residuo'][3]), 6) }}
+                        <div style="text-align: center">{{ $prisma->arrMedicion['residuo'][3] }}
                         </div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($prisma->arrMedicion['residuocuadratico'][3]), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $prisma->arrMedicion['residuocuadratico'][3] }}</div>
                     </td>
                 </tr>
 
@@ -366,7 +366,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td style="text-align: right">Desviacion = {{ $prisma->arrMedicion['txtDesviacion']  ?? "" }}</td>
+                    <td style="text-align: center">Desviacion = {{ $prisma->arrMedicion['txtDesviacion']  ?? "" }}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -440,95 +440,46 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">1</div>
+                        <div style="text-align: center">1</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">1<br>2<br>3<br>4</div>
+                        <div style="text-align: center">1<br>2<br>3<br>4</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][0]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][0]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][0]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][0]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][0]['_totalcara1']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['cara1'][0]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][0]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][0]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][0]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][0]['_totalcara1'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][0]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][0]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][0]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][0]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][0]['_totalcara2']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['cara2'][0]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][0]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][0]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][0]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][0]['_totalcara2'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][0]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][0]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][0]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][0]['_4']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['sumacara'][0]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][0]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][0]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][0]['_4'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][0]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][0]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][0]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][0]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][0]['_totalpromedio']), 6) }}</div>
-                    </td>
-                </tr>
-
-
-
-
-
-                <tr>
-                    <td>
-                        <div style="text-align: right">1</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">1<br>2<br>3<br>4</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][1]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][1]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][1]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][1]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][1]['_totalcara1']), 6) }}</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][1]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][1]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][1]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][1]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][1]['_totalcara2']), 6) }}</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][1]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][1]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][1]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][1]['_4']), 6) }}</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][1]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][1]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][1]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][1]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][1]['_totalpromedio']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['promedio'][0]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][0]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][0]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][0]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][0]['_totalpromedio'] }}</div>
                     </td>
                 </tr>
 
@@ -538,46 +489,95 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">1</div>
+                        <div style="text-align: center">1</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">1<br>2<br>3<br>4</div>
+                        <div style="text-align: center">1<br>2<br>3<br>4</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][2]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][2]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][2]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][2]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara1'][2]['_totalcara1']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['cara1'][1]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][1]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][1]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][1]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][1]['_totalcara1'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][2]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][2]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][2]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][2]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['cara2'][2]['_totalcara2']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['cara2'][1]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][1]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][1]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][1]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][1]['_totalcara2'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][2]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][2]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][2]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['sumacara'][2]['_4']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['sumacara'][1]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][1]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][1]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][1]['_4'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][2]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][2]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][2]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][2]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_h->arrMedicion['promedio'][2]['_totalpromedio']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['promedio'][1]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][1]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][1]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][1]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][1]['_totalpromedio'] }}</div>
+                    </td>
+                </tr>
+
+
+
+
+
+                <tr>
+                    <td>
+                        <div style="text-align: center">1</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">1<br>2<br>3<br>4</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['cara1'][2]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][2]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][2]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][2]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara1'][2]['_totalcara1'] }}</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['cara2'][2]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][2]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][2]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][2]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['cara2'][2]['_totalcara2'] }}</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['sumacara'][2]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][2]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][2]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['sumacara'][2]['_4'] }}</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">
+                            {{ $angulos_h->arrMedicion['promedio'][2]['_1'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][2]['_2'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][2]['_3'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][2]['_4'] }}<br>
+                            {{ $angulos_h->arrMedicion['promedio'][2]['_totalpromedio'] }}</div>
                     </td>
                 </tr>
 
@@ -589,7 +589,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td style="text-align: right">s = {{ $angulos_h->arrMedicion['paraserie'] ?? "" }}</td>
+                    <td style="text-align: center">s = {{ $angulos_h->arrMedicion['paraserie'] ?? "" }}</td>
                     <td></td>
                 </tr>
             </tfoot>
@@ -659,62 +659,29 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">1</div>
+                        <div style="text-align: center">1</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">1<br>2<br>3<br>4</div>
+                        <div style="text-align: center">1<br>2<br>3<br>4</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][0]['_1']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][0]['_2']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][0]['_3']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][0]['_4']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][0]['_total']) , 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_v->arrMedicion['Xj1'][0]['_1'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][0]['_2'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][0]['_3'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][0]['_4'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][0]['_total'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][0]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][0]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][0]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][0]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][0]['_total']), 6) }}</div>
-                    </td>
-
-                </tr>
-
-
-
-
-
-                <tr>
-                    <td>
-                        <div style="text-align: right">1</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">1<br>2<br>3<br>4</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][1]['_1']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][1]['_2']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][1]['_3']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][1]['_4']) , 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][1]['_total']) , 6) }}</div>
-                    </td>
-
-                    <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][1]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][1]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][1]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][1]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][1]['_total']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_v->arrMedicion['Xj2'][0]['_1'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][0]['_2'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][0]['_3'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][0]['_4'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][0]['_total'] }}</div>
                     </td>
 
                 </tr>
@@ -725,29 +692,62 @@
 
                 <tr>
                     <td>
-                        <div style="text-align: right">1</div>
+                        <div style="text-align: center">1</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">1<br>2<br>3<br>4</div>
+                        <div style="text-align: center">1<br>2<br>3<br>4</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][2]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][2]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][2]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][2]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj1'][2]['_total']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_v->arrMedicion['Xj1'][1]['_1'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][1]['_2'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][1]['_3'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][1]['_4'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][1]['_total'] }}</div>
                     </td>
 
                     <td>
-                        <div style="text-align: right">
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][2]['_1']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][2]['_2']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][2]['_3']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][2]['_4']), 6) }}<br>
-                            {{ number_format(doubleval($angulos_v->arrMedicion['Xj2'][2]['_total']), 6) }}</div>
+                        <div style="text-align: center">
+                            {{ $angulos_v->arrMedicion['Xj2'][1]['_1'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][1]['_2'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][1]['_3'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][1]['_4'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][1]['_total'] }}</div>
+                    </td>
+
+                </tr>
+
+
+
+
+
+                <tr>
+                    <td>
+                        <div style="text-align: center">1</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">1<br>2<br>3<br>4</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">
+                            {{ $angulos_v->arrMedicion['Xj1'][2]['_1'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][2]['_2'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][2]['_3'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][2]['_4'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj1'][2]['_total'] }}</div>
+                    </td>
+
+                    <td>
+                        <div style="text-align: center">
+                            {{ $angulos_v->arrMedicion['Xj2'][2]['_1'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][2]['_2'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][2]['_3'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][2]['_4'] }}<br>
+                            {{ $angulos_v->arrMedicion['Xj2'][2]['_total'] }}</div>
                     </td>
 
                 </tr>
@@ -759,7 +759,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td style="text-align: right">s = {{ $angulos_v->arrMedicion['raizsumatoria'] ?? "" }}</td>
+                    <td style="text-align: center">s = {{ $angulos_v->arrMedicion['raizsumatoria'] ?? "" }}</td>
                     <td></td>
                 </tr>
             </tfoot>
